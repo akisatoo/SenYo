@@ -7,23 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C111AFDF137C7B1168F6B44 /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA9CB22B7ADB9908A0FC3ED /* Pods_SenYo.framework */; };
+		A70BE6F61D711FCD003E3341 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70BE6F51D711FCD003E3341 /* Model.swift */; };
 		CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */; };
 		CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */; };
-		CD0F77E31D4DD06A001BC4C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F77E11D4DD06A001BC4C9 /* Main.storyboard */; };
 		CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */; };
 		CD0F77E81D4DD06A001BC4C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */; };
 		CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8AA9CB22B7ADB9908A0FC3ED /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E13B213141E5CB99B127C0D /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
+		A70BE6F51D711FCD003E3341 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = ../../../Documents/Model.swift; sourceTree = "<group>"; };
+		A7BE98181D71342F0009DFE5 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CD0F77E21D4DD06A001BC4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD0F77E51D4DD06A001BC4C9 /* SenYo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SenYo.xcdatamodel; sourceTree = "<group>"; };
 		CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD0F77EA1D4DD06A001BC4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD0F77EC1D4DD06A001BC4C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E943B4E599AE18157D1539A3 /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +36,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C111AFDF137C7B1168F6B44 /* Pods_SenYo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		954FF4A6B2BC5BF1211B47A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E943B4E599AE18157D1539A3 /* Pods-SenYo.debug.xcconfig */,
+				9E13B213141E5CB99B127C0D /* Pods-SenYo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A70BE6EE1D6AF60C003E3341 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A70BE6EF1D6AF616003E3341 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A70BE6F01D6AF66D003E3341 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A70BE6F51D711FCD003E3341 /* Model.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CD0F77D11D4DD069001BC4C9 = {
 			isa = PBXGroup;
 			children = (
+				A7BE98181D71342F0009DFE5 /* Header.h */,
 				CD0F77DC1D4DD069001BC4C9 /* SenYo */,
 				CD0F77DB1D4DD069001BC4C9 /* Products */,
+				954FF4A6B2BC5BF1211B47A0 /* Pods */,
+				D015F2F00A9E3C5D801FBFDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +97,24 @@
 		CD0F77DC1D4DD069001BC4C9 /* SenYo */ = {
 			isa = PBXGroup;
 			children = (
+				A70BE6F01D6AF66D003E3341 /* Model */,
+				A70BE6EF1D6AF616003E3341 /* Controller */,
+				A70BE6EE1D6AF60C003E3341 /* View */,
 				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
-				CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */,
-				CD0F77E11D4DD06A001BC4C9 /* Main.storyboard */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
 				CD0F77EC1D4DD06A001BC4C9 /* Info.plist */,
 				CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */,
 			);
 			path = SenYo;
+			sourceTree = "<group>";
+		};
+		D015F2F00A9E3C5D801FBFDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8AA9CB22B7ADB9908A0FC3ED /* Pods_SenYo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD0F77EF1D4DD06A001BC4C9 /* Build configuration list for PBXNativeTarget "SenYo" */;
 			buildPhases = (
+				5C2FB7FCD3563891A1C4EE94 /* Check Pods Manifest.lock */,
 				CD0F77D61D4DD069001BC4C9 /* Sources */,
 				CD0F77D71D4DD069001BC4C9 /* Frameworks */,
 				CD0F77D81D4DD069001BC4C9 /* Resources */,
+				F6A87CF7F0BCFFB8B248AD16 /* Embed Pods Frameworks */,
+				F703D6C1BBB7EE110F632DC8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,11 +180,58 @@
 			files = (
 				CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */,
 				CD0F77E81D4DD06A001BC4C9 /* Assets.xcassets in Resources */,
-				CD0F77E31D4DD06A001BC4C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5C2FB7FCD3563891A1C4EE94 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A87CF7F0BCFFB8B248AD16 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SenYo/Pods-SenYo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F703D6C1BBB7EE110F632DC8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SenYo/Pods-SenYo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD0F77D61D4DD069001BC4C9 /* Sources */ = {
@@ -141,20 +241,13 @@
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
 				CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
+				A70BE6F61D711FCD003E3341 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CD0F77E11D4DD06A001BC4C9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD0F77E21D4DD06A001BC4C9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -249,6 +342,7 @@
 		};
 		CD0F77F01D4DD06A001BC4C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E943B4E599AE18157D1539A3 /* Pods-SenYo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SenYo/Info.plist;
@@ -260,6 +354,7 @@
 		};
 		CD0F77F11D4DD06A001BC4C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E13B213141E5CB99B127C0D /* Pods-SenYo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SenYo/Info.plist;
@@ -288,6 +383,7 @@
 				CD0F77F11D4DD06A001BC4C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

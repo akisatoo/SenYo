@@ -4,10 +4,11 @@
 //
 //  Created by takahashi akisato on 2016/07/31.
 //  Copyright © 2016年 takahashi akisato. All rights reserved.
-//
+//port
 
 import UIKit
 import CoreData
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController = UINavigationController(rootViewController: first)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = navigationController
+        self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
         
         return true
