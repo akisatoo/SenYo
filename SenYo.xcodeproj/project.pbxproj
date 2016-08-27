@@ -241,6 +241,7 @@
 			files = (
 				CDA1F3451D717D76001C4336 /* LoginViewController.swift in Sources */,
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
+				A7BC87F21D71690500CAAB69 /* Test.swift in Sources */,
 				CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */,
 				CDA1F3411D717C0B001C4336 /* LoginView.swift in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
