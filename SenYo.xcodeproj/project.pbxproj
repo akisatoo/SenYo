@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C111AFDF137C7B1168F6B44 /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA9CB22B7ADB9908A0FC3ED /* Pods_SenYo.framework */; };
-		A70BE6F61D711FCD003E3341 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70BE6F51D711FCD003E3341 /* Model.swift */; };
+		A7BC87F21D71690500CAAB69 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC87F11D71690500CAAB69 /* Test.swift */; };
 		CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */; };
 		CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */; };
 		CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */; };
@@ -19,8 +19,7 @@
 /* Begin PBXFileReference section */
 		8AA9CB22B7ADB9908A0FC3ED /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E13B213141E5CB99B127C0D /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
-		A70BE6F51D711FCD003E3341 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = ../../../Documents/Model.swift; sourceTree = "<group>"; };
-		A7BE98181D71342F0009DFE5 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		A7BC87F11D71690500CAAB69 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		A70BE6EE1D6AF60C003E3341 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7BC87F11D71690500CAAB69 /* Test.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -70,7 +70,6 @@
 		A70BE6F01D6AF66D003E3341 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A70BE6F51D711FCD003E3341 /* Model.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -78,7 +77,6 @@
 		CD0F77D11D4DD069001BC4C9 = {
 			isa = PBXGroup;
 			children = (
-				A7BE98181D71342F0009DFE5 /* Header.h */,
 				CD0F77DC1D4DD069001BC4C9 /* SenYo */,
 				CD0F77DB1D4DD069001BC4C9 /* Products */,
 				954FF4A6B2BC5BF1211B47A0 /* Pods */,
@@ -239,9 +237,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
+				A7BC87F21D71690500CAAB69 /* Test.swift in Sources */,
 				CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
-				A70BE6F61D711FCD003E3341 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
