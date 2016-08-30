@@ -20,6 +20,7 @@ xcuserdata/
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
+SenYo.xcodeproj/project.pbxproj
 .DS_Store
 
 ## Other

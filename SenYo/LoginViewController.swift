@@ -11,6 +11,8 @@ import Foundation
 
 class LoginViewController: UIViewController, LoginViewDelegate {
     
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +27,8 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     }
     
     func buttonTouched(sender:UIButton) {
-        self.view.backgroundColor = UIColor.orangeColor()
+        //ログイン後画面へ遷移
+        self.appDelegate.afterLogin()
     }
     
 }

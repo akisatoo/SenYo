@@ -15,6 +15,10 @@
 		CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */; };
 		CDA1F3411D717C0B001C4336 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3401D717C0B001C4336 /* LoginView.swift */; };
 		CDA1F3451D717D76001C4336 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3441D717D76001C4336 /* LoginViewController.swift */; };
+		CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3461D75DB5A001C4336 /* HomeViewController.swift */; };
+		CDA1F3491D75DB8D001C4336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3481D75DB8D001C4336 /* HomeView.swift */; };
+		CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34A1D75DDD9001C4336 /* NoticeViewController.swift */; };
+		CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		CD0F77EC1D4DD06A001BC4C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDA1F3401D717C0B001C4336 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CDA1F3441D717D76001C4336 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CDA1F3461D75DB5A001C4336 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CDA1F3481D75DB8D001C4336 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CDA1F34A1D75DDD9001C4336 /* NoticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		F55A80AA04CB7124077AD34F /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -57,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				CDA1F3401D717C0B001C4336 /* LoginView.swift */,
+				CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */,
+				CDA1F3481D75DB8D001C4336 /* HomeView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -65,7 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */,
+				CDA1F3461D75DB5A001C4336 /* HomeViewController.swift */,
 				CDA1F3441D717D76001C4336 /* LoginViewController.swift */,
+				CDA1F34A1D75DDD9001C4336 /* NoticeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -240,11 +252,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA1F3451D717D76001C4336 /* LoginViewController.swift in Sources */,
+				CDA1F3491D75DB8D001C4336 /* HomeView.swift in Sources */,
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
-				A7BC87F21D71690500CAAB69 /* Test.swift in Sources */,
+				CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */,
 				CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */,
 				CDA1F3411D717C0B001C4336 /* LoginView.swift in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
+				CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */,
+				CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
