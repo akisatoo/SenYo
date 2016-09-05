@@ -25,27 +25,54 @@ class HomeView: UIView {
         
         
         // Buttonを生成する.
-        let myButton = UIButton()
+        let noticeButton = UIButton()
         // サイズを設定する.
-        myButton.frame = CGRectMake(0,0,200,40)
+        noticeButton.frame = CGRectMake(0,0,200,40)
         // 背景色を設定する.
-        myButton.backgroundColor = UIColor.redColor()
+        noticeButton.backgroundColor = UIColor.redColor()
         // 枠を丸くする.
-        myButton.layer.masksToBounds = true
+        noticeButton.layer.masksToBounds = true
         // タイトルを設定する(通常時).
-        myButton.setTitle("Open Notice", forState: UIControlState.Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        noticeButton.setTitle("Open Notice", forState: UIControlState.Normal)
+        noticeButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         // コーナーの半径を設定する.
-        myButton.layer.cornerRadius = 20.0
+        noticeButton.layer.cornerRadius = 20.0
         // タグを設定する.
-        myButton.tag = 1
+        noticeButton.tag = 1
         // イベントを追加する.
-        myButton.addTarget(delegate, action: "buttonTouched:", forControlEvents: .TouchUpInside)
+        noticeButton.addTarget(delegate, action: "clickButton:", forControlEvents: .TouchUpInside)
         // ボタンをViewに追加する.
-        self.addSubview(myButton)
+        self.addSubview(noticeButton)
         // ボタンの位置を指定する.
-        myButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 60)
-        myButton.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: 16)
+        noticeButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 60)
+    
+        noticeButton.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: 16)
+        // Buttonを生成する.
+        
+        let settingButton = UIButton()
+        // サイズを設定する.
+        settingButton.frame = CGRectMake(0,0,200,40)
+        // 背景色を設定する.
+        settingButton.backgroundColor = UIColor.orangeColor()
+        // 枠を丸くする.
+        settingButton.layer.masksToBounds = true
+        // タイトルを設定する(通常時).
+        settingButton.setTitle("Open Setting", forState: UIControlState.Normal)
+        settingButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        // コーナーの半径を設定する.
+        settingButton.layer.cornerRadius = 20.0
+        // タグを設定する.
+        settingButton.tag = 2
+        // イベントを追加する.
+        settingButton.addTarget(delegate, action: "clickButton:", forControlEvents: .TouchUpInside)
+        // ボタンをViewに追加する.
+        self.addSubview(settingButton)
+        // ボタンの位置を指定する.
+        settingButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 60)
+        settingButton.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 16)
+        
+        
+        
     }
     
     override func layoutSubviews() {

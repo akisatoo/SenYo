@@ -9,9 +9,9 @@
 import UIKit
 import PureLayout
 
+var myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
