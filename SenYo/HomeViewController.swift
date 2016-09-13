@@ -37,6 +37,8 @@ class HomeViewController: UIViewController, HomeViewDelegate {
             break
         case 2:
             let setting = SettingViewController()
+            //setting.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            //self.presentViewController(setting, animated: true, completion: nil)
             self.navigationController?.pushViewController(setting, animated: true )
             break
         case 3:

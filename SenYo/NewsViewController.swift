@@ -23,4 +23,15 @@ class NewsViewController : UIViewController, NewsViewDelegate {
     override func didReceiveMemoryWarning(){
         super.didReceiveMemoryWarning()
     }
+    
+    func moveViews( num : Int ){
+        switch( num ){
+        case 1:
+            let myView = MakeGroupViewController()
+            //self.navigationController?.pushViewController(myView, animated: true)
+            break
+        default:
+            break
+        }
+    }
 }

@@ -16,10 +16,13 @@ class MemBerViewContoller : UIViewController, MemberViewDelegate {
         let memberView = MemberView()
         self.view = memberView
         memberView.delegate = self
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func chooseCell( num : Int ){
+        print( "cell : \(num)" )
     }
 }

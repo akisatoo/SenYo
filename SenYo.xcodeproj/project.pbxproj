@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73130F81D853D0A00A975CD /* no_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A73130F71D853D0A00A975CD /* no_image.jpg */; };
 		A768FAA31D76B08A004802A5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA21D76B08A004802A5 /* SettingViewController.swift */; };
 		A768FAA51D76B131004802A5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA41D76B131004802A5 /* SettingView.swift */; };
 		A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA61D7963DD004802A5 /* NewsView.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		75E5BF3B82BC2F7CF3542978 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
 		8B2340FA654E0A6B0B6B1BA0 /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
+		A73130F71D853D0A00A975CD /* no_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_image.jpg; sourceTree = SOURCE_ROOT; };
 		A768FAA21D76B08A004802A5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A768FAA41D76B131004802A5 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		A768FAA61D7963DD004802A5 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A73130FB1D880A2B00A975CD /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				A73130F71D853D0A00A975CD /* no_image.jpg */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
 		CD0F77D11D4DD069001BC4C9 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +148,7 @@
 				A70BE6EF1D6AF616003E3341 /* Controller */,
 				A70BE6EE1D6AF60C003E3341 /* View */,
 				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
+				A73130FB1D880A2B00A975CD /* Image */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
 				CD0F77EC1D4DD06A001BC4C9 /* Info.plist */,
@@ -216,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A73130F81D853D0A00A975CD /* no_image.jpg in Resources */,
 				CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */,
 				CD0F77E81D4DD06A001BC4C9 /* Assets.xcassets in Resources */,
 			);

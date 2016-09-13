@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
-protocol NewsViewDelegate : NSObjectProtocol {}
+protocol NewsViewDelegate : NSObjectProtocol {
+    func moveViews( num : Int )
+}
 
 class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
     private var myTableView : UITableView!
     var delegate : NewsViewDelegate?
-    private let myItem : NSArray = [ "test1", "test2", "test3"]
+    private let myItem : NSArray = [ "test1", "招待", "test3"]
     //
     required init () {
         super.init( frame : CGRectMake(0,0, 0, 0))
@@ -39,9 +41,7 @@ class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Num: \(indexPath.row)")
         print("Value: \(self.myItem[indexPath.row])")
-        if indexPath.row == 0 {
-            
-        }
+        self.delegate?.moveViews(indexPath.row)
     }
     /*
     Cellの総数を返すデータソースメソッド.

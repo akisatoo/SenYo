@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import PureLayout
 
-protocol MemberViewDelegate : NSObjectProtocol{}
+protocol MemberViewDelegate : NSObjectProtocol{
+    func chooseCell( num : Int )
+}
 
 class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     var delegate : MemberViewDelegate?
@@ -35,20 +37,17 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height +  mySearchBar.frame.height
         let displayWidth: CGFloat = myBoundSize.width
         let displayHeight: CGFloat = myBoundSize.height
-        
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.registerClass( UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+       
         myTableView.dataSource = self
         myTableView.delegate = self
-        
-        
         self.addSubview(myTableView)
         self.addSubview(mySearchBar)
-       // mySearchBar.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 200 )
     }
     
-    //Cellの総数を返す
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //選択されたCell
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         print("Num: \(indexPath.row)")
         print("Value: \(self.myItems[indexPath.row])")
     }
@@ -62,28 +61,33 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         cell.textLabel!.text = "\(self.searchResult[indexPath.row])"
+        let label = UILabel()
+        label.frame = CGRectMake(0,0, 200, 100)
+        label.text = "aaaa"
+        
+        // 背景色
+        /*cell.backgroundColor = UIColor.clearColor()
+        // 選択された時の背景色
+        let cellSelectedBgView = UIView()
+        cellSelectedBgView.backgroundColor = UIColor.redColor()
+        cell.selectedBackgroundView = cellSelectedBgView
+        */
         return cell
     }
     
     // SearchBar
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         mySearchBar.endEditing(true)
-        
-        //検索結果配列を空にする。
         searchResult.removeAll()
-        
         if(mySearchBar.text == "") {
-            //検索文字列が空の場合はすべてを表示する。
             searchResult = myItems as! [String]
         } else {
-            //検索文字列を含むデータを検索結果配列に追加する。
             for data in myItems {
                 if data.containsString(mySearchBar.text!) {
                     searchResult.append(data as! String)
                 }
             }
         }
-        
         //テーブルを再読み込みする。
         myTableView.reloadData()
     }
