@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class MemBerViewContoller : UIViewController, MemberViewDelegate {
+    var memberArray = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "メンバー検索"
@@ -22,7 +23,14 @@ class MemBerViewContoller : UIViewController, MemberViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func chooseCell( num : Int ){
-        print( "cell : \(num)" )
+    // 遷移先に値をセット
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.message = memberArray
+    }
+    
+    func chooseCell( name : String ){
+        memberArray.append(name)
     }
 }

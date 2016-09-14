@@ -28,7 +28,17 @@ class MakeGroupView : UIView, UITextFieldDelegate {
         myTextField.text = "Hello Swift!!"
         myTextField.delegate = self
         myTextField.borderStyle = UITextBorderStyle.RoundedRect
-        
+        /*
+        if userArray != [] {
+            print("success!!")
+            for i in 0...userArray.endIndex - 1 {
+                imageView.append(UIImageView())
+                imageView[i].backgroundColor = UIColor.blueColor()
+                imageView[i].layer.position = CGPointMake( CGFloat(200 + i * 100), 200 )
+                self.addSubview(imageView[i])
+            }
+        }
+        */
         //
         self.addSubview(groupButton)
         self.addSubview(myTextField)

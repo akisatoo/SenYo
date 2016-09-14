@@ -8,12 +8,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, HomeViewDelegate {
+class HomeViewController: UIViewController, HomeViewDelegate{
     private var myRightButton: UIBarButtonItem!
+    //let animator = Animator()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         self.title = "Home"
         let homeView = HomeView()
         homeView.delegate = self
@@ -37,7 +36,7 @@ class HomeViewController: UIViewController, HomeViewDelegate {
             break
         case 2:
             let setting = SettingViewController()
-            //setting.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+           // setting.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             //self.presentViewController(setting, animated: true, completion: nil)
             self.navigationController?.pushViewController(setting, animated: true )
             break
@@ -49,5 +48,4 @@ class HomeViewController: UIViewController, HomeViewDelegate {
             print("error")
         }
     }
-    
 }

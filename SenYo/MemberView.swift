@@ -11,7 +11,7 @@ import UIKit
 import PureLayout
 
 protocol MemberViewDelegate : NSObjectProtocol{
-    func chooseCell( num : Int )
+    func chooseCell(  name : String )
 }
 
 class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -39,7 +39,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         let displayHeight: CGFloat = myBoundSize.height
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         myTableView.registerClass( UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-       
+        myTableView.separatorColor = UIColor.blueColor()
         myTableView.dataSource = self
         myTableView.delegate = self
         self.addSubview(myTableView)
@@ -48,8 +48,9 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     
     //選択されたCell
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        print("Num: \(indexPath.row)")
-        print("Value: \(self.myItems[indexPath.row])")
+       // print("Num: \(indexPath.row)")
+       // print("Value: \(self.myItems[indexPath.row])")
+        self.delegate?.chooseCell(self.myItems[indexPath.row] as! String)
     }
     
     //Cellの総数を返すデータソースメソッド.
@@ -61,10 +62,6 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         cell.textLabel!.text = "\(self.searchResult[indexPath.row])"
-        let label = UILabel()
-        label.frame = CGRectMake(0,0, 200, 100)
-        label.text = "aaaa"
-        
         // 背景色
         /*cell.backgroundColor = UIColor.clearColor()
         // 選択された時の背景色

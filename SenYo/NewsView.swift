@@ -39,8 +39,8 @@ class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
     }
     //総数を返す
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Num: \(indexPath.row)")
-        print("Value: \(self.myItem[indexPath.row])")
+       // print("Num: \(indexPath.row)")
+        //print("Value: \(self.myItem[indexPath.row])")
         self.delegate?.moveViews(indexPath.row)
     }
     /*
