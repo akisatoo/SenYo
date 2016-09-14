@@ -77,13 +77,17 @@ class HomeView: UIView {
         myScrollView.contentSize = CGSizeMake(userArray[userArray.endIndex - 1][2].layer.position.x + 130, myScrollView.frame.size.height  )
         
         //addsubview
+        let leaderView = UIView()
         self.addSubview(noticeButton)
         self.addSubview(settingButton)
         self.addSubview(myScrollView)
-        self.addSubview(leader)
+        leaderView.addSubview(leader)
+        self.addSubview(leaderView)
         //autolayout
+        leaderView.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 64)
+        leaderView.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: myScrollView, withOffset: 0)
         leader.autoSetDimensionsToSize(CGSizeMake(100, 100))
-        leader.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 100)
+        leader.autoCenterInSuperview()
         leader.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: myBoundSize.width / 2 - 50  )
         myScrollView.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width, myBoundSize.height / 2))
         myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 50)
