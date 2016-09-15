@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, HomeViewDelegate{
     }
     
     // 画面遷移
-    internal func clickButton(sender : UIButton){
+    internal func clickButton( sender : UIBarButtonItem ){
         switch(sender.tag){
         case 1:
             let noticeView = NoticeViewController()
