@@ -16,6 +16,8 @@
 		A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */; };
 		A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB01D7D37AE004802A5 /* MemberView.swift */; };
 		A768FAB31D7D3E23004802A5 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB21D7D3E23004802A5 /* MemberViewController.swift */; };
+		A7A4F8001D8BAC55006EB1BE /* hironaka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7A4F7FF1D8BAC55006EB1BE /* hironaka.jpg */; };
+		A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */; };
 		C33AEDD018508F62829239F2 /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F55A80AA04CB7124077AD34F /* Pods_SenYo.framework */; };
 		CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */; };
 		CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 		A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
 		A768FAB01D7D37AE004802A5 /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
 		A768FAB21D7D3E23004802A5 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		A7A4F7FF1D8BAC55006EB1BE /* hironaka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hironaka.jpg; path = ../../hironaka.jpg; sourceTree = "<group>"; };
+		A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aspect.swift; sourceTree = "<group>"; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		A70BE6F01D6AF66D003E3341 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		A73130FB1D880A2B00A975CD /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				A7A4F7FF1D8BAC55006EB1BE /* hironaka.jpg */,
 				A73130F71D853D0A00A975CD /* no_image.jpg */,
 			);
 			name = Image;
@@ -227,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7A4F8001D8BAC55006EB1BE /* hironaka.jpg in Resources */,
 				A73130F81D853D0A00A975CD /* no_image.jpg in Resources */,
 				CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */,
 				CD0F77E81D4DD06A001BC4C9 /* Assets.xcassets in Resources */,
@@ -318,6 +325,7 @@
 				A768FAA51D76B131004802A5 /* SettingView.swift in Sources */,
 				A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */,
 				A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */,
+				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,
 				A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */,
 				CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */,
 			);

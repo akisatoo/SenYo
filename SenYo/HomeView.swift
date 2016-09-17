@@ -15,47 +15,54 @@ protocol HomeViewDelegate: NSObjectProtocol {
 }
 
 class HomeView: UIView, UIToolbarDelegate {
+    
     var delegate: HomeViewDelegate?
     private var userArray : [[UIImageView]] = [[UIImageView]]()
     private var myToolbar: UIToolbar!
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var aspect = Aspect()
     
     required init() {
         super.init(frame: CGRectMake(0, 0, 0, 0));
-        //self.backgroundColor = UIColor.blueColor()
-        let myImage = UIImage(named: "no_image.jpg")
+        self.backgroundColor = UIColor.blueColor()
+        let myImage = UIImage(named: "hironaka.jpg")
         let leader = UIImageView()
+        let views = UIView(frame: CGRectMake(0, 0, 300 * aspect.xAspect(), 300 * aspect.yAspect() ))
         let myScrollView = UIScrollView()
         leader.layer.cornerRadius = 50
-        leader.backgroundColor = UIColor.blackColor()
+        leader.backgroundColor = UIColor.whiteColor()
         myScrollView.backgroundColor = UIColor.whiteColor()
+        self.addSubview(myScrollView)
+        //leader.image = myImage
         
         // User 配置
         for i in 0...6 {
             userArray.append([])
             for j in 0...2 {
-                var xWidth = 50
-                let myImageView = UIImageView( frame: CGRectMake( 0, 0, 70, 70 ))
-                let userName = UILabel(frame: CGRectMake( 0, 0, 100, 50 ))
+                var xWidth = 30
+                let userSize = 70 * aspect.yAspect()
+                let myImageView = UIImageView()
+                let userName = UILabel(frame: CGRectMake( 0, 0, 100 * aspect.xAspect(), 50  * aspect.yAspect() ))
                 userName.text = "name"
-               // myImageView.image = myImage
-                myImageView.layer.cornerRadius = 35
+                //myImageView.image = myImage
+                myImageView.layer.cornerRadius = userSize / 2
                 userArray[i].append(myImageView)
                 if j % 2 != 0  {
-                    xWidth = 120
+                    xWidth = 100
                 }
-                userArray[i][j].layer.position = CGPointMake( CGFloat(xWidth + 150 * i), CGFloat(70 + 100 * j) )
                 userArray[i][j].backgroundColor = UIColor.blackColor()
-                userName.layer.position = CGPointMake( CGFloat(xWidth + 30 + 150 * i), CGFloat(120 + 100 * j) )
+                
                 myScrollView.addSubview( userArray[i][j] )
                 myScrollView.addSubview( userName )
+                userArray[i][j].autoSetDimensionsToSize( CGSizeMake( userSize, userSize ) )
+                userArray[i][j].autoPinEdgeToSuperviewEdge( .Top, withInset:  CGFloat(  -35 + 90 * j  ) * aspect.yAspect() )
+                userArray[i][j].autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat(xWidth + 150 * i) * aspect.xAspect())
+                userName.autoPinEdgeToSuperviewEdge( .Top, withInset: CGFloat( 40 + 90 * j ) * aspect.yAspect() )
+                userName.autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat(xWidth + 10 + 150 * i) * aspect.xAspect()  )
             }
         }
         // Scrollできる幅の設定
-        myScrollView.contentSize = CGSizeMake(userArray[userArray.endIndex - 1][2].layer.position.x + 130, myScrollView.frame.size.height  )
-        myToolbar = UIToolbar(frame: CGRectMake(0, myBoundSize.height - 44, myBoundSize.width, 40.0))
+        myScrollView.contentSize = CGSizeMake( ( CGFloat(userArray[0].count ) * (CGFloat(userArray.count) * 52) ) * aspect.xAspect(), myScrollView.frame.size.height * aspect.yAspect() )
+        myToolbar = UIToolbar(frame: CGRectMake( 0, myBoundSize.height - 44, myBoundSize.width, 40.0))
         myToolbar.layer.position = CGPoint(x: myBoundSize.width/2, y: myBoundSize.height-20.0)
         myToolbar.barStyle = UIBarStyle.Default
         myToolbar.tintColor = UIColor.blackColor()
@@ -68,40 +75,22 @@ class HomeView: UIView, UIToolbarDelegate {
         myToolbar.items = [myUIBarButtonNotice, flexibleItem, myUIBarButtonSetting]
         
         //addsubview
-        self.addSubview(myScrollView)
-        self.addSubview(leader)
         self.addSubview(myToolbar)
+        self.addSubview(views)
+        views.addSubview(leader)
+
         //autolayout
+        views.autoPinEdgeToSuperviewEdge(.Top, withInset : 34 )
+        views.autoPinEdge(.Bottom, toEdge: .Top, ofView: myScrollView, withOffset: 0)
         leader.autoSetDimensionsToSize(CGSizeMake(100, 100))
-        leader.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 100)
+        leader.autoCenterInSuperview()
         leader.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: myBoundSize.width / 2 - 50  )
         myScrollView.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width, myBoundSize.height / 2))
-        myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 50)
-        /*
-        noticeButton.autoSetDimensionsToSize(CGSizeMake(100, 30))
-        noticeButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 15)
-        noticeButton.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: 16)
-        settingButton.autoSetDimensionsToSize(CGSizeMake(100,30))
-        settingButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 15)
-        settingButton.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 16)
-        */
+        myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 35)
         
-        /*
-        for i in 0...6 {
-            for j in 0...2 {
-                var xWidth = 50
-                
-                if j % 2 != 0  {
-                    xWidth = 120
-                }
-                userArray[i][j].autoSetDimensionsToSize(CGSizeMake(500, 200))
-                userArray[i][j].autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: myScrollView)
-                userArray[i][j].autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 100)
-                //CGFloat(xWidth + 150 * i), CGFloat(70 + 100 * j)
-                print(" [\(i)][\(j)] : \(userArray[i][j])")
-            }
-        }
-        */
+    }
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {

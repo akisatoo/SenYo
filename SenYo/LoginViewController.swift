@@ -12,14 +12,12 @@ import Foundation
 class LoginViewController: UIViewController, LoginViewDelegate {
     
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print( "DeviceWidth : ", myBoundSize.width, " DeviceHeigh : ", myBoundSize.height )
         let loginView = LoginView()
         loginView.delegate = self
         self.view = loginView
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,6 +27,7 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     func buttonTouched(sender:UIButton) {
         //ログイン後画面へ遷移
         self.appDelegate.afterLogin()
+        
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, HomeViewDelegate{
     private var myRightButton: UIBarButtonItem!
-    //let animator = Animator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"

@@ -25,9 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             self.afterLogin()
         }
-        
         self.window?.makeKeyAndVisible()
-        
         return true
     }
     

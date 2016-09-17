@@ -15,7 +15,7 @@ protocol LoginViewDelegate: NSObjectProtocol {
 
 class LoginView: UIView, UITextFieldDelegate {
     var delegate: LoginViewDelegate?
-    
+    let aspect = Aspect()
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
