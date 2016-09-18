@@ -23,12 +23,20 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func buttonTouched(sender:UIButton) {
-        //ログイン後画面へ遷移
-        self.appDelegate.afterLogin()
-        
+        switch ( sender.tag ){
+        case 1:
+            self.appDelegate.afterLogin()
+            break;
+        case 2:
+            let mySecondViewController: UIViewController = AccountMakeViewContoller()
+            self.presentViewController(mySecondViewController, animated: true, completion: nil)
+            break;
+        default:
+            break
+            
+        }
     }
-    
 }
 

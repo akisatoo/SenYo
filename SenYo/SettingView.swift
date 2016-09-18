@@ -11,7 +11,6 @@ import UIKit
 
 protocol SettingViewDelegate : NSObjectProtocol {
     func moveViews( num : Int )
-    
 }
 
 class SettingView : UIView , UITableViewDataSource, UITableViewDelegate{
@@ -34,7 +33,6 @@ class SettingView : UIView , UITableViewDataSource, UITableViewDelegate{
         self.addSubview(myTableView)
     }
     
-    //Cellの総数を返す
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Num: \(indexPath.row)")
         print("Value: \(self.myItems[indexPath.row])")

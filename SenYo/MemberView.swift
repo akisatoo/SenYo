@@ -62,6 +62,11 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         cell.textLabel!.text = "\(self.searchResult[indexPath.row])"
+        let myButton = UIButton( frame: CGRectMake( 0, 0, 30, 30 ))
+        myButton.layer.cornerRadius = myButton.frame.width / 2
+        myButton.backgroundColor = UIColor.blueColor()
+        cell.addSubview(myButton)
+        myButton.layer.position = CGPointMake( myBoundSize.width - 50, 20 )
         // 背景色
         /*cell.backgroundColor = UIColor.clearColor()
         // 選択された時の背景色

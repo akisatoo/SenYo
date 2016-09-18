@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A73130F81D853D0A00A975CD /* no_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A73130F71D853D0A00A975CD /* no_image.jpg */; };
+		A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */; };
+		A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */; };
+		A733B0271D8EA0AD00CDCB0F /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = A733B0241D8EA0AD00CDCB0F /* bell.png */; };
+		A733B0281D8EA0AD00CDCB0F /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = A733B0251D8EA0AD00CDCB0F /* group.png */; };
+		A733B0291D8EA0AD00CDCB0F /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = A733B0261D8EA0AD00CDCB0F /* setting.png */; };
+		A733B02B1D8EA10D00CDCB0F /* hironaka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A733B02A1D8EA10D00CDCB0F /* hironaka.jpg */; };
 		A768FAA31D76B08A004802A5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA21D76B08A004802A5 /* SettingViewController.swift */; };
 		A768FAA51D76B131004802A5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA41D76B131004802A5 /* SettingView.swift */; };
 		A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA61D7963DD004802A5 /* NewsView.swift */; };
@@ -16,8 +22,8 @@
 		A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */; };
 		A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB01D7D37AE004802A5 /* MemberView.swift */; };
 		A768FAB31D7D3E23004802A5 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB21D7D3E23004802A5 /* MemberViewController.swift */; };
-		A7A4F8001D8BAC55006EB1BE /* hironaka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7A4F7FF1D8BAC55006EB1BE /* hironaka.jpg */; };
 		A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */; };
+		A7A4F8041D8D33E2006EB1BE /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */; };
 		C33AEDD018508F62829239F2 /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F55A80AA04CB7124077AD34F /* Pods_SenYo.framework */; };
 		CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */; };
 		CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */; };
@@ -36,6 +42,12 @@
 		75E5BF3B82BC2F7CF3542978 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
 		8B2340FA654E0A6B0B6B1BA0 /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
 		A73130F71D853D0A00A975CD /* no_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_image.jpg; sourceTree = SOURCE_ROOT; };
+		A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeView.swift; sourceTree = "<group>"; };
+		A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeViewController.swift; sourceTree = "<group>"; };
+		A733B0241D8EA0AD00CDCB0F /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bell.png; path = "../../SenYo用データ/bell.png"; sourceTree = "<group>"; };
+		A733B0251D8EA0AD00CDCB0F /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = group.png; path = "../../SenYo用データ/group.png"; sourceTree = "<group>"; };
+		A733B0261D8EA0AD00CDCB0F /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = "../../SenYo用データ/setting.png"; sourceTree = "<group>"; };
+		A733B02A1D8EA10D00CDCB0F /* hironaka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hironaka.jpg; path = ../../hironaka.jpg; sourceTree = "<group>"; };
 		A768FAA21D76B08A004802A5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A768FAA41D76B131004802A5 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		A768FAA61D7963DD004802A5 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -44,8 +56,8 @@
 		A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
 		A768FAB01D7D37AE004802A5 /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
 		A768FAB21D7D3E23004802A5 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
-		A7A4F7FF1D8BAC55006EB1BE /* hironaka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hironaka.jpg; path = ../../hironaka.jpg; sourceTree = "<group>"; };
 		A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aspect.swift; sourceTree = "<group>"; };
+		A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +105,7 @@
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
 				A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */,
 				A768FAB01D7D37AE004802A5 /* MemberView.swift */,
+				A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -108,6 +121,7 @@
 				A768FAA81D79661A004802A5 /* NewsViewController.swift */,
 				A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */,
 				A768FAB21D7D3E23004802A5 /* MemberViewController.swift */,
+				A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -123,7 +137,10 @@
 		A73130FB1D880A2B00A975CD /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				A7A4F7FF1D8BAC55006EB1BE /* hironaka.jpg */,
+				A733B02A1D8EA10D00CDCB0F /* hironaka.jpg */,
+				A733B0241D8EA0AD00CDCB0F /* bell.png */,
+				A733B0251D8EA0AD00CDCB0F /* group.png */,
+				A733B0261D8EA0AD00CDCB0F /* setting.png */,
 				A73130F71D853D0A00A975CD /* no_image.jpg */,
 			);
 			name = Image;
@@ -154,6 +171,7 @@
 				A70BE6EF1D6AF616003E3341 /* Controller */,
 				A70BE6EE1D6AF60C003E3341 /* View */,
 				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
+				A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */,
 				A73130FB1D880A2B00A975CD /* Image */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
@@ -207,6 +225,7 @@
 				TargetAttributes = {
 					CD0F77D91D4DD069001BC4C9 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3QUT65E5ZA;
 					};
 				};
 			};
@@ -233,9 +252,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A4F8001D8BAC55006EB1BE /* hironaka.jpg in Resources */,
 				A73130F81D853D0A00A975CD /* no_image.jpg in Resources */,
 				CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */,
+				A733B0291D8EA0AD00CDCB0F /* setting.png in Resources */,
+				A733B02B1D8EA10D00CDCB0F /* hironaka.jpg in Resources */,
+				A733B0271D8EA0AD00CDCB0F /* bell.png in Resources */,
+				A733B0281D8EA0AD00CDCB0F /* group.png in Resources */,
 				CD0F77E81D4DD06A001BC4C9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,7 +334,9 @@
 			files = (
 				CDA1F3451D717D76001C4336 /* LoginViewController.swift in Sources */,
 				CDA1F3491D75DB8D001C4336 /* HomeView.swift in Sources */,
+				A7A4F8041D8D33E2006EB1BE /* BalloonView.swift in Sources */,
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
+				A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */,
 				CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */,
 				CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */,
 				A768FAA31D76B08A004802A5 /* SettingViewController.swift in Sources */,
@@ -328,6 +352,7 @@
 				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,
 				A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */,
 				CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */,
+				A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,10 +456,14 @@
 			baseConfigurationReference = 8B2340FA654E0A6B0B6B1BA0 /* Pods-SenYo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SenYo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.SenYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -443,10 +472,14 @@
 			baseConfigurationReference = 75E5BF3B82BC2F7CF3542978 /* Pods-SenYo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SenYo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.SenYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
