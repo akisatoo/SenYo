@@ -32,7 +32,7 @@ class LoginView: UIView, UITextFieldDelegate {
         let userLabel = UILabel()
         let passLabel = UILabel()
         
-        logoImage.image = UIImage(named: "hironaka.jpg")
+        logoImage.image = UIImage(named: "hironaka")
         myButton.backgroundColor = UIColor.blueColor()
         myButton.layer.masksToBounds = true
         myButton.setTitle("Sign in", forState: UIControlState.Normal)

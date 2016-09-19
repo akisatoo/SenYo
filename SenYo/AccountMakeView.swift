@@ -28,7 +28,7 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         let makeButton = UIButton()
         
         scrollView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
-        accountImage.image = UIImage( named: "hironaka.jpg" )
+        accountImage.image = UIImage( named: "hironaka" )
         accountImage.layer.cornerRadius = 50
         accountImage.layer.borderWidth = 2.0
         accountImage.layer.masksToBounds = true

@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A73130F81D853D0A00A975CD /* no_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A73130F71D853D0A00A975CD /* no_image.jpg */; };
+		A723212C1D8F8BD60006E24C /* ImgeController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723212B1D8F8BD60006E24C /* ImgeController.xcassets */; };
 		A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */; };
 		A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */; };
-		A733B0271D8EA0AD00CDCB0F /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = A733B0241D8EA0AD00CDCB0F /* bell.png */; };
-		A733B0281D8EA0AD00CDCB0F /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = A733B0251D8EA0AD00CDCB0F /* group.png */; };
-		A733B0291D8EA0AD00CDCB0F /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = A733B0261D8EA0AD00CDCB0F /* setting.png */; };
-		A733B02B1D8EA10D00CDCB0F /* hironaka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A733B02A1D8EA10D00CDCB0F /* hironaka.jpg */; };
 		A768FAA31D76B08A004802A5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA21D76B08A004802A5 /* SettingViewController.swift */; };
 		A768FAA51D76B131004802A5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA41D76B131004802A5 /* SettingView.swift */; };
 		A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA61D7963DD004802A5 /* NewsView.swift */; };
@@ -41,13 +37,9 @@
 /* Begin PBXFileReference section */
 		75E5BF3B82BC2F7CF3542978 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
 		8B2340FA654E0A6B0B6B1BA0 /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
-		A73130F71D853D0A00A975CD /* no_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_image.jpg; sourceTree = SOURCE_ROOT; };
+		A723212B1D8F8BD60006E24C /* ImgeController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImgeController.xcassets; sourceTree = "<group>"; };
 		A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeView.swift; sourceTree = "<group>"; };
 		A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeViewController.swift; sourceTree = "<group>"; };
-		A733B0241D8EA0AD00CDCB0F /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bell.png; path = "../../SenYo用データ/bell.png"; sourceTree = "<group>"; };
-		A733B0251D8EA0AD00CDCB0F /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = group.png; path = "../../SenYo用データ/group.png"; sourceTree = "<group>"; };
-		A733B0261D8EA0AD00CDCB0F /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = "../../SenYo用データ/setting.png"; sourceTree = "<group>"; };
-		A733B02A1D8EA10D00CDCB0F /* hironaka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hironaka.jpg; path = ../../hironaka.jpg; sourceTree = "<group>"; };
 		A768FAA21D76B08A004802A5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A768FAA41D76B131004802A5 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		A768FAA61D7963DD004802A5 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -134,18 +126,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A73130FB1D880A2B00A975CD /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				A733B02A1D8EA10D00CDCB0F /* hironaka.jpg */,
-				A733B0241D8EA0AD00CDCB0F /* bell.png */,
-				A733B0251D8EA0AD00CDCB0F /* group.png */,
-				A733B0261D8EA0AD00CDCB0F /* setting.png */,
-				A73130F71D853D0A00A975CD /* no_image.jpg */,
-			);
-			name = Image;
-			sourceTree = "<group>";
-		};
 		CD0F77D11D4DD069001BC4C9 = {
 			isa = PBXGroup;
 			children = (
@@ -172,11 +152,11 @@
 				A70BE6EE1D6AF60C003E3341 /* View */,
 				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
 				A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */,
-				A73130FB1D880A2B00A975CD /* Image */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
 				CD0F77EC1D4DD06A001BC4C9 /* Info.plist */,
 				CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */,
+				A723212B1D8F8BD60006E24C /* ImgeController.xcassets */,
 			);
 			path = SenYo;
 			sourceTree = "<group>";
@@ -252,12 +232,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A73130F81D853D0A00A975CD /* no_image.jpg in Resources */,
+				A723212C1D8F8BD60006E24C /* ImgeController.xcassets in Resources */,
 				CD0F77EB1D4DD06A001BC4C9 /* LaunchScreen.storyboard in Resources */,
-				A733B0291D8EA0AD00CDCB0F /* setting.png in Resources */,
-				A733B02B1D8EA10D00CDCB0F /* hironaka.jpg in Resources */,
-				A733B0271D8EA0AD00CDCB0F /* bell.png in Resources */,
-				A733B0281D8EA0AD00CDCB0F /* group.png in Resources */,
 				CD0F77E81D4DD06A001BC4C9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

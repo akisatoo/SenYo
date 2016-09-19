@@ -24,7 +24,7 @@ class HomeView: UIView, UIToolbarDelegate {
     required init() {
         super.init(frame: CGRectMake(0, 0, 0, 0));
         self.backgroundColor = UIColor.whiteColor()
-        let myImage = UIImage(named: "hironaka.jpg")
+        let myImage = UIImage(named: "hironaka")
         let leader = UIImageView()
         let balloon = BalloonView(frame: CGRectMake((myBoundSize.width - 280) / 2, 100, 280, 100))
         let views = UIView(frame: CGRectMake( 0, 0, 500 * aspect.xAspect(), 500 * aspect.yAspect() ))
@@ -78,14 +78,14 @@ class HomeView: UIView, UIToolbarDelegate {
         myToolbar.tintColor = UIColor.blackColor()
         let flexibleItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         let settingButton = UIBarButtonItem()
-        settingButton.image = UIImage(named: "setting.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        settingButton.image = UIImage(named: "setting")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         settingButton.style = UIBarButtonItemStyle.Plain
         settingButton.action = "clickButton:"
         settingButton.target = delegate
         settingButton.tag = 1
         settingButton.tintColor = UIColor.clearColor()
         let groupButton = UIBarButtonItem()
-        groupButton.image = UIImage(named: "group.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        groupButton.image = UIImage(named: "group")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         groupButton.style = UIBarButtonItemStyle.Plain
         groupButton.action = "clickButton:"
         groupButton.target = delegate
