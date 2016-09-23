@@ -16,12 +16,12 @@ protocol MakeGroupViewDelegate : NSObjectProtocol {
 
 class MakeGroupView : UIView, UITextFieldDelegate {
     var delegate : MakeGroupViewDelegate?
-    
+    let aspect = Aspect()
     required init(){
         super.init(frame : CGRectMake(0, 0, 0, 0))
         self.backgroundColor = UIColor.brownColor()
-        let groupButton = UIButton(frame: CGRectMake(0, 0, 100, 100 ))
-        let myTextField = UITextField(frame: CGRectMake(0,0,200,30))
+        let groupButton = UIButton()
+        let myTextField = UITextField()
         groupButton.backgroundColor = UIColor.blackColor()
         groupButton.setTitle("Member", forState: UIControlState.Normal)
         groupButton.addTarget(delegate, action: "pushButton:", forControlEvents: .TouchUpInside)
@@ -39,16 +39,18 @@ class MakeGroupView : UIView, UITextFieldDelegate {
             }
         }
         */
-        //
+        //addsubview
         self.addSubview(groupButton)
         self.addSubview(myTextField)
         
-        //
-        groupButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 60)
-        groupButton.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: myBoundSize.width / 2 )
-        myTextField.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: myBoundSize.height / 2)
-        myTextField.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: myBoundSize.width / 2)
-    }
+        //autolayout
+        myTextField.autoSetDimensionsToSize(CGSizeMake( 200, 50 ))
+        myTextField.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 100 * aspect.yAspect() )
+        myTextField.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: myBoundSize.width / 2 - 100 )
+        groupButton.autoSetDimensionsToSize(CGSizeMake( 100, 50 ))
+        groupButton.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 30)
+        groupButton.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: myBoundSize.width / 2 - 50 )
+            }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

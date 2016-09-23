@@ -20,4 +20,8 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    func buttonTouched(sendre : UIButton ){
+        let myView = LoginViewController()
+        self.presentViewController(myView, animated: true, completion: nil)}
+    
 }

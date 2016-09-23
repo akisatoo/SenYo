@@ -11,7 +11,7 @@ import UIKit
 import PureLayout
 
 protocol AccountMakeViewDelegate : NSObjectProtocol {
-
+    func buttonTouched(sendre : UIButton )
 }
 
 class AccountMakeView : UIView, UITextFieldDelegate {

@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class Aspect{
-    var deviceSize : CGSize = UIScreen.mainScreen().bounds.size
+    private let deviceSize : CGSize = UIScreen.mainScreen().bounds.size
     // standerd Aspect iPhone6
     private let standerdAspectHeight : CGFloat = 667
     private let standerdAspectWidth : CGFloat = 375
     
-    func euclid( var size : CGFloat ) -> CGFloat{
+    private func euclid( var size : CGFloat ) -> CGFloat{
         if  size != deviceSize.width {
             if size != standerdAspectHeight {
                 size /= standerdAspectHeight

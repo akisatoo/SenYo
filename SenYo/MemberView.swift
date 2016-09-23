@@ -50,6 +50,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
        // print("Num: \(indexPath.row)")
        // print("Value: \(self.myItems[indexPath.row])")
+        
         self.delegate?.chooseCell(self.myItems[indexPath.row] as! String)
     }
     
@@ -66,6 +67,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         myButton.layer.cornerRadius = myButton.frame.width / 2
         myButton.backgroundColor = UIColor.blueColor()
         cell.addSubview(myButton)
+        cell.backgroundColor = UIColor.clearColor()
         myButton.layer.position = CGPointMake( myBoundSize.width - 50, 20 )
         // 背景色
         /*cell.backgroundColor = UIColor.clearColor()

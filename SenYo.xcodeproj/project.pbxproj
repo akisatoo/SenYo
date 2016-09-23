@@ -20,6 +20,10 @@
 		A768FAB31D7D3E23004802A5 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB21D7D3E23004802A5 /* MemberViewController.swift */; };
 		A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */; };
 		A7A4F8041D8D33E2006EB1BE /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */; };
+		A7E05A501D90F78E007CD4B6 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E05A4F1D90F78E007CD4B6 /* Animator.swift */; };
+		A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */; };
+		A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A531D9116CA007CD4B6 /* Alamofire.framework */; };
+		A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A551D9116D6007CD4B6 /* PureLayout.framework */; };
 		C33AEDD018508F62829239F2 /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F55A80AA04CB7124077AD34F /* Pods_SenYo.framework */; };
 		CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */; };
 		CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */; };
@@ -50,6 +54,10 @@
 		A768FAB21D7D3E23004802A5 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aspect.swift; sourceTree = "<group>"; };
 		A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
+		A7E05A4F1D90F78E007CD4B6 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		A7E05A531D9116CA007CD4B6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		A7E05A551D9116D6007CD4B6 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "Pods/../build/Debug-iphoneos/PureLayout.framework"; sourceTree = "<group>"; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */,
+				A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */,
+				A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */,
 				C33AEDD018508F62829239F2 /* Pods_SenYo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,16 +158,17 @@
 		CD0F77DC1D4DD069001BC4C9 /* SenYo */ = {
 			isa = PBXGroup;
 			children = (
+				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
+				A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */,
 				A70BE6F01D6AF66D003E3341 /* Model */,
 				A70BE6EF1D6AF616003E3341 /* Controller */,
 				A70BE6EE1D6AF60C003E3341 /* View */,
-				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
-				A7A4F8031D8D33E2006EB1BE /* BalloonView.swift */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
 				CD0F77EC1D4DD06A001BC4C9 /* Info.plist */,
 				CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */,
 				A723212B1D8F8BD60006E24C /* ImgeController.xcassets */,
+				A7E05A4F1D90F78E007CD4B6 /* Animator.swift */,
 			);
 			path = SenYo;
 			sourceTree = "<group>";
@@ -164,6 +176,9 @@
 		D63A8BC6C16BF0CB739B2DAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7E05A551D9116D6007CD4B6 /* PureLayout.framework */,
+				A7E05A531D9116CA007CD4B6 /* Alamofire.framework */,
+				A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */,
 				F55A80AA04CB7124077AD34F /* Pods_SenYo.framework */,
 			);
 			name = Frameworks;
@@ -328,6 +343,7 @@
 				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,
 				A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */,
 				CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */,
+				A7E05A501D90F78E007CD4B6 /* Animator.swift in Sources */,
 				A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +450,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = SenYo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -450,6 +470,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = SenYo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

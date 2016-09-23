@@ -50,7 +50,7 @@ class HomeView: UIView, UIToolbarDelegate {
                 let myImageView = UIImageView()
                 let userName = UILabel(frame: CGRectMake( 0, 0, 100 * aspect.xAspect(), 50  * aspect.yAspect() ))
                 userName.text = "name"
-                myImageView.image = myImage
+                //myImageView.image = myImage
                 myImageView.layer.cornerRadius = userSize / 2
                 userArray[i].append(myImageView)
                 if j % 2 != 0  {

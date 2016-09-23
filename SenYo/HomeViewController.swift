@@ -7,8 +7,11 @@
 //
 
 import UIKit
+//import SwiftyJSON
+//import Alamofire
 
-class HomeViewController: UIViewController, HomeViewDelegate{
+class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTransitioningDelegate{
+    let kAnimationController = Animator()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
@@ -36,6 +39,7 @@ class HomeViewController: UIViewController, HomeViewDelegate{
         switch(sender.tag){
         case 1:
             let setting = SettingViewController()
+            setting.transitioningDelegate = self
             self.navigationController?.pushViewController(setting, animated: true )
             break
         case 2:
@@ -49,5 +53,15 @@ class HomeViewController: UIViewController, HomeViewDelegate{
         default:
             print("error")
         }
+    }
+    
+    /*func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+        return kAnimationController
+    }*/
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("success")
+        return kAnimationController
     }
 }
