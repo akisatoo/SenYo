@@ -9,23 +9,41 @@
 import UIKit
 import CoreData
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var navigationController: UINavigationController?
     var window: UIWindow?
-
+    var message : [String] = []
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let first: LoginViewController = LoginViewController()
-        navigationController = UINavigationController(rootViewController: first)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = navigationController
-        self.window?.backgroundColor = UIColor.whiteColor()
-        self.window?.makeKeyAndVisible()
         
+        // TODO: ログイン状況をみて表示するViewを決定する
+        let isLogin = false
+        if !isLogin {
+            self.beforeLogin()
+        } else {
+            self.afterLogin()
+        }
+        self.window?.makeKeyAndVisible()
         return true
+    }
+    
+    //ログイン前のViewを表示(Login画面)
+    func beforeLogin() {
+        let loginView: LoginViewController = LoginViewController()
+        UIView.transitionWithView(self.window!, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
+            self.window!.rootViewController = loginView
+            }, completion: { _ in })
+    }
+    
+    func afterLogin() {
+        let mainNavigationController: UINavigationController?
+
+        let homeView: HomeViewController = HomeViewController()
+        mainNavigationController = UINavigationController(rootViewController: homeView)
+        UIView.transitionWithView(self.window!, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
+                self.window!.rootViewController = mainNavigationController
+            }, completion: { _ in })
     }
 
     func applicationWillResignActive(application: UIApplication) {
