@@ -26,8 +26,8 @@ class MemBerViewContoller : UIViewController, MemberViewDelegate {
     // 遷移先に値をセット
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.message = memberArray
+        //let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //appDelegate.message = memberArray
     }
     
     func chooseCell( name : String ){
