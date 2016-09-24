@@ -12,6 +12,8 @@ import PureLayout
 //import Alamofire
 
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     private let menuView  = MenuView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,17 +72,20 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
         switch (sender){
         case 0:
             myView = NewsViewController()
+            self.navigationController?.pushViewController(myView, animated: true)
             break;
         case 1:
             myView = SettingViewController()
+            self.navigationController?.pushViewController(myView, animated: true)
             break;
         case 2:
             // ログアウト
-            //myView =
+            let ud = NSUserDefaults.standardUserDefaults()
+            ud.setBool(false, forKey: "loginFlag")
+            self.appDelegate.beforeLogin()
             break;
         default:
             break;
         }
-        self.navigationController?.pushViewController(myView, animated: true)
     }
 }
