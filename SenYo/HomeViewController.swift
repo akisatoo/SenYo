@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import PureLayout
 //import SwiftyJSON
 //import Alamofire
 
-class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTransitioningDelegate{
+class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
+    private let menuView  = MenuView()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
@@ -18,6 +20,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTr
         let menuItem = UIBarButtonItem()
         let groupItem = UIBarButtonItem()
         homeView.delegate = self
+        menuView.delegate = self
         self.view = homeView
         // self.navigationController?.navigationBar.barTintColor = UIColor.blueColor()
         menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -45,19 +48,39 @@ class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTr
     internal func clickButton( sender : UIBarButtonItem ){
         switch(sender.tag){
         case 1:
+            sender.tag = 3
+            self.view.addSubview(menuView)
+            menuView.setAutoLayout()
             break
         case 2:
+            //self.view.addSubview(tableView)
             break
         case 3:
-            
+            sender.tag = 1
+            self.menuView.removeFromSuperview()
             break
         default:
             print("error")
         }
     }
     
-    /*func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    
-    return kAnimationController
-    }*/
+    // メニュー画面遷移
+    func chooseCell( sender : Int ){
+        var myView : UIViewController!
+        switch (sender){
+        case 0:
+            myView = NewsViewController()
+            break;
+        case 1:
+            myView = SettingViewController()
+            break;
+        case 2:
+            // ログアウト
+            //myView =
+            break;
+        default:
+            break;
+        }
+        self.navigationController?.pushViewController(myView, animated: true)
+    }
 }

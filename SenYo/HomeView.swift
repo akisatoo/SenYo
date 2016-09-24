@@ -15,14 +15,13 @@ protocol HomeViewDelegate: NSObjectProtocol {
     func clickButton( sender : UIBarButtonItem )
 }
 
-class HomeView: UIView, UITableViewDelegate, UITableViewDataSource{
+class HomeView: UIView {
     
     var delegate: HomeViewDelegate?
-    private var cellMeneuView : UIView = UIView()
-    private var myTableView = UITableView()
+    //var cellMeneuView : UIView = UIView()
+    
     private var userArray : [[UIImageView]] = [[UIImageView]]()
-    var itemArray : NSArray = ["お知らせ","ユーザ編集","ログアウト"]
-    var itemNames : NSArray = ["bell", "gear", "door"]
+   
     var aspect = Aspect()
     
     required init() {
@@ -42,17 +41,7 @@ class HomeView: UIView, UITableViewDelegate, UITableViewDataSource{
         leader.image = myImage
         myScrollView.backgroundColor = UIColor.whiteColor()
         
-        cellMeneuView.backgroundColor = UIColor.whiteColor()
-        cellMeneuView.layer.cornerRadius = 20
-        cellMeneuView.layer.masksToBounds = true
-        //cellMeneuView.layer.borderColor = UIColor.blackColor().CGColor
-        //cellMeneuView.layer.borderWidth = 5.0
-        myTableView.registerClass( UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        //myTableView.separatorColor = UIColor.redColor()
-        myTableView.dataSource = self
-        myTableView.delegate = self
-        // balloon.backgroundColor = UIColor.whiteColor()
-        
+               
         self.addSubview(myScrollView)
         // User 配置
         for i in 0...6 {
@@ -87,8 +76,6 @@ class HomeView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         //addsubview
         self.addSubview(views)
-        self.addSubview(cellMeneuView)
-        self.cellMeneuView.addSubview(myTableView)
         views.addSubview(leader)
         //views.addSubview(balloon)
         
@@ -100,12 +87,6 @@ class HomeView: UIView, UITableViewDelegate, UITableViewDataSource{
         leader.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset:  ( myBoundSize.width / 2 - leaderSize / 2 )  )
         myScrollView.autoSetDimensionsToSize( CGSizeMake(myBoundSize.width, myBoundSize.height / 2 ))
         myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 35 * aspect.yAspect())
-        cellMeneuView.autoSetDimensionsToSize(CGSizeMake(150, 150))
-        cellMeneuView.autoPinEdgeToSuperviewEdge(.Right, withInset : 10)
-        cellMeneuView.autoPinEdgeToSuperviewEdge(.Top, withInset : 65)
-        myTableView.autoSetDimensionsToSize(CGSizeMake(140, 140))
-        myTableView.autoPinEdgeToSuperviewEdge(.Right, withInset : 10)
-        myTableView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10)
         
         
     }
@@ -113,37 +94,6 @@ class HomeView: UIView, UITableViewDelegate, UITableViewDataSource{
         fatalError("init(coder:) has not been implemented")
     }
     
-    //選択されたCell
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        //self.delegate?.chooseCell(self.itemArray[indexPath.row] as! String)
-    }
-    
-    //Cellの総数を返すデータソースメソッド.
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.itemArray.count
-    }
-    
-    //Cellに値を設定するデータソースメソッド.
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-        let textLabel = UILabel()
-        textLabel.text = self.itemArray[indexPath.row] as! String
-        let imageViews = UIImageView(image : UIImage( named: itemNames[indexPath.row] as! String))
-        cell.backgroundColor = UIColor.clearColor()
-        cell.addSubview(textLabel)
-        cell.addSubview(imageViews)
-        textLabel.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 )
-        textLabel.autoPinEdgeToSuperviewEdge(.Left, withInset : 50 )
-        imageViews.autoSetDimensionsToSize(CGSizeMake(18, 18))
-        imageViews.autoPinEdgeToSuperviewEdge(.Top, withInset : 12 )
-        imageViews.autoPinEdgeToSuperviewEdge(.Left, withInset : 15 )
-        //cell.textLabel!.text = "\(self.itemArray[indexPath.row])"
-        //cell.textLabel?.font = UIFont.systemFontOfSize(18)
-        
-       // print(cell.textLabel!.text )
-        return cell
-    }
-
     
     override func layoutSubviews() {
         super.layoutSubviews()
