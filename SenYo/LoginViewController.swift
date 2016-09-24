@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SimpleAnimation
 import Foundation
 
 class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDelegate{
@@ -56,7 +57,7 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
             */
 
             self.appDelegate.afterLogin()
-            break;
+        break;
         case 2:
             let mySecondViewController: UIViewController = AccountMakeViewContoller()
             self.presentViewController(mySecondViewController, animated: true, completion: nil)

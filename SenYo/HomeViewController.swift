@@ -11,22 +11,29 @@ import UIKit
 //import Alamofire
 
 class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTransitioningDelegate{
-    let kAnimationController = Animator()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
         let homeView = HomeView()
+        let menuItem = UIBarButtonItem()
+        let groupItem = UIBarButtonItem()
         homeView.delegate = self
         self.view = homeView
-       // self.navigationController?.navigationBar.barTintColor = UIColor.blueColor()
-        let newsItem = UIBarButtonItem()
-        newsItem.image = UIImage(named: "bell.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        newsItem.style = UIBarButtonItemStyle.Plain
-        newsItem.action = "clickButton:"
-        newsItem.target = self
-        newsItem.tintColor = UIColor.clearColor()
-        newsItem.tag = 3
-        self.navigationItem.rightBarButtonItem = newsItem
+        // self.navigationController?.navigationBar.barTintColor = UIColor.blueColor()
+        menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        menuItem.style = UIBarButtonItemStyle.Plain
+        menuItem.action = "clickButton:"
+        menuItem.target = self
+        menuItem.tintColor = UIColor.clearColor()
+        menuItem.tag = 1
+        self.navigationItem.rightBarButtonItem = menuItem
+        groupItem.image = UIImage(named: "group")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        groupItem.style = UIBarButtonItemStyle.Plain
+        groupItem.action = "clickButton:"
+        groupItem.target = self
+        groupItem.tintColor = UIColor.clearColor()
+        groupItem.tag = 2
+        self.navigationItem.leftBarButtonItem = groupItem
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,21 +41,15 @@ class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTr
         // Dispose of any resources that can be recreated.
     }
     
-    // 画面遷移
+    // ボタンアクション
     internal func clickButton( sender : UIBarButtonItem ){
         switch(sender.tag){
         case 1:
-            let setting = SettingViewController()
-            setting.transitioningDelegate = self
-            self.navigationController?.pushViewController(setting, animated: true )
             break
         case 2:
-            let noticeView = NoticeViewController()
-            self.navigationController?.pushViewController(noticeView, animated: true)
             break
         case 3:
-            let view = NewsViewController()
-            self.navigationController?.pushViewController(view, animated: true)
+            
             break
         default:
             print("error")
@@ -57,11 +58,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, UIViewControllerTr
     
     /*func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
-        return kAnimationController
+    return kAnimationController
     }*/
-    
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        print("success")
-        return kAnimationController
-    }
 }

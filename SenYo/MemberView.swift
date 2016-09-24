@@ -17,6 +17,7 @@ protocol MemberViewDelegate : NSObjectProtocol{
 class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     var delegate : MemberViewDelegate?
     var myItems: NSArray = ["Member1","Member2","Member3"]
+    var searchUsers : NSArray = []
     private var myTableView: UITableView!
     private var myView : UIView!
     private var mySearchBar: UISearchBar!
@@ -24,26 +25,44 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     
     required init () {
         super.init(frame: CGRectMake(0,0,0,0))
-        self.backgroundColor = UIColor.yellowColor()
+        //self.backgroundColor = UIColor.yellowColor()
+        self.backgroundColor = UIColor.whiteColor()
+        self.layer.borderColor = UIColor.blackColor().CGColor
+        self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 5.0
+        self.layer.borderColor = UIColor.blackColor().CGColor
         
         mySearchBar = UISearchBar()
         mySearchBar.delegate = self
-        mySearchBar.frame = CGRectMake(0, 0, myBoundSize.width, 80)
-        mySearchBar.showsCancelButton = true
+        mySearchBar.searchBarStyle = UISearchBarStyle.Prominent
+        mySearchBar.showsCancelButton = false
         mySearchBar.enablesReturnKeyAutomatically = false
-        mySearchBar.layer.position = CGPoint(x: myBoundSize.width/2, y: 100)
-        searchResult = myItems as! [String]
+        mySearchBar.placeholder = "名前を入力してください"
+        searchResult = searchUsers as! [String]
+        mySearchBar.tintColor = UIColor.blueColor()
 
-        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height +  mySearchBar.frame.height
-        let displayWidth: CGFloat = myBoundSize.width
-        let displayHeight: CGFloat = myBoundSize.height
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        myTableView = UITableView()
         myTableView.registerClass( UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        myTableView.separatorColor = UIColor.blueColor()
+        myTableView.separatorColor = UIColor.redColor()
         myTableView.dataSource = self
         myTableView.delegate = self
         self.addSubview(myTableView)
         self.addSubview(mySearchBar)
+       
+    }
+    
+    func setAutoLayout(){
+        // autoLayout
+        self.autoSetDimensionsToSize(CGSizeMake( 300, 400 ))
+        //myView.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: myTableView, withOffset: 20 )
+        self.autoPinEdgeToSuperviewEdge(.Top, withInset: 200 )
+        self.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 150 )
+        mySearchBar.autoSetDimensionsToSize(CGSizeMake( 295, 30 ))
+        mySearchBar.autoPinEdgeToSuperviewEdge(.Top, withInset: 30)
+        mySearchBar.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 185 )
+        myTableView.autoSetDimensionsToSize(CGSizeMake( 300, 310 ))
+        myTableView.autoPinEdge(.Top, toEdge: .Bottom, ofView: mySearchBar, withOffset: 30 )
+        myTableView.autoPinEdgeToSuperviewEdge(.Left, withInset: 0 )
     }
     
     //選択されたCell
@@ -63,12 +82,13 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         cell.textLabel!.text = "\(self.searchResult[indexPath.row])"
-        let myButton = UIButton( frame: CGRectMake( 0, 0, 30, 30 ))
-        myButton.layer.cornerRadius = myButton.frame.width / 2
-        myButton.backgroundColor = UIColor.blueColor()
-        cell.addSubview(myButton)
+        //let myButton = UIButton( frame: CGRectMake( 0, 0, 30, 30 ))
+        //myButton.layer.cornerRadius = myButton.frame.width / 2
+        //myButton.backgroundColor = UIColor.blueColor()
+        //cell.addSubview(myButton)
+        cell.textLabel?.font = UIFont.systemFontOfSize(12)
         cell.backgroundColor = UIColor.clearColor()
-        myButton.layer.position = CGPointMake( myBoundSize.width - 50, 20 )
+        //myButton.layer.position = CGPointMake( myBoundSize.width - 50, 20 )
         // 背景色
         /*cell.backgroundColor = UIColor.clearColor()
         // 選択された時の背景色
@@ -84,7 +104,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         mySearchBar.endEditing(true)
         searchResult.removeAll()
         if(mySearchBar.text == "") {
-            searchResult = myItems as! [String]
+            searchResult = searchUsers as! [String]
         } else {
             for data in myItems {
                 if data.containsString(mySearchBar.text!) {

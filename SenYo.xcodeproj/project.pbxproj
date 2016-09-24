@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A70131441D958B9600AC0AF0 /* SimpleAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70131431D958B9600AC0AF0 /* SimpleAnimation.framework */; };
 		A723212C1D8F8BD60006E24C /* ImgeController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723212B1D8F8BD60006E24C /* ImgeController.xcassets */; };
 		A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */; };
 		A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */; };
@@ -41,7 +42,9 @@
 /* Begin PBXFileReference section */
 		75E5BF3B82BC2F7CF3542978 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
 		8B2340FA654E0A6B0B6B1BA0 /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
+		A70131431D958B9600AC0AF0 /* SimpleAnimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleAnimation.framework; path = "Pods/../build/Debug-iphoneos/SimpleAnimation.framework"; sourceTree = "<group>"; };
 		A723212B1D8F8BD60006E24C /* ImgeController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImgeController.xcassets; sourceTree = "<group>"; };
+		A72ACD341D957B1700CDEB96 /* SimpleAnimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleAnimation.framework; path = "Pods/../build/Debug-iphoneos/SimpleAnimation.framework"; sourceTree = "<group>"; };
 		A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeView.swift; sourceTree = "<group>"; };
 		A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeViewController.swift; sourceTree = "<group>"; };
 		A768FAA21D76B08A004802A5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A70131441D958B9600AC0AF0 /* SimpleAnimation.framework in Frameworks */,
 				A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */,
 				A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */,
 				A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */,
@@ -101,13 +105,12 @@
 		A70BE6EE1D6AF60C003E3341 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */,
 				CDA1F3401D717C0B001C4336 /* LoginView.swift */,
 				CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */,
 				CDA1F3481D75DB8D001C4336 /* HomeView.swift */,
 				A768FAA41D76B131004802A5 /* SettingView.swift */,
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
-				A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */,
-				A768FAB01D7D37AE004802A5 /* MemberView.swift */,
 				A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */,
 			);
 			name = View;
@@ -135,6 +138,15 @@
 				A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */ = {
+			isa = PBXGroup;
+			children = (
+				A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */,
+				A768FAB01D7D37AE004802A5 /* MemberView.swift */,
+			);
+			name = "NewGroupMakeScreenView ";
 			sourceTree = "<group>";
 		};
 		CD0F77D11D4DD069001BC4C9 = {
@@ -176,6 +188,8 @@
 		D63A8BC6C16BF0CB739B2DAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A70131431D958B9600AC0AF0 /* SimpleAnimation.framework */,
+				A72ACD341D957B1700CDEB96 /* SimpleAnimation.framework */,
 				A7E05A551D9116D6007CD4B6 /* PureLayout.framework */,
 				A7E05A531D9116CA007CD4B6 /* Alamofire.framework */,
 				A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */,

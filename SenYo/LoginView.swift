@@ -8,6 +8,7 @@
 
 import UIKit
 import PureLayout
+import SimpleAnimation
 
 protocol LoginViewDelegate: NSObjectProtocol {
     func buttonTouched(sender:UIButton)
@@ -71,6 +72,7 @@ class LoginView: UIView {
         newAcountButton.setTitleColor(UIColor(red: 0, green: 1, blue: 1, alpha: 1), forState: .Normal)
         newAcountButton.tag = 2
         newAcountButton.addTarget( delegate, action: "buttonTouched:", forControlEvents: .TouchUpInside)
+        
         //
         self.addSubview(loginButton)
         self.addSubview(userTextFiled)
@@ -104,6 +106,8 @@ class LoginView: UIView {
         logoImage.autoSetDimensionsToSize( CGSizeMake( 100, 100 ) )
         logoImage.autoPinEdgeToSuperviewEdge(.Left, withInset : myBoundSize.width / 2 - 50  )
         logoImage.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: userLabel, withOffset: -30)
+        
+
     }
     
     override func layoutSubviews() {

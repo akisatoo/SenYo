@@ -4,8 +4,10 @@
 use_frameworks!
 
 target 'SenYo' do
-  pod ‘PureLayout’
   pod ‘Alamofire’,  '~> 3.0.0’
-  pod ‘SwiftyJSON’
+  pod ‘SwiftyJSON’, ‘~> 2.0’
+  pod ‘SimpleAnimation’, ‘0.2.0’
+  pod ‘PureLayout’
+  
 
 end

@@ -27,7 +27,7 @@ class NewsViewController : UIViewController, NewsViewDelegate {
     func moveViews( num : Int ){
         switch( num ){
         case 1:
-            let myView = MakeGroupViewController()
+            //let myView = MakeGroupViewController()
             //self.navigationController?.pushViewController(myView, animated: true)
             break
         default:
