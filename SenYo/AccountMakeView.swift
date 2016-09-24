@@ -17,14 +17,16 @@ protocol AccountMakeViewDelegate : NSObjectProtocol {
 class AccountMakeView : UIView, UITextFieldDelegate {
     var delegate  : AccountMakeViewDelegate?
     
+    let passTextField = UITextField()
+    let accountTextField = UITextField()
+    let nameTextField = UITextField()
+    let accountImage = UIImageView()
+    
     required init(){
         super.init(frame: CGRectMake(0, 0, 0, 0))
         self.backgroundColor = UIColor.grayColor()
         let scrollView = UIScrollView()
-        let nameTextView = UITextField()
-        let addressTextField = UITextField()
-        let passTextField = UITextField()
-        let accountImage = UIImageView()
+        
         let makeButton = UIButton()
         
         scrollView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
@@ -33,16 +35,16 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         accountImage.layer.borderWidth = 2.0
         accountImage.layer.masksToBounds = true
         accountImage.layer.borderColor = UIColor.blueColor().CGColor
-        nameTextView.borderStyle = UITextBorderStyle.RoundedRect
-        nameTextView.layer.borderWidth = 2.0
-        nameTextView.layer.borderColor = UIColor.blueColor().CGColor
-        nameTextView.placeholder = "名前"
-        nameTextView.layer.cornerRadius = 5
-        addressTextField.borderStyle = UITextBorderStyle.RoundedRect
-        addressTextField.layer.borderWidth = 2.0
-        addressTextField.layer.borderColor = UIColor.blueColor().CGColor
-        addressTextField.placeholder = "アドレス"
-        addressTextField.layer.cornerRadius = 5
+        nameTextField.borderStyle = UITextBorderStyle.RoundedRect
+        nameTextField.layer.borderWidth = 2.0
+        nameTextField.layer.borderColor = UIColor.blueColor().CGColor
+        nameTextField.placeholder = "名前"
+        nameTextField.layer.cornerRadius = 5
+        accountTextField.borderStyle = UITextBorderStyle.RoundedRect
+        accountTextField.layer.borderWidth = 2.0
+        accountTextField.layer.borderColor = UIColor.blueColor().CGColor
+        accountTextField.placeholder = "アカウントID"
+        accountTextField.layer.cornerRadius = 5
         passTextField.borderStyle = UITextBorderStyle.RoundedRect
         passTextField.layer.borderWidth = 2.0
         passTextField.layer.borderColor = UIColor.blueColor().CGColor
@@ -60,8 +62,8 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         // addsubView
         self.addSubview(scrollView)
         scrollView.addSubview(accountImage)
-        scrollView.addSubview(nameTextView)
-        scrollView.addSubview(addressTextField)
+        scrollView.addSubview(nameTextField)
+        scrollView.addSubview(accountTextField)
         scrollView.addSubview(passTextField)
         scrollView.addSubview(makeButton)
         
@@ -72,16 +74,16 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         accountImage.autoSetDimensionsToSize( CGSizeMake( 100, 100 ))
         accountImage.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
         accountImage.autoPinEdgeToSuperviewEdge(.Top, withInset : 30 )
-        nameTextView.autoSetDimensionsToSize(CGSizeMake( 300, 50))
-        nameTextView.autoPinEdge(.Top, toEdge: .Bottom, ofView: accountImage, withOffset: 20 )
-        nameTextView.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
+        nameTextField.autoSetDimensionsToSize(CGSizeMake( 300, 50))
+        nameTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: accountImage, withOffset: 20 )
+        nameTextField.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
         
-        addressTextField.autoSetDimensionsToSize(CGSizeMake( 300, 50))
-        addressTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: nameTextView, withOffset: 20 )
-        addressTextField.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
+        accountTextField.autoSetDimensionsToSize(CGSizeMake( 300, 50))
+        accountTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: nameTextField, withOffset: 20 )
+        accountTextField.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
         
         passTextField.autoSetDimensionsToSize(CGSizeMake( 300, 50))
-        passTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: addressTextField, withOffset: 20 )
+        passTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: accountTextField, withOffset: 20 )
         passTextField.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
         makeButton.autoSetDimensionsToSize(CGSizeMake( 100, 50 ))
         makeButton.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )

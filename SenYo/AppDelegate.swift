@@ -17,9 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        // TODO: ログイン状況をみて表示するViewを決定する
-        let isLogin = false
-        if !isLogin {
+        // ログイン状況をみて表示するViewを決定する
+        let ud = NSUserDefaults.standardUserDefaults()
+        let isLogin = ud.boolForKey("loginFlag") ?? false
+        if (isLogin == false) {
             self.beforeLogin()
         } else {
             self.afterLogin()
