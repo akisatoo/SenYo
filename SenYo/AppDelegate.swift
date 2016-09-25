@@ -8,14 +8,17 @@
 
 import UIKit
 import CoreData
+import ECSlidingViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    //var message : [String] = []
+    var slidingViewController: ECSlidingViewController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.slidingViewController = self.window!.rootViewController as? ECSlidingViewController
         
         // TODO: ログイン状況をみて表示するViewを決定する
         let isLogin = false
@@ -38,11 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func afterLogin() {
         let mainNavigationController: UINavigationController?
-
         let homeView: HomeViewController = HomeViewController()
         mainNavigationController = UINavigationController(rootViewController: homeView)
-        UIView.transitionWithView(self.window!, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
-                self.window!.rootViewController = mainNavigationController
+        self.slidingViewController!.topViewController = mainNavigationController
+        UIView.transitionWithView(self.slidingViewController, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
+                self.slidingViewController = mainNavigationController
             }, completion: { _ in })
     }
 
