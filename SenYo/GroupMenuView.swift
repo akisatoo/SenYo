@@ -35,7 +35,6 @@ class GroupMenuView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let displayWidth: CGFloat = myBoundSize.width
         let displayHeight: CGFloat = myBoundSize.height
-        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
         myTableView = UITableView(frame: CGRect(x: 0, y: 64, width: displayWidth - myBoundSize.width * 0.25, height: displayHeight))
         myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         myTableView.dataSource = self

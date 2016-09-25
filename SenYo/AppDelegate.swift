@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import ECSlidingViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
