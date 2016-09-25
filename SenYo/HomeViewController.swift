@@ -8,6 +8,7 @@
 
 import UIKit
 import PureLayout
+import SimpleAnimation
 //import SwiftyJSON
 //import Alamofire
 import SimpleAnimation
@@ -17,7 +18,12 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
     var groupWindow: UIWindow?
     var groupMenuViewController: GroupMenuViewController?
 
+    private var dragFlag : Bool = false
+    private var messageArray : [UIImageView] = []
     private let menuView  = MenuView()
+    private var dragX : CGFloat!
+    private var dragY : CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
@@ -81,7 +87,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
     internal func clickButton( sender : UIBarButtonItem ){
         switch(sender.tag){
         case 1:
-            sender.tag = 3
+            sender.tag = 2
             self.view.addSubview(menuView)
             menuView.setAutoLayout()
             break
@@ -126,12 +132,85 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
     }
     
     func closeGroupMenu(sender : UIViewController) {
-        print(sender)
         self.groupMenuViewController!.hideAnim({ () -> Void in
             self.groupWindow!.fadeOut()
         })
-        
-        
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesEnded(touches, withEvent: event)
+        for touch: UITouch in touches {
+            let tag = touch.view!.tag
+            switch tag {
+            case 1:
+                for i in 0 ... 3{
+                    let button = UIImageView(image: UIImage(named: "sen\(i + 1)"))
+                    button.tag = i + 1
+                    messageArray.append(button)
+                    self.view.addSubview(messageArray[i])
+                    messageArray[i].autoSetDimensionsToSize(CGSizeMake(45, 45))
+                    if ( i + 1 ) % 2 == 0 {
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 100 )
+                    }else{
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 180 )
+                    }
+                    messageArray[i].autoPinEdgeToSuperviewEdge(.Left, withInset: 90 + 150 * CGFloat( i / 2 ))
+                    messageArray[i].popIn(0.1, duration: 0.5, delay: 0.2, completion: nil )
+                }
+                
+                dragFlag = true
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    //ドラッグイベント
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if dragFlag {
+            let aTouch = touches.first! as UITouch
+            
+            // 移動した先の座標を取得.
+            let location = aTouch.locationInView(self.view)
+            
+            // 移動する前の座標を取得.
+            let prevLocation = aTouch.previousLocationInView(self.view)
+            
+            dragX = location.x - prevLocation.x
+            dragY = location.y - prevLocation.y
+            print(prevLocation," x : ",dragX, " y : ", dragY)
+        }
+    }
+    
+    // TapEnd Event
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("touchesEnded")
+        if dragFlag {
+            for i in 0 ... 3{
+                messageArray[i].popOut(0.1, duration: 0.5, delay: 0.2, completion: {(Bool)-> Void in
+                    self.messageArray[i].removeFromSuperview()
+                    if self.dragX > 0 {
+                        if self.dragY >= 0 {
+                            //右下
+                            print("right_bottom")
+                        }else{
+                            //右上
+                            print("right_top")
+                        }
+                    }else{
+                        if self.dragY < 0 {
+                            //左下
+                            print("left_top")
+                        }else{
+                            //左上
+                            print("left_bottom")
+                        }
+
+                    }
+                })
+            }
+            dragFlag = false
+        }
+    }
 }
