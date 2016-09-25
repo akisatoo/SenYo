@@ -73,6 +73,8 @@ class HomeView: UIView {
                 userArray[i][j].autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat( xWidth + 150 * i ) * aspect.xAspect())
                 userName.autoPinEdgeToSuperviewEdge( .Top, withInset: CGFloat( 30 + 90 * j ) * aspect.yAspect() )
                 userName.autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat(xWidth + 10 + 150 * i) * aspect.xAspect() )
+                
+                userArray[i][j].popIn(0.6, duration: 0.6, delay: 0.5, completion: nil)
             }
         }
         // Scrollできる幅の設定
