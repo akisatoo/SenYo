@@ -10,9 +10,12 @@ import UIKit
 import PureLayout
 //import SwiftyJSON
 //import Alamofire
+import SimpleAnimation
 
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var groupWindow: UIWindow?
+    var groupMenuViewController: GroupMenuViewController?
 
     private let menuView  = MenuView()
     override func viewDidLoad() {
@@ -39,11 +42,39 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
         groupItem.tintColor = UIColor.clearColor()
         groupItem.tag = 2
         self.navigationItem.leftBarButtonItem = groupItem
+        
+        //グループメニューのセットアップ
+        self.setGroupMenu()
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //グループメニューのセットアップ
+    func setGroupMenu() {
+        self.groupWindow = UIWindow()
+        // 背景を白に設定する.
+        self.groupWindow!.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
+        self.groupWindow!.layer.position = CGPointMake(myBoundSize.width/2, myBoundSize.height/2)
+        self.groupWindow!.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        
+        self.groupMenuViewController = GroupMenuViewController()
+        self.groupWindow?.rootViewController = self.groupMenuViewController
+        
+        //self.groupWindow!.userInteractionEnabled = true
+        self.groupWindow!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "closeGroupMenu:"))
+        
+        
+        // myWindowをkeyWindowにする.
+        self.groupWindow!.makeKeyWindow()
+        
+        // windowを表示する.
+        self.groupWindow!.makeKeyAndVisible()
+        
+        self.groupWindow!.hidden = true
     }
     
     // ボタンアクション
@@ -56,6 +87,11 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
             break
         case 2:
             //self.view.addSubview(tableView)
+            //グループメニューのセットアップ
+            self.groupWindow!.fadeIn()
+            self.groupMenuViewController!.showAnim({ () -> Void in
+                
+            })
             break
         case 3:
             sender.tag = 1
@@ -88,4 +124,14 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
             break;
         }
     }
+    
+    func closeGroupMenu(sender : UIViewController) {
+        print(sender)
+        self.groupMenuViewController!.hideAnim({ () -> Void in
+            self.groupWindow!.fadeOut()
+        })
+        
+        
+    }
+    
 }

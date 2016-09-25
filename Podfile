@@ -8,6 +8,6 @@ target 'SenYo' do
   pod ‘SwiftyJSON’, ‘~> 2.0’
   pod ‘ECSlidingViewController’, ‘2.0.3’
   pod ‘PureLayout’
-  
+  pod 'SimpleAnimation', '0.2.0'
 
 end

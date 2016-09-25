@@ -13,17 +13,17 @@ import ECSlidingViewController
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var slidingViewController: ECSlidingViewController!
+    
+    var slidingViewController: ECSlidingViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.slidingViewController = self.window!.rootViewController as? ECSlidingViewController
         
         // ログイン状況をみて表示するViewを決定する
         let ud = NSUserDefaults.standardUserDefaults()
-        let isLogin = ud.boolForKey("loginFlag") ?? false
-        if (isLogin == false) {
+        let isLogin = ud.boolForKey("loginFlag")
+        if (!isLogin || isLogin == false) {
             self.beforeLogin()
         } else {
             self.afterLogin()
@@ -35,18 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //ログイン前のViewを表示(Login画面)
     func beforeLogin() {
         let loginView: LoginViewController = LoginViewController()
-        UIView.transitionWithView(self.window!, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
+        UIView.transitionWithView(self.window!, duration: 0.5, options:[.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
             self.window!.rootViewController = loginView
             }, completion: { _ in })
     }
     
     func afterLogin() {
+        
+        
         let mainNavigationController: UINavigationController?
         let homeView: HomeViewController = HomeViewController()
         mainNavigationController = UINavigationController(rootViewController: homeView)
-        self.slidingViewController!.topViewController = mainNavigationController
-        UIView.transitionWithView(self.slidingViewController, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
-                self.slidingViewController = mainNavigationController
+        UIView.transitionWithView(self.window!, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
+                self.window!.rootViewController = mainNavigationController
             }, completion: { _ in })
     }
 

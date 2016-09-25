@@ -40,6 +40,8 @@
 		CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */; };
 		CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E611D96EEE1007C5173 /* MyModel.swift */; };
 		CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E651D96EF38007C5173 /* UserModel.swift */; };
+		CDFA3E711D97755A007C5173 /* GroupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E701D97755A007C5173 /* GroupMenuViewController.swift */; };
+		CDFA3E731D9775C0007C5173 /* GroupMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E721D9775C0007C5173 /* GroupMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,8 @@
 		CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		CDFA3E611D96EEE1007C5173 /* MyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
 		CDFA3E651D96EF38007C5173 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		CDFA3E701D97755A007C5173 /* GroupMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMenuViewController.swift; sourceTree = "<group>"; };
+		CDFA3E721D9775C0007C5173 /* GroupMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMenuView.swift; sourceTree = "<group>"; };
 		EC8D4BEB86571599F0980A33 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
 		EE7AB194F0416A0B3DCDA0EF /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +113,7 @@
 				A768FAA41D76B131004802A5 /* SettingView.swift */,
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
 				A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */,
+				CDFA3E721D9775C0007C5173 /* GroupMenuView.swift */,
 				A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */,
 			);
 			name = View;
@@ -126,6 +131,7 @@
 				A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */,
 				A768FAB21D7D3E23004802A5 /* MemberViewController.swift */,
 				A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */,
+				CDFA3E701D97755A007C5173 /* GroupMenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -352,12 +358,14 @@
 				CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */,
 				A768FAB31D7D3E23004802A5 /* MemberViewController.swift in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
+				CDFA3E731D9775C0007C5173 /* GroupMenuView.swift in Sources */,
 				CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */,
 				A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */,
 				CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */,
 				A768FAA51D76B131004802A5 /* SettingView.swift in Sources */,
 				A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */,
 				A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */,
+				CDFA3E711D97755A007C5173 /* GroupMenuViewController.swift in Sources */,
 				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,
 				A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */,
 				CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */,
