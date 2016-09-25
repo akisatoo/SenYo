@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate{
         homeView.delegate = self
         menuView.delegate = self
         self.view = homeView
-        // self.navigationController?.navigationBar.barTintColor = UIColor.blueColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         menuItem.style = UIBarButtonItemStyle.Plain
         menuItem.action = "clickButton:"
