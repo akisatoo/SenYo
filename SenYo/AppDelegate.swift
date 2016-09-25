@@ -13,12 +13,9 @@ import ECSlidingViewController
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var slidingViewController: ECSlidingViewController!
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.slidingViewController = self.window!.rootViewController as? ECSlidingViewController
         
         // ログイン状況をみて表示するViewを決定する
         let ud = NSUserDefaults.standardUserDefaults()
@@ -44,9 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainNavigationController: UINavigationController?
         let homeView: HomeViewController = HomeViewController()
         mainNavigationController = UINavigationController(rootViewController: homeView)
-        self.slidingViewController!.topViewController = mainNavigationController
-        UIView.transitionWithView(self.slidingViewController, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
-                self.slidingViewController = mainNavigationController
+        UIView.transitionWithView(self.window!, duration: 0.5, options: [.TransitionFlipFromBottom, .ShowHideTransitionViews], animations: {() -> Void in
+            self.window!.rootViewController = mainNavigationController
             }, completion: { _ in })
     }
 

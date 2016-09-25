@@ -13,15 +13,16 @@ import SimpleAnimation
 
 protocol HomeViewDelegate: NSObjectProtocol {
     func clickButton( sender : UIBarButtonItem )
+    //func onTouchImg(recognizer: UITapGestureRecognizer)
+    func touchesEnded (touches: Set<UITouch>, withEvent event: UIEvent?)
 }
 
 class HomeView: UIView {
     
     var delegate: HomeViewDelegate?
     //var cellMeneuView : UIView = UIView()
-    
     private var userArray : [[UIImageView]] = [[UIImageView]]()
-   
+    
     var aspect = Aspect()
     
     required init() {
@@ -33,14 +34,17 @@ class HomeView: UIView {
         let views = UIView(frame: CGRectMake( 0, 0, 500 * aspect.xAspect(), 500 * aspect.yAspect() ))
         let myScrollView = UIScrollView()
         let leaderSize = 100 * aspect.yAspect()
+        
         leader.layer.cornerRadius = leaderSize / 2
         leader.backgroundColor = UIColor.whiteColor()
         leader.layer.borderColor = UIColor.blueColor().CGColor
         leader.layer.borderWidth = 2.0
         leader.layer.masksToBounds = true
+        leader.userInteractionEnabled = true
+        //leader.addGestureRecognizer(gesture)
+        leader.tag = 1
         leader.image = myImage
         myScrollView.backgroundColor = UIColor.whiteColor()
-        
                
         self.addSubview(myScrollView)
         // User 配置
@@ -93,8 +97,7 @@ class HomeView: UIView {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
     }

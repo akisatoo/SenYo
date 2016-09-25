@@ -185,10 +185,10 @@
 				A70BE6EF1D6AF616003E3341 /* Controller */,
 				A70BE6EE1D6AF60C003E3341 /* View */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
+				A723212B1D8F8BD60006E24C /* ImgeController.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
 				CD0F77EC1D4DD06A001BC4C9 /* Info.plist */,
 				CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */,
-				A723212B1D8F8BD60006E24C /* ImgeController.xcassets */,
 			);
 			path = SenYo;
 			sourceTree = "<group>";
@@ -229,6 +229,7 @@
 				CD0F77D81D4DD069001BC4C9 /* Resources */,
 				31355E5B425236066E42D21F /* [CP] Embed Pods Frameworks */,
 				727C7501C0E04973C02FCA95 /* [CP] Copy Pods Resources */,
+				FB91B6240C32452D10EFEAC8 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -330,6 +331,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB91B6240C32452D10EFEAC8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SenYo/Pods-SenYo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
