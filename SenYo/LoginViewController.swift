@@ -12,19 +12,19 @@ import SwiftyJSON
 import SimpleAnimation
 import Foundation
 
+
 class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     private var userLabel : String = ""
     private var passLabel : String = ""
+    var loginView: LoginView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print( "DeviceWidth : ", myBoundSize.width, " DeviceHeigh : ", myBoundSize.height )
-        let loginView = LoginView()
-        loginView.delegate = self
-        loginView.userTextFiled.delegate = self
-        loginView.passTextFiled.delegate = self
+        loginView = LoginView()
+        loginView!.delegate = self
         self.view = loginView
-                // -----    ---------
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,29 +34,23 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
     func buttonTouched(sender:UIButton) {
         switch ( sender.tag ){
         case 1:
-            /*
-            // ログインできるか確認
-            let params =
-            [
-            "password": "password",
-            "account_id":"hyuma"
-            ]
+            let userModel = UserModel.sharedManager
+            var userData = User()
+            userData.password = (loginView?.passTextFiled.text)!
+            userData.account_id = (loginView?.userTextFiled.text)!
+            userModel.login(userData, success: { (res: JSON) -> Void in
+                // success
+                //ローカルにログイン情報を保持
+                let ud = NSUserDefaults.standardUserDefaults()
+                ud.setBool(true, forKey: "loginFlag")
+                self.appDelegate.afterLogin()
+            },
+            error: { (res: JSON) -> Void in
+                // error   
+                let alert = userModel.errorAlert(res)
+                self.presentViewController(alert, animated: true, completion: nil)
+            })
             
-            // ---- jsonを取る -------
-            Alamofire.request(.POST, "http://127.0.0.1:3000/api/user/login", parameters: params).responseJSON{ response in
-            guard let object = response.result.value else {
-            return
-            }
-            
-            let json = JSON(object)
-            if json["name"] == self.userLabel && json["password"] == self.passLabel {
-                // 遷移
-            }
-            print(json["name"])
-            }
-            */
-
-            self.appDelegate.afterLogin()
         break;
         case 2:
             let mySecondViewController: UIViewController = AccountMakeViewContoller()

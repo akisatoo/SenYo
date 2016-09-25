@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.slidingViewController = self.window!.rootViewController as? ECSlidingViewController
         
-        // TODO: ログイン状況をみて表示するViewを決定する
-        let isLogin = false
-        if !isLogin {
+        // ログイン状況をみて表示するViewを決定する
+        let ud = NSUserDefaults.standardUserDefaults()
+        let isLogin = ud.boolForKey("loginFlag") ?? false
+        if (isLogin == false) {
             self.beforeLogin()
         } else {
             self.afterLogin()
