@@ -12,17 +12,13 @@ import PureLayout
 import SimpleAnimation
 
 protocol HomeViewDelegate: NSObjectProtocol {
-    func clickButton( sender : UIBarButtonItem )
-    //func onTouchImg(recognizer: UITapGestureRecognizer)
-    func touchesEnded (touches: Set<UITouch>, withEvent event: UIEvent?)
 }
 
 class HomeView: UIView {
-    
+    let appdelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var delegate: HomeViewDelegate?
-    //var cellMeneuView : UIView = UIView()
+    var goupView : UIView = GroupView()
     private var userArray : [[UIImageView]] = [[UIImageView]]()
-    
     var aspect = Aspect()
     
     required init() {
@@ -30,18 +26,16 @@ class HomeView: UIView {
         self.backgroundColor = UIColor.whiteColor()
         let myImage = UIImage(named: "hironaka")
         let leader = UIImageView()
-        //let balloon = BalloonView(frame: CGRectMake((myBoundSize.width - 280) / 2, 100, 280, 100))
         let views = UIView(frame: CGRectMake( 0, 0, 500 * aspect.xAspect(), 500 * aspect.yAspect() ))
         let myScrollView = UIScrollView()
-        let leaderSize = 100 * aspect.yAspect()
         
+        let leaderSize = 100 * aspect.yAspect()
         leader.layer.cornerRadius = leaderSize / 2
         leader.backgroundColor = UIColor.whiteColor()
         leader.layer.borderColor = UIColor.blueColor().CGColor
         leader.layer.borderWidth = 2.0
         leader.layer.masksToBounds = true
         leader.userInteractionEnabled = true
-        //leader.addGestureRecognizer(gesture)
         leader.tag = 1
         leader.image = myImage
         myScrollView.backgroundColor = UIColor.whiteColor()
@@ -56,7 +50,7 @@ class HomeView: UIView {
                 let myImageView = UIImageView()
                 let userName = UILabel(frame: CGRectMake( 0, 0, 100 * aspect.xAspect(), 50  * aspect.yAspect() ))
                 userName.text = "name"
-                //myImageView.image = myImage
+                myImageView.image = myImage
                 myImageView.layer.cornerRadius = userSize / 2
                 userArray[i].append(myImageView)
                 if j % 2 != 0  {
@@ -81,7 +75,7 @@ class HomeView: UIView {
         //addsubview
         self.addSubview(views)
         views.addSubview(leader)
-        //views.addSubview(balloon)
+       // self.appdelegate.window?.addSubview(goupView)
         
         //autolayout
         views.autoPinEdgeToSuperviewEdge(.Top, withInset : 34 )

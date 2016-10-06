@@ -50,7 +50,6 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
                 let alert = userModel.errorAlert(res)
                 self.presentViewController(alert, animated: true, completion: nil)
             })
-            
         break;
         case 2:
             let mySecondViewController: UIViewController = AccountMakeViewContoller()

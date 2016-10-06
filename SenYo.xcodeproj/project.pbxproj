@@ -19,10 +19,8 @@
 		A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */; };
 		A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */; };
 		A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB01D7D37AE004802A5 /* MemberView.swift */; };
-		A768FAB31D7D3E23004802A5 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB21D7D3E23004802A5 /* MemberViewController.swift */; };
 		A7854DFE1D96F473001B8AED /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7854DFD1D96F473001B8AED /* MenuView.swift */; };
 		A7854E011D970593001B8AED /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7854E001D970593001B8AED /* GroupView.swift */; };
-		A7854E151D975094001B8AED /* ECSlidingViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7854E141D975094001B8AED /* ECSlidingViewController.framework */; };
 		A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */; };
 		A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */; };
 		A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A531D9116CA007CD4B6 /* Alamofire.framework */; };
@@ -56,7 +54,6 @@
 		A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupView.swift; sourceTree = "<group>"; };
 		A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
 		A768FAB01D7D37AE004802A5 /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
-		A768FAB21D7D3E23004802A5 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		A7854DFD1D96F473001B8AED /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		A7854E001D970593001B8AED /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		A7854E141D975094001B8AED /* ECSlidingViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ECSlidingViewController.framework; path = "Pods/../build/Debug-iphoneos/ECSlidingViewController.framework"; sourceTree = "<group>"; };
@@ -88,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7854E151D975094001B8AED /* ECSlidingViewController.framework in Frameworks */,
 				A70131441D958B9600AC0AF0 /* SimpleAnimation.framework in Frameworks */,
 				A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */,
 				A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */,
@@ -103,8 +99,8 @@
 		A70BE6EE1D6AF60C003E3341 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A7854DFF1D970536001B8AED /* HomeViewScreenViews */,
 				CDA1F3401D717C0B001C4336 /* LoginView.swift */,
+				A7854DFF1D970536001B8AED /* HomeViewScreenViews */,
 				CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */,
 				A768FAA41D76B131004802A5 /* SettingView.swift */,
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
@@ -124,7 +120,6 @@
 				A768FAA21D76B08A004802A5 /* SettingViewController.swift */,
 				A768FAA81D79661A004802A5 /* NewsViewController.swift */,
 				A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */,
-				A768FAB21D7D3E23004802A5 /* MemberViewController.swift */,
 				A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */,
 			);
 			name = Controller;
@@ -366,7 +361,6 @@
 				A768FAA91D79661A004802A5 /* NewsViewController.swift in Sources */,
 				CDA1F3411D717C0B001C4336 /* LoginView.swift in Sources */,
 				CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */,
-				A768FAB31D7D3E23004802A5 /* MemberViewController.swift in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
 				CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */,
 				A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */,

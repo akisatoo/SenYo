@@ -17,16 +17,23 @@ protocol GroupViewDelegate : NSObjectProtocol {
 class GroupView : UIView, UITableViewDelegate, UITableViewDataSource {
     var delegate : GroupViewDelegate?
     var myTableView = UITableView()
-    var itemArray : NSArray = ["AAAAA", "BBBBBB"]
+    let logoImageView = UIImageView( image: UIImage(named: "logo"))
+    var itemArray : NSArray = ["グループ１", "グループ２"]
     required init(){
         super.init( frame : CGRectMake(0, 0, 0, 0))
         self.backgroundColor = UIColor.whiteColor()
+        self.frame = CGRectMake(0, 0,  myBoundSize.width / 2 + 50, myBoundSize.height )
         myTableView.scrollEnabled = false
         myTableView.registerClass( UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        //myTableView.separatorColor = UIColor.redColor()
+        myTableView.separatorColor = UIColor.redColor()
         myTableView.dataSource = self
         myTableView.delegate = self
+        //myTableView.layer.borderWidth = 2.0
+        //myTableView.layer.borderColor = UIColor.blueColor().CGColor
+        // addSubView
+        self.addSubview(logoImageView)
         self.addSubview(myTableView)
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -46,25 +53,28 @@ class GroupView : UIView, UITableViewDelegate, UITableViewDataSource {
     //Cellに値を設定するデータソースメソッド.
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        let myImageView = UIImageView(image: UIImage(named: "group"))
         let textLabel = UILabel()
         textLabel.text = self.itemArray[indexPath.row] as? String
         cell.backgroundColor = UIColor.clearColor()
+        cell.addSubview(myImageView)
         cell.addSubview(textLabel)
+        myImageView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10)
+        myImageView.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
         textLabel.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 )
-        textLabel.autoPinEdgeToSuperviewEdge(.Left, withInset : 50 )
+        textLabel.autoPinEdge(.Left, toEdge: .Right, ofView: myImageView, withOffset: 10)
         //cell.textLabel?.font = UIFont.systemFontOfSize(18)
         return cell
     }
     
     func setAutoLayout (){
-        //autolayout
-        self.autoSetDimensionsToSize(CGSizeMake( myBoundSize.width / 3 , myBoundSize.height ))
-        self.autoPinEdgeToSuperviewEdge(.Right, withInset : 0)
-        self.autoPinEdgeToSuperviewEdge(.Top, withInset : 65)
-        myTableView.autoSetDimensionsToSize(CGSizeMake(140, 140))
-        myTableView.autoPinEdgeToSuperviewEdge(.Right, withInset : 0)
-        myTableView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10)
-        
+        // autoLayout
+        logoImageView.autoSetDimensionsToSize(CGSizeMake( 150, 40 ))
+        logoImageView.autoPinEdgeToSuperviewEdge(.Top, withInset: 100 )
+        logoImageView.autoPinEdgeToSuperviewEdge(.Left, withInset: 50 )
+        myTableView.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width / 2, 300 ))
+        myTableView.autoPinEdgeToSuperviewEdge(.Right, withInset: 20 )
+        myTableView.autoPinEdge(.Top, toEdge: .Bottom, ofView: logoImageView, withOffset: 20)
     }
 
 }
