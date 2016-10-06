@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04C99D8A54BA6789EFDE348D /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE7AB194F0416A0B3DCDA0EF /* Pods_SenYo.framework */; };
+		804185E89FC38DD0AC4FEBB7 /* Pods_SenYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8ED5DC22D289B8714C1C76F /* Pods_SenYo.framework */; };
 		A70131441D958B9600AC0AF0 /* SimpleAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70131431D958B9600AC0AF0 /* SimpleAnimation.framework */; };
 		A723212C1D8F8BD60006E24C /* ImgeController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723212B1D8F8BD60006E24C /* ImgeController.xcassets */; };
 		A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */; };
@@ -38,10 +38,13 @@
 		CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */; };
 		CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E611D96EEE1007C5173 /* MyModel.swift */; };
 		CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E651D96EF38007C5173 /* UserModel.swift */; };
+		CDFA3E711D97755A007C5173 /* GroupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E701D97755A007C5173 /* GroupMenuViewController.swift */; };
+		CDFA3E731D9775C0007C5173 /* GroupMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E721D9775C0007C5173 /* GroupMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5FBEE8877B9BCCB3F31B11AB /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
+		8BA25FB1AFAC9AF77719EFD7 /* Pods-SenYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.debug.xcconfig"; sourceTree = "<group>"; };
+		93389BAC778E2F1DBA7C88E3 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
 		A70131431D958B9600AC0AF0 /* SimpleAnimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleAnimation.framework; path = "Pods/../build/Debug-iphoneos/SimpleAnimation.framework"; sourceTree = "<group>"; };
 		A723212B1D8F8BD60006E24C /* ImgeController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImgeController.xcassets; sourceTree = "<group>"; };
 		A72ACD341D957B1700CDEB96 /* SimpleAnimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleAnimation.framework; path = "Pods/../build/Debug-iphoneos/SimpleAnimation.framework"; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		A7E05A531D9116CA007CD4B6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		A7E05A551D9116D6007CD4B6 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "Pods/../build/Debug-iphoneos/PureLayout.framework"; sourceTree = "<group>"; };
+		B8ED5DC22D289B8714C1C76F /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +80,8 @@
 		CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		CDFA3E611D96EEE1007C5173 /* MyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
 		CDFA3E651D96EF38007C5173 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		EC8D4BEB86571599F0980A33 /* Pods-SenYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenYo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SenYo/Pods-SenYo.release.xcconfig"; sourceTree = "<group>"; };
-		EE7AB194F0416A0B3DCDA0EF /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDFA3E701D97755A007C5173 /* GroupMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMenuViewController.swift; sourceTree = "<group>"; };
+		CDFA3E721D9775C0007C5173 /* GroupMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,13 +93,22 @@
 				A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */,
 				A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */,
 				A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */,
-				04C99D8A54BA6789EFDE348D /* Pods_SenYo.framework in Frameworks */,
+				804185E89FC38DD0AC4FEBB7 /* Pods_SenYo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85C6938A2112F5183692ADE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BA25FB1AFAC9AF77719EFD7 /* Pods-SenYo.debug.xcconfig */,
+				93389BAC778E2F1DBA7C88E3 /* Pods-SenYo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A70BE6EE1D6AF60C003E3341 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +118,7 @@
 				A768FAA41D76B131004802A5 /* SettingView.swift */,
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
 				A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */,
+				CDFA3E721D9775C0007C5173 /* GroupMenuView.swift */,
 				A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */,
 			);
 			name = View;
@@ -121,6 +135,7 @@
 				A768FAA81D79661A004802A5 /* NewsViewController.swift */,
 				A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */,
 				A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */,
+				CDFA3E701D97755A007C5173 /* GroupMenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -159,7 +174,7 @@
 				CD0F77DC1D4DD069001BC4C9 /* SenYo */,
 				CD0F77DB1D4DD069001BC4C9 /* Products */,
 				D63A8BC6C16BF0CB739B2DAC /* Frameworks */,
-				E47DE8B065CE4A42EDEC3000 /* Pods */,
+				85C6938A2112F5183692ADE1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,18 +212,9 @@
 				A7E05A551D9116D6007CD4B6 /* PureLayout.framework */,
 				A7E05A531D9116CA007CD4B6 /* Alamofire.framework */,
 				A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */,
-				EE7AB194F0416A0B3DCDA0EF /* Pods_SenYo.framework */,
+				B8ED5DC22D289B8714C1C76F /* Pods_SenYo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E47DE8B065CE4A42EDEC3000 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5FBEE8877B9BCCB3F31B11AB /* Pods-SenYo.debug.xcconfig */,
-				EC8D4BEB86571599F0980A33 /* Pods-SenYo.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +230,7 @@
 				CD0F77D81D4DD069001BC4C9 /* Resources */,
 				31355E5B425236066E42D21F /* [CP] Embed Pods Frameworks */,
 				727C7501C0E04973C02FCA95 /* [CP] Copy Pods Resources */,
-				FB91B6240C32452D10EFEAC8 /* Embed Pods Frameworks */,
+				4AACC98CC330D088C96F03E0 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,6 +304,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SenYo/Pods-SenYo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4AACC98CC330D088C96F03E0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SenYo/Pods-SenYo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		727C7501C0E04973C02FCA95 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,21 +349,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FB91B6240C32452D10EFEAC8 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SenYo/Pods-SenYo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -362,12 +368,14 @@
 				CDA1F3411D717C0B001C4336 /* LoginView.swift in Sources */,
 				CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
+				CDFA3E731D9775C0007C5173 /* GroupMenuView.swift in Sources */,
 				CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */,
 				A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */,
 				CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */,
 				A768FAA51D76B131004802A5 /* SettingView.swift in Sources */,
 				A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */,
 				A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */,
+				CDFA3E711D97755A007C5173 /* GroupMenuViewController.swift in Sources */,
 				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,
 				A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */,
 				CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */,
@@ -473,7 +481,7 @@
 		};
 		CD0F77F01D4DD06A001BC4C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FBEE8877B9BCCB3F31B11AB /* Pods-SenYo.debug.xcconfig */;
+			baseConfigurationReference = 8BA25FB1AFAC9AF77719EFD7 /* Pods-SenYo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -493,7 +501,7 @@
 		};
 		CD0F77F11D4DD06A001BC4C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC8D4BEB86571599F0980A33 /* Pods-SenYo.release.xcconfig */;
+			baseConfigurationReference = 93389BAC778E2F1DBA7C88E3 /* Pods-SenYo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+<<<<<<< HEAD
+//import ECSlidingViewController
+=======
+>>>>>>> 03aed17bc0b727f2a2433f7fe627edf309c6cc01
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
