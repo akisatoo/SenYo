@@ -15,6 +15,7 @@ protocol MenuViewDelegate : NSObjectProtocol {
 }
 class MenuView : UIView, UITableViewDataSource, UITableViewDelegate {
     var delegate : MenuViewDelegate?
+    let aspect = Aspect()
     var itemArray : NSArray = ["お知らせ","ユーザ編集","ログアウト"]
     var itemNames : NSArray = ["bell", "gear", "door"]
     var myTableView = UITableView()
@@ -52,23 +53,23 @@ class MenuView : UIView, UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = UIColor.clearColor()
         cell.addSubview(textLabel)
         cell.addSubview(imageViews)
-        textLabel.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 )
-        textLabel.autoPinEdgeToSuperviewEdge(.Left, withInset : 50 )
-        imageViews.autoSetDimensionsToSize(CGSizeMake(18, 18))
-        imageViews.autoPinEdgeToSuperviewEdge(.Top, withInset : 12 )
-        imageViews.autoPinEdgeToSuperviewEdge(.Left, withInset : 15 )
+        textLabel.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 * aspect.yAspect() )
+        textLabel.autoPinEdgeToSuperviewEdge(.Left, withInset : 50 * aspect.xAspect() )
+        imageViews.autoSetDimensionsToSize(CGSizeMake( 18 * aspect.xAspect(), 18 * aspect.yAspect()))
+        imageViews.autoPinEdgeToSuperviewEdge(.Top, withInset : 12 * aspect.yAspect())
+        imageViews.autoPinEdgeToSuperviewEdge(.Left, withInset : 15 * aspect.xAspect() )
         //cell.textLabel?.font = UIFont.systemFontOfSize(18)
         return cell
     }
     
     func setAutoLayout (){
         //autolayout
-        self.autoSetDimensionsToSize(CGSizeMake(150, 150))
+        self.autoSetDimensionsToSize(CGSizeMake(150 * aspect.xAspect(), 150 * aspect.yAspect()))
         self.autoPinEdgeToSuperviewEdge(.Right, withInset : 0)
-        self.autoPinEdgeToSuperviewEdge(.Top, withInset : 65)
-        myTableView.autoSetDimensionsToSize(CGSizeMake(140, 140))
+        self.autoPinEdgeToSuperviewEdge(.Top, withInset : 65 * aspect.yAspect() )
+        myTableView.autoSetDimensionsToSize(CGSizeMake(140 * aspect.xAspect(), 140 * aspect.yAspect()))
         myTableView.autoPinEdgeToSuperviewEdge(.Right, withInset : 0)
-        myTableView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10)
+        myTableView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 * aspect.yAspect())
         
     }
     

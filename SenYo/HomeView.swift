@@ -37,7 +37,7 @@ class HomeView: UIView {
         leader.layer.masksToBounds = true
         leader.userInteractionEnabled = true
         leader.tag = 1
-        leader.image = myImage
+       // leader.image = myImage
         myScrollView.backgroundColor = UIColor.whiteColor()
                
         self.addSubview(myScrollView)
@@ -50,7 +50,7 @@ class HomeView: UIView {
                 let myImageView = UIImageView()
                 let userName = UILabel(frame: CGRectMake( 0, 0, 100 * aspect.xAspect(), 50  * aspect.yAspect() ))
                 userName.text = "name"
-                myImageView.image = myImage
+              //  myImageView.image = myImage
                 myImageView.layer.cornerRadius = userSize / 2
                 userArray[i].append(myImageView)
                 if j % 2 != 0  {

@@ -53,6 +53,7 @@ class LoginView: UIView {
         userTextFiled.layer.borderWidth = 2.0
         userTextFiled.layer.cornerRadius = 20.0
         userTextFiled.tag = 1
+        userTextFiled.autocapitalizationType = UITextAutocapitalizationType.None
         userTextFiled.addTarget( delegate, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         passTextFiled.textAlignment = NSTextAlignment.Center

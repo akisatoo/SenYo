@@ -43,28 +43,35 @@ class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
         //print("Value: \(self.myItem[indexPath.row])")
         self.delegate?.moveViews(indexPath.row)
     }
-    /*
-    Cellの総数を返すデータソースメソッド.
-    (実装必須)
-    */
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.myItem.count
     }
     
-    /*
-    Cellに値を設定するデータソースメソッド.
-    (実装必須)
-    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        // 再利用するCellを取得する.
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-        
-        // Cellに値を設定する.
-        cell.textLabel!.text = "\(self.myItem[indexPath.row])"
+        let groupName = UILabel()
+        let imageView = UIImageView(image: UIImage(named: "hironaka"))
+        imageView.layer.cornerRadius = 20
+        imageView.layer.masksToBounds = true
+        groupName.text = "\(self.myItem[indexPath.row])"
+        cell.backgroundColor = .whiteColor()
+        cell.addSubview(groupName)
+        cell.addSubview(imageView)
+        imageView.autoSetDimensionsToSize(CGSizeMake(50, 50))
+        imageView.autoPinEdgeToSuperviewEdge(.Left, withInset: 20 )
+        imageView.autoPinEdgeToSuperviewEdge(.Top, withInset: 10 )
+        groupName.autoPinEdgeToSuperviewEdge(.Top, withInset: 20 )
+        groupName.autoPinEdge(.Left, toEdge: .Right, ofView: imageView, withOffset: 20 )
         
         return cell
     }
-
+    
+    //cells height setting
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cellForHeight : CGFloat = 70
+        return cellForHeight
+    }
+    
 
 }

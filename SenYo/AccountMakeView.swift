@@ -16,7 +16,7 @@ protocol AccountMakeViewDelegate : NSObjectProtocol {
 
 class AccountMakeView : UIView, UITextFieldDelegate {
     var delegate  : AccountMakeViewDelegate?
-    
+    let aspect = Aspect()
     let passTextField = UITextField()
     let accountTextField = UITextField()
     let nameTextField = UITextField()
@@ -24,7 +24,7 @@ class AccountMakeView : UIView, UITextFieldDelegate {
     
     required init(){
         super.init(frame: CGRectMake(0, 0, 0, 0))
-        self.backgroundColor = UIColor.grayColor()
+        self.backgroundColor = .whiteColor()
         let scrollView = UIScrollView()
         
         let makeButton = UIButton()
@@ -39,15 +39,18 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         nameTextField.layer.borderWidth = 2.0
         nameTextField.layer.borderColor = UIColor.blueColor().CGColor
         nameTextField.placeholder = "名前"
+        nameTextField.autocapitalizationType = UITextAutocapitalizationType.None
         nameTextField.layer.cornerRadius = 5
         accountTextField.borderStyle = UITextBorderStyle.RoundedRect
         accountTextField.layer.borderWidth = 2.0
         accountTextField.layer.borderColor = UIColor.blueColor().CGColor
+        accountTextField.autocapitalizationType = UITextAutocapitalizationType.None
         accountTextField.placeholder = "アカウントID"
         accountTextField.layer.cornerRadius = 5
         passTextField.borderStyle = UITextBorderStyle.RoundedRect
         passTextField.layer.borderWidth = 2.0
         passTextField.layer.borderColor = UIColor.blueColor().CGColor
+        passTextField.autocapitalizationType = UITextAutocapitalizationType.None
         passTextField.placeholder = "パスワード"
         passTextField.layer.cornerRadius = 5
         
@@ -71,7 +74,7 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         scrollView.contentSize = CGSizeMake(myBoundSize.width, myBoundSize.height * 2 )
         
         //autoLayout
-        accountImage.autoSetDimensionsToSize( CGSizeMake( 100, 100 ))
+        accountImage.autoSetDimensionsToSize( CGSizeMake( 100 * aspect.xAspect(), 100  * aspect.yAspect() ))
         accountImage.autoPinEdgeToSuperviewEdge(.Left, withInset : 20 )
         accountImage.autoPinEdgeToSuperviewEdge(.Top, withInset : 30 )
         nameTextField.autoSetDimensionsToSize(CGSizeMake( 300, 50))

@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     private let hideView = UIView( frame : CGRectMake(0, 0, myBoundSize.width, myBoundSize.height ))
     private var dragFlag : Bool = false
+    private let aspect = Aspect()
     private var messageArray : [UIImageView] = []
     private let menuView  = MenuView()
     private let gropeView = GroupView()
@@ -36,22 +37,21 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         self.view = homeView
         // self.navigationController?.navigationBar.barTintColor = UIColor.blueColor()
         hideView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
+        gropeView.groupMakeButton.addTarget(self, action: "groupMakeButton:", forControlEvents: .TouchUpInside)
         menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         menuItem.style = UIBarButtonItemStyle.Plain
-        menuItem.action = "clickButton:"
+        menuItem.action = "barButtonClick:"
         menuItem.target = self
         menuItem.tintColor = UIColor.clearColor()
         menuItem.tag = 1
         self.navigationItem.rightBarButtonItem = menuItem
         groupItem.image = UIImage(named: "group")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         groupItem.style = UIBarButtonItemStyle.Plain
-        groupItem.action = "clickButton:"
+        groupItem.action = "barButtonClick:"
         groupItem.target = self
         groupItem.tintColor = UIColor.clearColor()
         groupItem.tag = 2
         self.navigationItem.leftBarButtonItem = groupItem
-        // self.appDelegate.window?.addSubview(myView)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,8 +59,8 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    // ボタンアクション
-    internal func clickButton( sender : UIBarButtonItem ){
+    // NavigationBar Button Action
+    internal func barButtonClick( sender : UIBarButtonItem ){
         print(sender.tag)
         switch(sender.tag){
         case 1:
@@ -86,9 +86,10 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    // メニュー画面遷移
+    // Menu Button Action
     func chooseCell( sender : Int ){
         var myView : UIViewController!
+        // Screen Transition
         switch (sender){
         case 0:
             myView = NewsViewController()
@@ -111,7 +112,16 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         self.menuView.removeFromSuperview()
     }
     
-    //
+    // GroupMakeButton Action
+    internal func groupMakeButton(sender: UIButton){
+        let myView : UIViewController = MakeGroupViewController()
+        self.navigationController?.pushViewController(myView, animated: true )
+        self.gropeView.removeFromSuperview()
+        self.hideView.removeFromSuperview()
+
+    }
+    
+    // Touch Began Action
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         for touch: UITouch in touches {
@@ -125,12 +135,12 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                     self.view.addSubview(messageArray[i])
                     
                     if ( i + 1 ) % 2 == 0 {
-                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 80 )
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 80 * aspect.yAspect() )
                     }else{
-                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 200 )
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 200 * aspect.yAspect())
                     }
-                    messageArray[i].autoPinEdgeToSuperviewEdge(.Left, withInset: 80 + 160 * CGFloat( i / 2 ))
-                    messageArray[i].autoSetDimensionsToSize(CGSizeMake(50, 50))
+                    messageArray[i].autoPinEdgeToSuperviewEdge(.Left, withInset: ( 80 + 160 * CGFloat( i / 2 ) ) * aspect.xAspect())
+                    messageArray[i].autoSetDimensionsToSize(CGSizeMake(50 * aspect.xAspect(), 50 * aspect.yAspect()))
                     messageArray[i].popIn(0.1, duration: 0.5, delay: 0.2, completion: nil )
                     //messageArray[i].tag = i + 1
                 }
@@ -142,7 +152,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    //ドラッグイベント
+    //Drag Action
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if dragFlag {
             let aTouch = touches.first! as UITouch
@@ -159,11 +169,9 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    // side menu delete
+    // Slide Menu Delete
     func deleteSideMenu(sender: UITapGestureRecognizer){
-        print("aaaaaa")
         gropeView.bounceOut(to: .Left, x: 0, y: 0, duration: 0.5, delay: 0.2, completion: {(Bool) -> Void in (
-                self.gropeView.setAutoLayout(),
                 self.gropeView.removeFromSuperview(),
                 self.hideView.removeFromSuperview()
             )}
