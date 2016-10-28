@@ -16,7 +16,7 @@ protocol NewsViewDelegate : NSObjectProtocol {
 class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
     private var myTableView : UITableView!
     var delegate : NewsViewDelegate?
-    private let myItem : NSArray = [ "test1", "招待", "test3"]
+    private let myItem : NSArray = [ "弘中研究室", "飲み会", "Swift同好会"]
     //
     required init () {
         super.init( frame : CGRectMake(0,0, 0, 0))
@@ -51,6 +51,7 @@ class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         let groupName = UILabel()
+        //let descriptionLabel = UILabel()
         let imageView = UIImageView(image: UIImage(named: "hironaka"))
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true

@@ -36,10 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window!.rootViewController = loginView
             }, completion: { _ in })
     }
-    
+    // Home画面を表示
     func afterLogin() {
-        
-        
         let mainNavigationController: UINavigationController?
         let homeView: HomeViewController = HomeViewController()
         mainNavigationController = UINavigationController(rootViewController: homeView)

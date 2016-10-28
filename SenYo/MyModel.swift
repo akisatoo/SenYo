@@ -11,14 +11,18 @@ import UIKit
 import SwiftyJSON
 
 class Model: NSObject {
-    
+    // error count  message
     func errorMessage(res: JSON) -> String {
         var errorMsg = ""
-        for err in res["errors"].array! {
-            print(err)
-            errorMsg = (errorMsg + "\n" + String(err))
+        print("res : ", res["errors"].array?.count )
+        if res["errors"].array == nil {
+            errorMsg = "\n nil"
+        } else {
+            for err in res["errors"].array! {
+                print(err)
+                errorMsg = (errorMsg + "\n" + String(err))
+            }
         }
-        
         return errorMsg
     }
     

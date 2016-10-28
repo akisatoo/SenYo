@@ -11,6 +11,12 @@ import UIKit
 import PureLayout
 import SimpleAnimation
 
+struct Group {
+    var image = [UIImage]()
+    var name : [String] = []
+    var description : [String] = []
+}
+
 protocol MakeGroupViewDelegate : NSObjectProtocol {
     func pushButton(sender : UIButton)
 }
@@ -82,7 +88,7 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         groupImage.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: myBoundSize.width / 2 - 45 )
     }
     
-    //選択されたCell
+    // select cell
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         // print("Num: \(indexPath.row)")
         // print("Value: \(self.myItems[indexPath.row])")
@@ -116,11 +122,12 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         return cell
     }
     
+    // tableview cell height size
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let cellForHeight : CGFloat = 70
         return cellForHeight
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -23,6 +23,7 @@ class UserModel: Model {
     static var sharedManager: UserModel = {
         return UserModel()
     }()
+    
     private override init() {}
     
     func login(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
@@ -31,12 +32,13 @@ class UserModel: Model {
             "account_id": data.account_id
         ]
         
-        Alamofire.request(.POST, "http://127.0.0.1:3000/api/user/login", parameters: params).responseJSON{ response in
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/user/login/", parameters: params).responseJSON{ response in
             guard let object = response.result.value else {
                 return
             }
             
             let res = JSON(object)
+            print(res)
             if res["status"] == "success" {
                 success(res)
                 return;

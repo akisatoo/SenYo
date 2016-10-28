@@ -15,40 +15,46 @@ import Photos
 
 
 class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    var accountMake: AccountMakeView?
-    
+    var accountMakeView: AccountMakeView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        accountMake = AccountMakeView()
-        self.view = accountMake
-        accountMake?.accountImage.userInteractionEnabled = true
-        accountMake?.accountImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imageTapped:"))
-        accountMake!.delegate = self
+        accountMakeView = AccountMakeView()
+        self.view = accountMakeView
+        accountMakeView?.accountImage.userInteractionEnabled = true
+        accountMakeView?.accountImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imageTapped:"))
+        accountMakeView!.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func buttonTouched(sendre : UIButton ){
-        
+    // Account Make
+    func buttonTouched(sender : UIButton ){
         let userModel = UserModel.sharedManager
         var userData = User()
-        userData.password = accountMake!.passTextField.text!
-        userData.account_id = accountMake!.accountTextField.text!
-        userData.name = accountMake!.nameTextField.text!
+        userData.password = accountMakeView!.passTextField.text!
+        userData.account_id = accountMakeView!.accountIDTextField.text!
+        userData.name = accountMakeView!.nameTextField.text!
         
-        userModel.createUser(userData, success: { (res: JSON) -> Void in
+       // print("userdate : ", userData)
+        userModel.createUser( userData, success: { (res: JSON) -> Void in
                 // success
                 let myView = LoginViewController()
                 self.presentViewController(myView, animated: true, completion: nil)
             },
             error: { (res: JSON) -> Void in
+                print("response : ", res )
                 // error
                 let alert = userModel.errorAlert(res)
                 self.presentViewController(alert, animated: true, completion: nil)
         })
+    }
+    
+    // Debug
+    func debugButton(sender: UIButton) {
+        let myView : UIViewController = LoginViewController()
+        self.presentViewController(myView, animated: true, completion: nil)
     }
     
     // Image Clicked Action
@@ -59,7 +65,6 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate,UIImage
         self.presentViewController(ipc, animated:true, completion:nil)
     }
     
-    
     // 画像が選択されたときによばれます
     func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         // アルバム画面を閉じます
@@ -68,14 +73,14 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate,UIImage
         // 画像をリサイズしてUIImageViewにセット
         let resizeImage = resize(image, width: 480, height: 320)
         image = resizeImage
-        accountMake?.accountImage.image = resizeImage
+        accountMakeView?.accountImage.image = resizeImage
     }
     
-    
+    // image make
     func resize(image: UIImage, width: Int, height: Int) -> UIImage {
-        let imageRef: CGImageRef = image.CGImage!
-        let sourceWidth: Int = CGImageGetWidth(imageRef)
-        let sourceHeight: Int = CGImageGetHeight(imageRef)
+        //let imageRef: CGImageRef = image.CGImage!
+        //var sourceWidth: Int = CGImageGetWidth(imageRef)
+        //var sourceHeight: Int = CGImageGetHeight(imageRef)
         
         let size: CGSize = CGSize(width: width, height: height)
         UIGraphicsBeginImageContext(size)

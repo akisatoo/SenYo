@@ -61,7 +61,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     
     // NavigationBar Button Action
     internal func barButtonClick( sender : UIBarButtonItem ){
-        print(sender.tag)
         switch(sender.tag){
         case 1:
             sender.tag = 3
@@ -96,7 +95,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             self.navigationController?.pushViewController(myView, animated: true)
             break;
         case 1:
-            myView = SettingViewController()
+            myView = ProfileViewController()
             self.navigationController?.pushViewController(myView, animated: true)
             break;
         case 2:
@@ -135,12 +134,12 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                     self.view.addSubview(messageArray[i])
                     
                     if ( i + 1 ) % 2 == 0 {
-                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 80 * aspect.yAspect() )
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 100 * aspect.yAspect() )
                     }else{
-                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 200 * aspect.yAspect())
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 220 * aspect.yAspect())
                     }
                     messageArray[i].autoPinEdgeToSuperviewEdge(.Left, withInset: ( 80 + 160 * CGFloat( i / 2 ) ) * aspect.xAspect())
-                    messageArray[i].autoSetDimensionsToSize(CGSizeMake(50 * aspect.xAspect(), 50 * aspect.yAspect()))
+                    messageArray[i].autoSetDimensionsToSize( CGSizeMake(50 * aspect.xAspect(), 50 * aspect.yAspect()))
                     messageArray[i].popIn(0.1, duration: 0.5, delay: 0.2, completion: nil )
                     //messageArray[i].tag = i + 1
                 }

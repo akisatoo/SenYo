@@ -17,7 +17,7 @@ class NewsViewController : UIViewController, NewsViewDelegate {
         super.viewDidLoad()
         self.view = newsView
         newsView.delegate = self
-        self.title = "News"
+        self.title = "お知らせ"
     }
     //
     override func didReceiveMemoryWarning(){

@@ -28,7 +28,7 @@ class HomeView: UIView {
         let leader = UIImageView()
         let views = UIView(frame: CGRectMake( 0, 0, 500 * aspect.xAspect(), 500 * aspect.yAspect() ))
         let myScrollView = UIScrollView()
-        
+        myScrollView.backgroundColor = .whiteColor()
         let leaderSize = 100 * aspect.yAspect()
         leader.layer.cornerRadius = leaderSize / 2
         leader.backgroundColor = UIColor.whiteColor()
@@ -38,15 +38,13 @@ class HomeView: UIView {
         leader.userInteractionEnabled = true
         leader.tag = 1
        // leader.image = myImage
-        myScrollView.backgroundColor = UIColor.whiteColor()
-               
         self.addSubview(myScrollView)
         // User 配置
         for i in 0...6 {
             userArray.append([])
             for j in 0...2 {
                 var xWidth = 30
-                let userSize = 70 * aspect.yAspect()
+                let userSize = 80 * aspect.yAspect()
                 let myImageView = UIImageView()
                 let userName = UILabel(frame: CGRectMake( 0, 0, 100 * aspect.xAspect(), 50  * aspect.yAspect() ))
                 userName.text = "name"
@@ -66,7 +64,7 @@ class HomeView: UIView {
                 userArray[i][j].autoPinEdgeToSuperviewEdge( .Top, withInset:  CGFloat(  -45 + 90 * j  ) * aspect.yAspect() )
                 userArray[i][j].autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat( xWidth + 150 * i ) * aspect.xAspect())
                 userName.autoPinEdgeToSuperviewEdge( .Top, withInset: CGFloat( 30 + 90 * j ) * aspect.yAspect() )
-                userName.autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat(xWidth + 10 + 150 * i) * aspect.xAspect() )
+                userName.autoPinEdgeToSuperviewEdge( .Left, withInset: CGFloat(xWidth + 17 + 150 * i) * aspect.xAspect() )
                 
                 userArray[i][j].popIn(0.6, duration: 0.6, delay: 0.5, completion: nil)
             }
@@ -77,7 +75,6 @@ class HomeView: UIView {
         //addsubview
         self.addSubview(views)
         views.addSubview(leader)
-       // self.appdelegate.window?.addSubview(goupView)
         
         //autolayout
         views.autoPinEdgeToSuperviewEdge(.Top, withInset : 34 )
@@ -86,7 +83,7 @@ class HomeView: UIView {
         leader.autoCenterInSuperview()
         leader.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset:  ( myBoundSize.width / 2 - leaderSize / 2 )  )
         myScrollView.autoSetDimensionsToSize( CGSizeMake(myBoundSize.width, myBoundSize.height / 2 ))
-        myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 35 * aspect.yAspect())
+        myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 0)
         
         
     }

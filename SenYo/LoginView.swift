@@ -25,11 +25,11 @@ class LoginView: UIView {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //
     required init() {
         super.init(frame: CGRectMake(0, 0, 0, 0));
         self.backgroundColor = UIColor.whiteColor()
-        
         let newAcountButton = UIButton()
         let logoImage = UIImageView()
         let userLabel = UILabel()
@@ -55,6 +55,7 @@ class LoginView: UIView {
         userTextFiled.tag = 1
         userTextFiled.autocapitalizationType = UITextAutocapitalizationType.None
         userTextFiled.addTarget( delegate, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        userTextFiled.placeholder = "name"
         
         passTextFiled.textAlignment = NSTextAlignment.Center
         passTextFiled.borderStyle = UITextBorderStyle.RoundedRect
@@ -64,6 +65,7 @@ class LoginView: UIView {
         passTextFiled.layer.borderWidth = 2.0
         passTextFiled.tag = 2
         passTextFiled.addTarget( delegate, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        passTextFiled.placeholder = "password"
         
         userLabel.text = "USER ID: "
         userLabel.textColor = UIColor.whiteColor()
@@ -78,25 +80,17 @@ class LoginView: UIView {
         self.addSubview(loginButton)
         self.addSubview(userTextFiled)
         self.addSubview(passTextFiled)
-       // self.addSubview(userLabel)
-        //self.addSubview(passLabel)
         self.addSubview(newAcountButton)
         self.addSubview(logoImage)
         
         // AutoLayout
         logoImage.autoSetDimensionsToSize( CGSizeMake( 220, 60 ) )
         logoImage.autoPinEdgeToSuperviewEdge(.Left, withInset : myBoundSize.width / 2 - 110  )
-        logoImage.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 120)
-        //userLabel.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 30 )
-        //userLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: logoImage, withOffset: 100)
+        logoImage.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 150)
         userTextFiled.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 30 )
-        userTextFiled.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: logoImage, withOffset: 150)
+        userTextFiled.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: logoImage, withOffset: 100)
         userTextFiled.autoSetDimension(.Width, toSize: myBoundSize.width - 60 )
         userTextFiled.autoSetDimension(.Height, toSize: 50)
-        
-        //passLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: userTextFiled, withOffset: 10)
-        //passLabel.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 30)
-        
         passTextFiled.autoSetDimension(.Width, toSize: myBoundSize.width - 60 )
         passTextFiled.autoSetDimension(.Height, toSize: 50)
         passTextFiled.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: userTextFiled, withOffset: 10)
@@ -111,7 +105,6 @@ class LoginView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     
     // retrunを押すとキーボードを閉じる
     func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -67,9 +67,13 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     
     //選択されたCell
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-       // print("Num: \(indexPath.row)")
-       // print("Value: \(self.myItems[indexPath.row])")
-        
+        // select cell add image
+        let checkImg = UIImageView(image: UIImage( named: "check"))
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.addSubview(checkImg)
+        checkImg.autoSetDimensionsToSize(CGSizeMake(20, 20))
+        checkImg.autoPinEdgeToSuperviewEdge(.Right, withInset: 20 )
+        checkImg.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 10 )
         self.delegate?.chooseCell(self.myItems[indexPath.row] as! String)
     }
     
@@ -82,20 +86,8 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         cell.textLabel!.text = "\(self.searchResult[indexPath.row])"
-        //let myButton = UIButton( frame: CGRectMake( 0, 0, 30, 30 ))
-        //myButton.layer.cornerRadius = myButton.frame.width / 2
-        //myButton.backgroundColor = UIColor.blueColor()
-        //cell.addSubview(myButton)
         cell.textLabel?.font = UIFont.systemFontOfSize(12)
         cell.backgroundColor = UIColor.clearColor()
-        //myButton.layer.position = CGPointMake( myBoundSize.width - 50, 20 )
-        // 背景色
-        /*cell.backgroundColor = UIColor.clearColor()
-        // 選択された時の背景色
-        let cellSelectedBgView = UIView()
-        cellSelectedBgView.backgroundColor = UIColor.redColor()
-        cell.selectedBackgroundView = cellSelectedBgView
-        */
         return cell
     }
     
