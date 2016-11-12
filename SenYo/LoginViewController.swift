@@ -30,6 +30,7 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     // Button Action
     func buttonTouched(sender:UIButton) {
         switch ( sender.tag ){
@@ -41,8 +42,9 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
             userModel.login(userData, success: { (res: JSON) -> Void in
                 // success
                 //ローカルにログイン情報を保持
+                let id = String(res["res"]["_id"])
                 let ud = NSUserDefaults.standardUserDefaults()
-                ud.setBool(true, forKey: "loginFlag")
+                ud.setObject(id, forKey: "id")
                 self.appDelegate.afterLogin()
             },
             error: { (res: JSON) -> Void in
@@ -57,7 +59,6 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
             break;
         default:
             break
-            
         }
     }
     

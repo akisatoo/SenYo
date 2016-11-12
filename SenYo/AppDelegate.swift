@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // ログイン状況をみて表示するViewを決定する
         let ud = NSUserDefaults.standardUserDefaults()
-        let isLogin = ud.boolForKey("loginFlag")
-        if (!isLogin || isLogin == false) {
+        let isLogin = ud.objectForKey("id")
+        if ( isLogin == nil ) {
             self.beforeLogin()
         } else {
             self.afterLogin()

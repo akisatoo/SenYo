@@ -35,7 +35,8 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         menuView.delegate = self
         gropeView.delegate = self
         self.view = homeView
-        // self.navigationController?.navigationBar.barTintColor = UIColor.blueColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.view.backgroundColor = .whiteColor()
         hideView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
         gropeView.groupMakeButton.addTarget(self, action: "groupMakeButton:", forControlEvents: .TouchUpInside)
         menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -101,7 +102,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         case 2:
             // ログアウト
             let ud = NSUserDefaults.standardUserDefaults()
-            ud.setBool(false, forKey: "loginFlag")
+            ud.removeObjectForKey("id")
             self.appDelegate.beforeLogin()
             break;
         default:

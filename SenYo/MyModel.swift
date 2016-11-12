@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-class Model: NSObject {
+class MyModel: NSObject {
     // error count  message
     func errorMessage(res: JSON) -> String {
         var errorMsg = ""

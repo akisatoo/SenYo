@@ -13,7 +13,6 @@ import SimpleAnimation
 import Foundation
 import Photos
 
-
 class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var accountMakeView: AccountMakeView?
     override func viewDidLoad() {

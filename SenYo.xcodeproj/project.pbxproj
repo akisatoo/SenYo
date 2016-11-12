@@ -23,6 +23,7 @@
 		A7854DFE1D96F473001B8AED /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7854DFD1D96F473001B8AED /* MenuView.swift */; };
 		A7854E011D970593001B8AED /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7854E001D970593001B8AED /* GroupView.swift */; };
 		A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */; };
+		A7C5161D1DD6F91100EB20FA /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C5161C1DD6F91100EB20FA /* GroupModel.swift */; };
 		A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */; };
 		A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A531D9116CA007CD4B6 /* Alamofire.framework */; };
 		A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A551D9116D6007CD4B6 /* PureLayout.framework */; };
@@ -61,6 +62,7 @@
 		A7854E001D970593001B8AED /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		A7854E141D975094001B8AED /* ECSlidingViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ECSlidingViewController.framework; path = "Pods/../build/Debug-iphoneos/ECSlidingViewController.framework"; sourceTree = "<group>"; };
 		A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aspect.swift; sourceTree = "<group>"; };
+		A7C5161C1DD6F91100EB20FA /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		A7E05A531D9116CA007CD4B6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		A7E05A551D9116D6007CD4B6 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "Pods/../build/Debug-iphoneos/PureLayout.framework"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				CDFA3E611D96EEE1007C5173 /* MyModel.swift */,
 				CDFA3E651D96EF38007C5173 /* UserModel.swift */,
+				A7C5161C1DD6F91100EB20FA /* GroupModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA1F3451D717D76001C4336 /* LoginViewController.swift in Sources */,
+				A7C5161D1DD6F91100EB20FA /* GroupModel.swift in Sources */,
 				CDA1F3491D75DB8D001C4336 /* HomeView.swift in Sources */,
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
 				A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */,
