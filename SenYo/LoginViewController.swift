@@ -32,17 +32,18 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
     }
     
     // Button Action
-    func buttonTouched(sender:UIButton) {
+    func buttonTouched( sender : UIButton ) {
         switch ( sender.tag ){
         case 1:
+            print("Login!")
             let userModel = UserModel.sharedManager
             var userData = User()
-            userData.password = (loginView?.passTextFiled.text)!
             userData.account_id = (loginView?.userTextFiled.text)!
+            userData.password = (loginView?.passTextFiled.text)!
             userModel.login(userData, success: { (res: JSON) -> Void in
                 // success
                 //ローカルにログイン情報を保持
-                let id = String(res["res"]["_id"])
+                let id : String = String(res["res"]["_id"])
                 let ud = NSUserDefaults.standardUserDefaults()
                 ud.setObject(id, forKey: "id")
                 self.appDelegate.afterLogin()

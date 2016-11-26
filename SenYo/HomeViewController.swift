@@ -9,8 +9,8 @@
 import UIKit
 import PureLayout
 import SimpleAnimation
-//import SwiftyJSON
-//import Alamofire
+import SwiftyJSON
+import Alamofire
 
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, GroupViewDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -19,11 +19,12 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     private let aspect = Aspect()
     private var messageArray : [UIImageView] = []
     private let menuView  = MenuView()
-    private let gropeView = GroupView()
+    private let groupView = GroupView()
     private var locationX : CGFloat!
     private var locationY : CGFloat!
     private var dragX : CGFloat!
     private var dragY : CGFloat!
+    private var firstPoint : CGPoint?
     private let menuItem = UIBarButtonItem()
     private let groupItem = UIBarButtonItem()
     
@@ -33,12 +34,13 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         let homeView = HomeView()
         homeView.delegate = self
         menuView.delegate = self
-        gropeView.delegate = self
+        groupView.delegate = self
         self.view = homeView
         self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         self.view.backgroundColor = .whiteColor()
+        reloadList()
         hideView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
-        gropeView.groupMakeButton.addTarget(self, action: "groupMakeButton:", forControlEvents: .TouchUpInside)
+        groupView.groupMakeButton.addTarget(self, action: "groupMakeButton:", forControlEvents: .TouchUpInside)
         menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         menuItem.style = UIBarButtonItemStyle.Plain
         menuItem.action = "barButtonClick:"
@@ -53,11 +55,14 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         groupItem.tintColor = UIColor.clearColor()
         groupItem.tag = 2
         self.navigationItem.leftBarButtonItem = groupItem
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //
+        self.appDelegate.window?.addSubview(self.hideView)
+        hideView.hidden = true
+        self.hideView.userInteractionEnabled = true
+        self.hideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "deleteSideMenu:"))
+        self.appDelegate.window?.addSubview(groupView)
+        groupView.hidden = true
+        groupView.setAutoLayout()
     }
     
     // NavigationBar Button Action
@@ -69,13 +74,10 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             menuView.setAutoLayout()
             break
         case 2:
-            self.appDelegate.window?.addSubview(self.hideView)
-            self.appDelegate.window?.addSubview(gropeView)
-            gropeView.setAutoLayout()
-            gropeView.bounceIn(from: .Left, x: 0, y: 0, duration: 0.4, delay: 0.3, completion: nil)
+            self.hideView.hidden = false
             self.hideView.fadeIn(0.4, delay: 0.3, completion: nil)
-            self.hideView.userInteractionEnabled = true
-            self.hideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "deleteSideMenu:"))
+            self.groupView.hidden = false
+            self.groupView.bounceIn(from : .Left)
             break
         case 3:
             sender.tag = 1
@@ -84,6 +86,15 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         default:
             print("error")
         }
+    }
+    
+    // Slide Menu Delete
+    func deleteSideMenu(sender: UITapGestureRecognizer){
+        groupView.bounceOut(to:.Left, completion : {(Bool) -> Void in (
+           self.groupView.hidden = true,
+            self.hideView.hidden = true
+            )}
+        )
     }
     
     // Menu Button Action
@@ -100,7 +111,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             self.navigationController?.pushViewController(myView, animated: true)
             break;
         case 2:
-            // ログアウト
+            // logout
             let ud = NSUserDefaults.standardUserDefaults()
             ud.removeObjectForKey("id")
             self.appDelegate.beforeLogin()
@@ -112,22 +123,24 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         self.menuView.removeFromSuperview()
     }
     
-    // GroupMakeButton Action
+    // MakeGroupView Transition
     internal func groupMakeButton(sender: UIButton){
         let myView : UIViewController = MakeGroupViewController()
         self.navigationController?.pushViewController(myView, animated: true )
-        self.gropeView.removeFromSuperview()
-        self.hideView.removeFromSuperview()
-
+        self.groupView.hidden = true
+        self.hideView.hidden = true
     }
     
-    // Touch Began Action
+    // ------- Send Message ----------
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         for touch: UITouch in touches {
             let tag = touch.view!.tag
             switch tag {
             case 1:
+                let firstTouch = touches.first!
+                firstPoint = firstTouch.locationInView(self.view)
+                print("fitst : ", firstPoint) // Debug
                 for i in 0 ... 3{
                     let button = UIImageView(image: UIImage(named: "sen\(i + 1)"))
                     button.tag = i + 1
@@ -135,9 +148,9 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                     self.view.addSubview(messageArray[i])
                     
                     if ( i + 1 ) % 2 == 0 {
-                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 100 * aspect.yAspect() )
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 80 * aspect.yAspect() )
                     }else{
-                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 220 * aspect.yAspect())
+                        messageArray[i].autoPinEdgeToSuperviewEdge(.Top, withInset: 180 * aspect.yAspect())
                     }
                     messageArray[i].autoPinEdgeToSuperviewEdge(.Left, withInset: ( 80 + 160 * CGFloat( i / 2 ) ) * aspect.xAspect())
                     messageArray[i].autoSetDimensionsToSize( CGSizeMake(50 * aspect.xAspect(), 50 * aspect.yAspect()))
@@ -152,62 +165,78 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    //Drag Action
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if dragFlag {
             let aTouch = touches.first! as UITouch
-            // 移動した先の座標を取得.
             let location = aTouch.locationInView(self.view)
             self.locationX = location.x
             self.locationY = location.y
-            // 移動する前の座標を取得.
-            let prevLocation = aTouch.previousLocationInView(self.view)
             // 移動した距離
-            dragX = location.x - prevLocation.x
-            dragY = location.y - prevLocation.y
-            print(prevLocation," x : ",dragX, " y : ", dragY)
+            dragX = location.x - firstPoint!.x
+            dragY =  location.y - firstPoint!.y
         }
-    }
-    
-    // Slide Menu Delete
-    func deleteSideMenu(sender: UITapGestureRecognizer){
-        gropeView.bounceOut(to: .Left, x: 0, y: 0, duration: 0.5, delay: 0.2, completion: {(Bool) -> Void in (
-                self.gropeView.removeFromSuperview(),
-                self.hideView.removeFromSuperview()
-            )}
-        )
     }
     
     // TapEnd Event
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        print("touchesEnded")
         super.touchesEnded(touches, withEvent: event)
-        
-        // アイコンを消す
+        // icon deleate
         if dragFlag {
             for i in 0 ... 3{
                 messageArray[i].popOut(0.1, duration: 0.5, delay: 0.2, completion: {(Bool)-> Void in
                     self.messageArray[i].removeFromSuperview()
-                    if self.dragX > 0 {
-                        if self.dragY >= 0 {
-                            //右下
-                            print("right_bottom")
-                        }else{
-                            //右上
-                            print("right_top")
-                        }
-                    }else{
-                        if self.dragY <= 0 {
-                            //左下
-                            print("left_top")
-                        }else{
-                            //左上
-                            print("left_bottom")
-                        }
-                    }
                 })
+            }
+            if self.dragX > 0 {
+                if self.dragY >= 0 {
+                    //右下
+                    print("right_bottom")
+                }else{
+                    //右上
+                    print("right_top")
+                }
+            }else{
+                if self.dragY <= 0 {
+                    //左下
+                    print("left_top")
+                }else{
+                    //左上
+                    print("left_bottom")
+                }
             }
             dragFlag = false
         }
+        firstPoint = nil
+    }
+    // ----------       ------------
+    
+    // list reload
+    func reloadList(){
+        let groupModel = GroupModel.sharedManager
+        let ud = NSUserDefaults.standardUserDefaults()
+        let id = ud.objectForKey("id") as! String
+        let userData = id
+        print("UserData : " , userData ) // Debug
+        // get gropdata
+        groupModel.getGroup(userData, success: { (res: JSON) -> Void in
+            // success
+            var dic : [JSON] = []
+            for i in 0..<res["res"].count {
+                dic.append(res["res"][i])
+            }
+            self.groupView.setGroupData( dic )
+            
+            },
+            error: { (res: JSON) -> Void in
+                // error
+                let alert = groupModel.errorAlert(res)
+                self.presentViewController(alert, animated: true, completion: nil)
+        })
+
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

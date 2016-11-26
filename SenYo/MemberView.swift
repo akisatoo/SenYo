@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import PureLayout
+import SwiftyJSON
+import Alamofire
 
 protocol MemberViewDelegate : NSObjectProtocol{
 }

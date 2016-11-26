@@ -13,8 +13,9 @@ import SimpleAnimation
 import Foundation
 import Photos
 
-class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var accountMakeView: AccountMakeView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         accountMakeView = AccountMakeView()
@@ -57,19 +58,19 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate,UIImage
     }
     
     // Image Clicked Action
-    func imageTapped(sender: UITapGestureRecognizer ) {
+    func imageTapped( sender: UITapGestureRecognizer ) {
         let ipc: UIImagePickerController = UIImagePickerController();
         ipc.delegate = self
         UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(ipc, animated:true, completion:nil)
     }
     
-    // 画像が選択されたときによばれます
+    // album image select
     func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        // アルバム画面を閉じます
+        // close album
         picker.dismissViewControllerAnimated(true, completion: nil);
         
-        // 画像をリサイズしてUIImageViewにセット
+        // resize to image
         let resizeImage = resize(image, width: 480, height: 320)
         image = resizeImage
         accountMakeView?.accountImage.image = resizeImage

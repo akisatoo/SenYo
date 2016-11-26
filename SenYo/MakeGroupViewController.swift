@@ -13,7 +13,7 @@ import SimpleAnimation
 import Alamofire
 import SwiftyJSON
 
-class MakeGroupViewController : UIViewController, MakeGroupViewDelegate{
+class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     private let memberView  = MemberView()
     private let makeGroupView = MakeGroupView()
     private let placeView = UIView(frame: CGRectMake(0, 0, myBoundSize.width, myBoundSize.height ) )
@@ -33,6 +33,17 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate{
         createGroupButton.tintColor = UIColor.clearColor()
         createGroupButton.tag = 1
         self.navigationItem.rightBarButtonItem = createGroupButton
+        
+        //
+        placeView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
+        placeView.userInteractionEnabled = true
+        placeView.hidden = true
+        placeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped:"))
+        memberView.hidden = true
+        self.view.addSubview( placeView )
+        self.view.addSubview( memberView )
+        memberView.setAutoLayout()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,27 +52,18 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate{
     
     // メンバーViewを作成
     func pushButton(sender : UIButton ){
-       // let makeGroupView = MakeGroupView()
-        placeView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
-        placeView.userInteractionEnabled = true
-        placeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped:"))
-        self.view.addSubview( placeView )
-        self.view.addSubview( memberView )
-        memberView.setAutoLayout()
+        placeView.hidden = false
+        memberView.hidden = false
         memberView.popIn(0.1, duration: 0.6, delay: 0.1, completion: nil )
-        print("success")
-        //let myView = MemBerViewContoller()
-        //self.navigationController?.pushViewController(myView, animated: true)
     }
    
     // memberView deleate
     func viewTapped( sender : UITapGestureRecognizer ){
         makeGroupView.setList(memberView.getList())
-        makeGroupView.reload()
         self.memberView.popOut(1, duration: 0.6, delay: 0.1, completion : { (Bool) -> Void in
-            self.placeView.removeFromSuperview()
-            self.memberView.removeFromSuperview()
-        })
+            self.placeView.hidden = true
+            self.memberView.hidden = true
+         })
     }
     
     //
@@ -71,31 +73,59 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate{
             let groupModel = GroupModel.sharedManager
             var groupData = Group()
             let ud = NSUserDefaults.standardUserDefaults()
-            let id = ud.objectForKey("id")
-            
-            // 必要な情報を入れる
-            groupData.leader_id = id as! String
+            let id = ud.objectForKey("id") as! String
+            groupData.leader_id = id
             groupData.members = makeGroupView.member
             groupData.name = makeGroupView.groupName.text!
             
             groupModel.createGroup(groupData, success: { (res: JSON) -> Void in
                 // success
-                //ローカルにログイン情報を保持
-                let id = String(res["res"]["_id"])
-                let ud = NSUserDefaults.standardUserDefaults()
-                ud.setObject(id, forKey: "id")
+                print("Create Group!")
+                let myView : UIViewController = HomeViewController()
+                self.navigationController?.pushViewController(myView, animated: true )
                 },
                 error: { (res: JSON) -> Void in
                     // error
                     let alert = groupModel.errorAlert(res)
                     self.presentViewController(alert, animated: true, completion: nil)
             })
-            
-            print("Create Group!")
             break
         default:
             break
         }
+    }
+    
+    // image Clicked Action
+    func imageTapped( sender: UITapGestureRecognizer ) {
+        let ipc: UIImagePickerController = UIImagePickerController();
+        ipc.delegate = self
+        UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(ipc, animated:true, completion:nil)
+    }
+    
+    // album image select
+    func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        // close album
+        picker.dismissViewControllerAnimated(true, completion: nil);
         
+        // resize to image
+        let resizeImage = resize(image, width: 480, height: 320)
+        image = resizeImage
+        makeGroupView.groupImage.image = resizeImage
+    }
+    
+    // image make
+    func resize(image: UIImage, width: Int, height: Int) -> UIImage {
+        //let imageRef: CGImageRef = image.CGImage!
+        //var sourceWidth: Int = CGImageGetWidth(imageRef)
+        //var sourceHeight: Int = CGImageGetHeight(imageRef)
+        
+        let size: CGSize = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContext(size)
+        image.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        
+        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizeImage
     }
 }

@@ -14,22 +14,27 @@ import SimpleAnimation
 protocol HomeViewDelegate: NSObjectProtocol {
 }
 
-class HomeView: UIView {
+class HomeView: UIView, UITextFieldDelegate {
     let appdelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var delegate: HomeViewDelegate?
-    var goupView : UIView = GroupView()
     private var userArray : [[UIImageView]] = [[UIImageView]]()
+    private var message = UITextField()
     var aspect = Aspect()
     
     required init() {
         super.init(frame: CGRectMake(0, 0, 0, 0));
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.blueColor()
         let myImage = UIImage(named: "hironaka")
+        let balloon = UIImageView(image: UIImage(named: "balloon"))
         let leader = UIImageView()
-        let views = UIView(frame: CGRectMake( 0, 0, 500 * aspect.xAspect(), 500 * aspect.yAspect() ))
+        let views = UIView(frame: CGRectMake( 0, 0, (myBoundSize.width) * aspect.xAspect(), (myBoundSize.height / 2) * aspect.yAspect() ))
         let myScrollView = UIScrollView()
         myScrollView.backgroundColor = .whiteColor()
         let leaderSize = 100 * aspect.yAspect()
+        
+        balloon.autoresizesSubviews = true
+        message.delegate = self
+        message.placeholder = "メッセージ"
         leader.layer.cornerRadius = leaderSize / 2
         leader.backgroundColor = UIColor.whiteColor()
         leader.layer.borderColor = UIColor.blueColor().CGColor
@@ -39,6 +44,7 @@ class HomeView: UIView {
         leader.tag = 1
        // leader.image = myImage
         self.addSubview(myScrollView)
+        
         // User 配置
         for i in 0...6 {
             userArray.append([])
@@ -75,15 +81,23 @@ class HomeView: UIView {
         //addsubview
         self.addSubview(views)
         views.addSubview(leader)
+        views.addSubview(balloon)
+        views.addSubview(message)
         
         //autolayout
-        views.autoPinEdgeToSuperviewEdge(.Top, withInset : 34 )
-        views.autoPinEdge(.Bottom, toEdge: .Top, ofView: myScrollView, withOffset: 0)
+        views.autoPinEdgeToSuperviewEdge(.Top, withInset : 0 )
         leader.autoSetDimensionsToSize( CGSizeMake( leaderSize, leaderSize ))
         leader.autoCenterInSuperview()
-        leader.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset:  ( myBoundSize.width / 2 - leaderSize / 2 )  )
+        leader.autoPinEdgeToSuperviewEdge(.Top, withInset: 100 )
+        leader.autoPinEdgeToSuperviewEdge(.Left, withInset:  ( myBoundSize.width / 2 - leaderSize / 2 ) )
+        balloon.autoSetDimensionsToSize(CGSizeMake(250, 70))
+        balloon.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 125)
+        balloon.autoPinEdge(.Top, toEdge: .Bottom, ofView: leader, withOffset: 30 )
+        message.autoSetDimensionsToSize(CGSizeMake(246, 50))
+        message.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 123)
+        message.autoPinEdge(.Top, toEdge: .Top, ofView: balloon, withOffset: 18 )
         myScrollView.autoSetDimensionsToSize( CGSizeMake(myBoundSize.width, myBoundSize.height / 2 ))
-        myScrollView.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: 0)
+        myScrollView.autoPinEdge(.Top, toEdge: .Bottom, ofView: views, withOffset: 0)
         
         
     }
@@ -94,4 +108,30 @@ class HomeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
+    
+    /*
+    UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
+    */
+    func textFieldDidBeginEditing(textField: UITextField){
+        print("textFieldDidBeginEditing:" + textField.text!)
+    }
+    
+    /*
+    UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
+    */
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        print("textFieldShouldEndEditing:" + textField.text!)
+        
+        return true
+    }
+    
+    /*
+    改行ボタンが押された際に呼ばれるデリゲートメソッド.
+    */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+
 }

@@ -13,6 +13,7 @@ import SimpleAnimation
 
 protocol MakeGroupViewDelegate : NSObjectProtocol {
     func pushButton(sender : UIButton)
+    func imageTapped( sender: UITapGestureRecognizer ) 
 }
 
 class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate{
@@ -22,13 +23,13 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
     private var mySearchBar : UISearchBar!
     var member : [String] = []
     var myTableView: UITableView!
+    var groupImage = UIImageView()
     let groupName = UITextField()
     
     required init(){
         super.init(frame : CGRectMake(0, 0, 0, 0))
         self.backgroundColor = UIColor.whiteColor()
         let groupButton = UIButton()
-        let groupImage = UIImageView()
         
         myTableView = UITableView()
         myTableView.hidden = true
@@ -60,6 +61,8 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         groupImage.layer.borderColor = UIColor.blueColor().CGColor
         groupImage.layer.borderWidth = 2.0
         groupImage.layer.masksToBounds = true
+        groupImage.userInteractionEnabled = true
+        groupImage.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: "imageTapped:"))
         
         //addsubview
         self.addSubview(groupButton)
@@ -165,8 +168,8 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
     func setList( member : NSArray ){
         if member != [] {
             self.member += member as! [String]
-            print("member :",self.member)
         }
+         self.myTableView.reloadData()
     }
     // ----                 -----
     func textFieldShouldReturn(textField: UITextField) -> Bool {

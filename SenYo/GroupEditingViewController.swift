@@ -8,15 +8,15 @@
 
 import UIKit
 
-class NoticeViewController: UIViewController, NoticeViewDelegate{
+class GroupEditingViewController: UIViewController, GroupEditingViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.title = "Notice"
-        let noticeView = NoticeView()
-        noticeView.delegate = self
-        self.view = noticeView
+        self.title = "GroupEditing"
+        let groupEditingView = GroupEditingView()
+        groupEditingView.delegate = self
+        self.view = groupEditingView
     }
     
     override func didReceiveMemoryWarning() {

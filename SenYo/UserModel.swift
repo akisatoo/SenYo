@@ -38,7 +38,7 @@ class UserModel: MyModel {
             }
             
             let res = JSON(object)
-            print(res)
+            print("login : " , res )
             if res["status"] == "success" {
                 success(res)
                 return;
@@ -75,5 +75,50 @@ class UserModel: MyModel {
         }
     }
     
+    func userEdit(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params = [
+            "id": data.id,
+            "password": data.password,
+            "name": data.name,
+            "image": data.image
+        ]
+        
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/user/edit/", parameters: params).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let res = JSON(object)
+            if res["status"] == "success" {
+                success(res)
+                return;
+            }
+            
+            //Error時のコールバック
+            error(res)
+            
+        }
+    }
     
+    func userSearch(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params = [
+            "account_id": data.account_id
+        ]
+        
+        Alamofire.request(.GET, "http://127.0.0.1:3000/api/user/search/", parameters: params).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let res = JSON(object)
+            if res["status"] == "success" {
+                success(res)
+                return;
+            }
+            
+            //Error時のコールバック
+            error(res)
+            
+        }
+    }
 }

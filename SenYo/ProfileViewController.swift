@@ -24,6 +24,10 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, UIImagePicke
         super.didReceiveMemoryWarning()
     }
     
+    internal func signIn( sender: UIButton ){
+        print( "debug ") // debug 
+    }
+    
     // Image Clicked Action
     func imageTapped(sender: UITapGestureRecognizer ) {
         let ipc: UIImagePickerController = UIImagePickerController();

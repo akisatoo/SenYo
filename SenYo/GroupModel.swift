@@ -42,7 +42,7 @@ class GroupModel: MyModel {
             }
             
             let res = JSON(object)
-            print(res)
+            print("res : " , res )
             if res["status"] == "success" {
                 success(res)
                 return;
@@ -53,20 +53,39 @@ class GroupModel: MyModel {
         }
     }
     
-    func create(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
-        let params = [
-            "group_id" : data.id,
-            "name": data.name,
-            "leader_id": data.leader_id,
-            "members": data.members
+    func getGroup(data: String, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params : [String : String] = [
+            "user_id" : data
         ]
         
-        Alamofire.request(.POST, "http://127.0.0.1:3000/api/user/grop_create/", parameters: params ).responseJSON{ response in
+        Alamofire.request( .GET, "http://127.0.0.1:3000/api/group/list/", parameters: params ).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            print(object)
+            let res = JSON(object)
+            if res["status"] == "success" {
+                success(res)
+                return
+            }
+            //Error時のコールバック
+            error(res)
+        }
+    }
+    
+    func deleteGroup(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params = [
+            "group_id": data.id,
+        ]
+        
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/group/delete", parameters: params ).responseJSON{ response in
             guard let object = response.result.value else {
                 return
             }
             
             let res = JSON(object)
+            print("res : " , res )
             if res["status"] == "success" {
                 success(res)
                 return;
@@ -74,9 +93,32 @@ class GroupModel: MyModel {
             
             //Error時のコールバック
             error(res)
-            
         }
     }
     
+    func editGroup(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
+        
+        let params = [
+            "name": data.name,
+            "add_members" : data.members,
+            "remove_members" : data.members
+        ]
+        
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/group/edit/", parameters: params ).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let res = JSON(object)
+            print("res : " , res )
+            if res["status"] == "success" {
+                success(res)
+                return;
+            }
+            
+            //Error時のコールバック
+            error(res)
+        }
+    }
 }
 

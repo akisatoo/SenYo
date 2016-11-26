@@ -31,12 +31,11 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         let makeButton = UIButton()
         let debugButton = UIButton()    // Debug
         
-        scrollView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
+        scrollView.backgroundColor = .redColor()
         accountImage.image = UIImage( named: "logo" )
-        //accountImage.layer.cornerRadius = 50
         accountImage.layer.borderWidth = 2.0
-        //accountImage.layer.masksToBounds = true
         accountImage.layer.borderColor = UIColor.clearColor().CGColor
+        
         nameTextField.borderStyle = UITextBorderStyle.RoundedRect
         nameTextField.layer.borderWidth = 2.0
         nameTextField.layer.borderColor = UIColor(red: 0.1, green: 1, blue: 1, alpha: 1).CGColor
@@ -74,7 +73,7 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         
         // addsubView
         self.addSubview(scrollView)
-        scrollView.addSubview(accountImage)
+        self.addSubview(accountImage)
         scrollView.addSubview(nameTextField)
         scrollView.addSubview(accountIDTextField)
         scrollView.addSubview(passTextField)
@@ -83,14 +82,16 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         scrollView.addSubview(debugButton)
         
         // Scrollの幅
-        scrollView.contentSize = CGSizeMake(myBoundSize.width, myBoundSize.height * 2 )
+        scrollView.contentSize = CGSizeMake(myBoundSize.width, myBoundSize.height)
         
-        // autoLayout
+        // AutoLayout
         accountImage.autoSetDimensionsToSize( CGSizeMake( 220 * aspect.xAspect(), 60  * aspect.yAspect() ))
         accountImage.autoPinEdgeToSuperviewEdge( .Left, withInset : myBoundSize.width / 2 - 110  )
         accountImage.autoPinEdgeToSuperviewEdge(.Top, withInset : 100 )
+        scrollView.autoSetDimensionsToSize(CGSize(width: myBoundSize.width, height: myBoundSize.height - 20 ))
+        scrollView.autoPinEdge(.Top, toEdge: .Bottom, ofView: accountImage, withOffset: 0 )
         nameTextField.autoSetDimensionsToSize(CGSizeMake( 300, 46 ))
-        nameTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: accountImage, withOffset: 100 )
+        nameTextField.autoPinEdgeToSuperviewEdge(.Top, withInset: 100 )
         nameTextField.autoPinEdgeToSuperviewEdge(.Left, withInset : myBoundSize.width / 2 - 150 )
         accountIDTextField.autoSetDimensionsToSize(CGSizeMake( 300, 46 ))
         accountIDTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: nameTextField, withOffset: 18 )
@@ -114,13 +115,12 @@ class AccountMakeView : UIView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // retrunを押すとキーボードを閉じる
+    // close keybord
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        // ユーザがキーボード以外の場所をタップすると、キーボードを閉じる
         self.endEditing(true)
     }
 }
