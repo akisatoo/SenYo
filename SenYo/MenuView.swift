@@ -70,7 +70,5 @@ class MenuView : UIView, UITableViewDataSource, UITableViewDelegate {
         myTableView.autoSetDimensionsToSize(CGSizeMake(140 * aspect.xAspect(), 140 * aspect.yAspect()))
         myTableView.autoPinEdgeToSuperviewEdge(.Right, withInset : 0)
         myTableView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 * aspect.yAspect())
-        
     }
-    
 }

@@ -13,7 +13,7 @@ import SwiftyJSON
 import Alamofire
 
 protocol GroupViewDelegate : NSObjectProtocol {
-    //func chooseCell( sender : Int )
+    func chooseGroupCell( sender : Int )
 }
 
 class GroupView : UIView, UITableViewDelegate, UITableViewDataSource {
@@ -49,7 +49,7 @@ class GroupView : UIView, UITableViewDelegate, UITableViewDataSource {
     
     //選択されたCell
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-       // self.delegate?.chooseCell( indexPath.row )
+        self.delegate?.chooseGroupCell( indexPath.row )
     }
     
     //Cellの総数を返すデータソースメソッド.
@@ -63,7 +63,8 @@ class GroupView : UIView, UITableViewDelegate, UITableViewDataSource {
         let myImageView = UIImageView(image: UIImage(named: "group"))
         let textLabel = UILabel()
         textLabel.text = String(self.groupObjects[indexPath.row]["name"])
-        cell.backgroundColor = UIColor.clearColor()
+        
+        cell.backgroundColor = .clearColor()
         cell.addSubview(myImageView)
         cell.addSubview(textLabel)
         myImageView.autoPinEdgeToSuperviewEdge(.Top, withInset : 10 * aspect.yAspect())
@@ -88,10 +89,14 @@ class GroupView : UIView, UITableViewDelegate, UITableViewDataSource {
         groupMakeButton.autoPinEdgeToSuperviewEdge(.Left, withInset: 20 )
     }
     
-    // setter
+    //
     func setGroupData( data : [JSON] ){
         groupObjects = data
         myTableView.reloadData()
+    }
+    
+    func getGroupData() -> [JSON]{
+        return groupObjects
     }
     
 }

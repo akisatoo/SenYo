@@ -19,7 +19,6 @@
 		A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */; };
 		A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */; };
 		A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAB01D7D37AE004802A5 /* MemberView.swift */; };
-		A76C44C81DC38D58000CE1FB /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76C44C71DC38D58000CE1FB /* GradientLayer.swift */; };
 		A7854DFE1D96F473001B8AED /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7854DFD1D96F473001B8AED /* MenuView.swift */; };
 		A7854E011D970593001B8AED /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7854E001D970593001B8AED /* GroupView.swift */; };
 		A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */; };
@@ -36,8 +35,8 @@
 		CDA1F3451D717D76001C4336 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3441D717D76001C4336 /* LoginViewController.swift */; };
 		CDA1F3471D75DB5A001C4336 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3461D75DB5A001C4336 /* HomeViewController.swift */; };
 		CDA1F3491D75DB8D001C4336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F3481D75DB8D001C4336 /* HomeView.swift */; };
-		CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34A1D75DDD9001C4336 /* NoticeViewController.swift */; };
-		CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */; };
+		CDA1F34B1D75DDD9001C4336 /* GroupEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34A1D75DDD9001C4336 /* GroupEditingViewController.swift */; };
+		CDA1F34D1D75DE1B001C4336 /* GroupEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1F34C1D75DE1B001C4336 /* GroupEditingView.swift */; };
 		CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E611D96EEE1007C5173 /* MyModel.swift */; };
 		CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA3E651D96EF38007C5173 /* UserModel.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +56,6 @@
 		A768FAAA1D7B0DD8004802A5 /* MakeGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupView.swift; sourceTree = "<group>"; };
 		A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
 		A768FAB01D7D37AE004802A5 /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
-		A76C44C71DC38D58000CE1FB /* GradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		A7854DFD1D96F473001B8AED /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		A7854E001D970593001B8AED /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		A7854E141D975094001B8AED /* ECSlidingViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ECSlidingViewController.framework; path = "Pods/../build/Debug-iphoneos/ECSlidingViewController.framework"; sourceTree = "<group>"; };
@@ -78,8 +76,8 @@
 		CDA1F3441D717D76001C4336 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDA1F3461D75DB5A001C4336 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CDA1F3481D75DB8D001C4336 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		CDA1F34A1D75DDD9001C4336 /* NoticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
-		CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
+		CDA1F34A1D75DDD9001C4336 /* GroupEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEditingViewController.swift; sourceTree = "<group>"; };
+		CDA1F34C1D75DE1B001C4336 /* GroupEditingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEditingView.swift; sourceTree = "<group>"; };
 		CDFA3E611D96EEE1007C5173 /* MyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
 		CDFA3E651D96EF38007C5173 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +113,7 @@
 				CDA1F3401D717C0B001C4336 /* LoginView.swift */,
 				A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */,
 				A7854DFF1D970536001B8AED /* HomeViewScreenViews */,
-				CDA1F34C1D75DE1B001C4336 /* NoticeView.swift */,
+				CDA1F34C1D75DE1B001C4336 /* GroupEditingView.swift */,
 				A768FAA41D76B131004802A5 /* ProfileView.swift */,
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
 				A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */,
@@ -130,7 +128,7 @@
 				CDA1F3441D717D76001C4336 /* LoginViewController.swift */,
 				A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */,
 				CDA1F3461D75DB5A001C4336 /* HomeViewController.swift */,
-				CDA1F34A1D75DDD9001C4336 /* NoticeViewController.swift */,
+				CDA1F34A1D75DDD9001C4336 /* GroupEditingViewController.swift */,
 				A768FAA21D76B08A004802A5 /* ProfileViewController.swift */,
 				A768FAA81D79661A004802A5 /* NewsViewController.swift */,
 				A768FAAC1D7B0F91004802A5 /* MakeGroupViewController.swift */,
@@ -198,7 +196,6 @@
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
 				CD0F77EC1D4DD06A001BC4C9 /* Info.plist */,
 				CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */,
-				A76C44C71DC38D58000CE1FB /* GradientLayer.swift */,
 			);
 			path = SenYo;
 			sourceTree = "<group>";
@@ -361,7 +358,7 @@
 				CDA1F3491D75DB8D001C4336 /* HomeView.swift in Sources */,
 				CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */,
 				A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */,
-				CDA1F34D1D75DE1B001C4336 /* NoticeView.swift in Sources */,
+				CDA1F34D1D75DE1B001C4336 /* GroupEditingView.swift in Sources */,
 				CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */,
 				A768FAA31D76B08A004802A5 /* ProfileViewController.swift in Sources */,
 				A7854DFE1D96F473001B8AED /* MenuView.swift in Sources */,
@@ -369,12 +366,11 @@
 				CDA1F3411D717C0B001C4336 /* LoginView.swift in Sources */,
 				CDFA3E661D96EF38007C5173 /* UserModel.swift in Sources */,
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
-				CDA1F34B1D75DDD9001C4336 /* NoticeViewController.swift in Sources */,
+				CDA1F34B1D75DDD9001C4336 /* GroupEditingViewController.swift in Sources */,
 				A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */,
 				CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */,
 				A768FAA51D76B131004802A5 /* ProfileView.swift in Sources */,
 				A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */,
-				A76C44C81DC38D58000CE1FB /* GradientLayer.swift in Sources */,
 				A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */,
 				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,
 				A768FAB11D7D37AE004802A5 /* MemberView.swift in Sources */,

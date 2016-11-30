@@ -27,9 +27,6 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
         self.view = loginView
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     // Button Action
     func buttonTouched( sender : UIButton ) {
@@ -78,6 +75,10 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
             break
             
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
 

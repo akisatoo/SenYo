@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     private var messageArray : [UIImageView] = []
     private let menuView  = MenuView()
     private let groupView = GroupView()
+    private let homeView = HomeView()
     private var locationX : CGFloat!
     private var locationY : CGFloat!
     private var dragX : CGFloat!
@@ -31,7 +32,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
-        let homeView = HomeView()
         homeView.delegate = self
         menuView.delegate = self
         groupView.delegate = self
@@ -56,13 +56,25 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         groupItem.tag = 2
         self.navigationItem.leftBarButtonItem = groupItem
         //
-        self.appDelegate.window?.addSubview(self.hideView)
         hideView.hidden = true
         self.hideView.userInteractionEnabled = true
         self.hideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "deleteSideMenu:"))
-        self.appDelegate.window?.addSubview(groupView)
         groupView.hidden = true
+        menuView.hidden = true
+        
+        // addsubview
+        self.appDelegate.window?.addSubview(self.hideView)
+        self.appDelegate.window?.addSubview(groupView)
+        self.view.addSubview(menuView)
+        // autolayout
+        menuView.setAutoLayout()
         groupView.setAutoLayout()
+        // set user
+        let ud = NSUserDefaults.standardUserDefaults()
+        let groupData = ud.objectForKey("groupData")
+        if groupData != nil {
+            //homeView.setMember(JSON(groupData!))
+        }
     }
     
     // NavigationBar Button Action
@@ -70,8 +82,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         switch(sender.tag){
         case 1:
             sender.tag = 3
-            self.view.addSubview(menuView)
-            menuView.setAutoLayout()
+            menuView.hidden = false
             break
         case 2:
             self.hideView.hidden = false
@@ -81,7 +92,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             break
         case 3:
             sender.tag = 1
-            self.menuView.removeFromSuperview()
+            menuView.hidden = true
             break
         default:
             print("error")
@@ -120,7 +131,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             break;
         }
         menuItem.tag = 1
-        self.menuView.removeFromSuperview()
+        menuView.hidden = true
     }
     
     // MakeGroupView Transition
@@ -140,7 +151,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             case 1:
                 let firstTouch = touches.first!
                 firstPoint = firstTouch.locationInView(self.view)
-                print("fitst : ", firstPoint) // Debug
                 for i in 0 ... 3{
                     let button = UIImageView(image: UIImage(named: "sen\(i + 1)"))
                     button.tag = i + 1
@@ -209,6 +219,18 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         firstPoint = nil
     }
     // ----------       ------------
+    
+    
+    // ----    choose group     ----
+    func chooseGroupCell( sender : Int ){
+        groupView.bounceOut(to:.Left, completion : {(Bool) -> Void in (
+            self.groupView.hidden = true,
+            self.hideView.hidden = true,
+            self.homeView.setMember(self.groupView.getGroupData()[sender])
+            )}
+        )
+    }
+    // ----                     ----
     
     // list reload
     func reloadList(){

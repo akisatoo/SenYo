@@ -51,19 +51,36 @@ class NewsView : UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         let groupName = UILabel()
+        let resLabel = UILabel()
+        let ovalShapeLayer = CAShapeLayer()
+        let count = 1
         //let descriptionLabel = UILabel()
         let imageView = UIImageView(image: UIImage(named: "hironaka"))
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 25
         imageView.layer.masksToBounds = true
         groupName.text = "\(self.myItem[indexPath.row])"
+        groupName.font = UIFont.boldSystemFontOfSize(16)
+        resLabel.text = "\(count)"+"件のレスポンスがあります"
+        resLabel.font = UIFont.boldSystemFontOfSize(12)
+        resLabel.textColor = UIColor(white: 0.5, alpha: 1)
+        ovalShapeLayer.strokeColor = UIColor.clearColor().CGColor
+        ovalShapeLayer.fillColor = UIColor.redColor().CGColor
+        ovalShapeLayer.lineWidth = 1.0
+        ovalShapeLayer.path = UIBezierPath(ovalInRect: CGRect(x:20, y: 14, width: 10.0, height: 10.0)).CGPath
+        
         cell.backgroundColor = .whiteColor()
         cell.addSubview(groupName)
         cell.addSubview(imageView)
+        cell.addSubview(resLabel)
+        cell.layer.addSublayer(ovalShapeLayer)
+        
         imageView.autoSetDimensionsToSize(CGSizeMake(50, 50))
         imageView.autoPinEdgeToSuperviewEdge(.Left, withInset: 20 )
         imageView.autoPinEdgeToSuperviewEdge(.Top, withInset: 10 )
         groupName.autoPinEdgeToSuperviewEdge(.Top, withInset: 20 )
         groupName.autoPinEdge(.Left, toEdge: .Right, ofView: imageView, withOffset: 20 )
+        resLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: groupName, withOffset: 5)
+        resLabel.autoPinEdge(.Left, toEdge: .Left, ofView: groupName, withOffset: 0)
         
         return cell
     }
