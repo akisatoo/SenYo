@@ -17,12 +17,12 @@ protocol MemberViewDelegate : NSObjectProtocol{
 
 class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     var delegate : MemberViewDelegate?
-    var myItems : NSArray = ["坂井まどか", "松江飛雄馬", "高橋秋里", "User1", "User2", "User3"]             //User情報
+    var myItems : [String] = []
+    var userData : [JSON] = []
     var selectUser : [String] = []
     var searchUsers : NSArray = []
     var searchResult = [String]()
     private var myTableView: UITableView!
-    private var myView : UIView!
     private var mySearchBar: UISearchBar!
     let textLabel = UILabel()
     let addUserIconImg = UIImage(named: "addUser")
@@ -140,7 +140,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         } else {
             for data in myItems {
                 if data.containsString(mySearchBar.text!) {
-                    searchResult.append(data as! String)
+                    searchResult.append(data)
                 }
             }
         }
@@ -150,7 +150,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     
     // serchbar cansel button action
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        //searchBar.showsCancelButton = false
+        searchBar.showsCancelButton = false
         searchResult.removeAll()
         searchBar.resignFirstResponder()
         myTableView.reloadData()
@@ -160,7 +160,17 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     func getList() -> [String] {
         return self.selectUser
     }
-    // ----
+    //set members
+    func setList( data : JSON ){
+        print("count : ", data.count)
+        for i in 0..<data.count - 1{
+            userData.append(data[i])
+            searchResult.append(String(data["res"][i]["name"]))
+        }
+        myItems = searchResult
+        myTableView.reloadData()
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

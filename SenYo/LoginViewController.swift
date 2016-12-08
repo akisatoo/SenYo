@@ -43,6 +43,7 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
                 let id : String = String(res["res"]["_id"])
                 let ud = NSUserDefaults.standardUserDefaults()
                 ud.setObject(id, forKey: "id")
+                ud.setObject(self.loginView?.userTextFiled.text, forKey: "user_id")
                 self.appDelegate.afterLogin()
             },
             error: { (res: JSON) -> Void in

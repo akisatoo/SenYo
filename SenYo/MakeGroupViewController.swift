@@ -14,6 +14,7 @@ import Alamofire
 import SwiftyJSON
 
 class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    private let TRANSITION = 1
     private let memberView  = MemberView()
     private let makeGroupView = MakeGroupView()
     private let placeView = UIView(frame: CGRectMake(0, 0, myBoundSize.width, myBoundSize.height ) )
@@ -27,7 +28,6 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         self.view = makeGroupView
         createGroupButton.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         createGroupButton.style = UIBarButtonItemStyle.Plain
-        //createGroupButton.title = "作成"
         createGroupButton.action = "createButtonClick:"
         createGroupButton.target = self
         createGroupButton.tintColor = UIColor.clearColor()
@@ -40,10 +40,10 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         placeView.hidden = true
         placeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped:"))
         memberView.hidden = true
+        setSearchList()
         self.view.addSubview( placeView )
         self.view.addSubview( memberView )
         memberView.setAutoLayout()
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,6 +60,7 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
     // memberView deleate
     func viewTapped( sender : UITapGestureRecognizer ){
         makeGroupView.setList(memberView.getList())
+        memberView.selectUser.removeAll()
         self.memberView.popOut(1, duration: 0.6, delay: 0.1, completion : { (Bool) -> Void in
             self.placeView.hidden = true
             self.memberView.hidden = true
@@ -69,7 +70,7 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
     //
     func createButtonClick( sender : UIBarButtonItem ){
         switch( sender.tag ){
-        case 1:
+        case TRANSITION:
             let groupModel = GroupModel.sharedManager
             var groupData = Group()
             let ud = NSUserDefaults.standardUserDefaults()
@@ -77,6 +78,9 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
             groupData.leader_id = id
             groupData.members = makeGroupView.member
             groupData.name = makeGroupView.groupName.text!
+            if makeGroupView.member != [] {
+                memberView.selectUser = makeGroupView.getMember() as! [String]
+            }
             
             groupModel.createGroup(groupData, success: { (res: JSON) -> Void in
                 // success
@@ -127,5 +131,22 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return resizeImage
+    }
+    
+    func setSearchList(){
+        let userModel = UserModel.sharedManager
+        let ud = NSUserDefaults.standardUserDefaults()
+        let account_id : String = ud.objectForKey("user_id") as! String
+        // set gropdata
+        userModel.userSearch(account_id, success: { (res: JSON) -> Void in
+                // success
+                self.memberView.setList(res)
+            },
+            error: { (res: JSON) -> Void in
+                // error
+                let alert = userModel.errorAlert(res)
+                self.presentViewController(alert, animated: true, completion: nil)
+        })
+        
     }
 }

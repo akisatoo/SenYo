@@ -90,8 +90,7 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
     
     // select cell
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        // print("Num: \(indexPath.row)")
-        // print("Value: \(self.myItems[indexPath.row])")
+        
     }
     
     //Cellの総数を返すデータソースメソッド.
@@ -169,7 +168,12 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         if member != [] {
             self.member += member as! [String]
         }
-         self.myTableView.reloadData()
+        self.myTableView.reloadData()
+    }
+    
+    // getMember
+    func getMember() -> NSArray{
+        return self.member
     }
     // ----                 -----
     func textFieldShouldReturn(textField: UITextField) -> Bool {

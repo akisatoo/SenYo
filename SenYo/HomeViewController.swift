@@ -103,7 +103,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     func deleteSideMenu(sender: UITapGestureRecognizer){
         groupView.bounceOut(to:.Left, completion : {(Bool) -> Void in (
            self.groupView.hidden = true,
-            self.hideView.hidden = true
+           self.hideView.hidden = true
             )}
         )
     }
@@ -125,6 +125,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             // logout
             let ud = NSUserDefaults.standardUserDefaults()
             ud.removeObjectForKey("id")
+            ud.removeObjectForKey("user_id")
             self.appDelegate.beforeLogin()
             break;
         default:
@@ -174,7 +175,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             }
         }
     }
-    
+    // drag action
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if dragFlag {
             let aTouch = touches.first! as UITouch
@@ -184,6 +185,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             // 移動した距離
             dragX = location.x - firstPoint!.x
             dragY =  location.y - firstPoint!.y
+            homeView.setMessageData(messagePlaceholder(dragX, dragY: dragY))
         }
     }
     
@@ -215,6 +217,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                 }
             }
             dragFlag = false
+            homeView.setMessageData("")
         }
         firstPoint = nil
     }
@@ -255,6 +258,17 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                 self.presentViewController(alert, animated: true, completion: nil)
         })
 
+    }
+    
+    //
+    func messagePlaceholder( drafX : CGFloat, dragY : CGFloat ) ->String {
+        var placholder : String = ""
+        if self.dragX > 0 {
+            placholder = (self.dragY >= 0) ? "今日集まれる人":"来れる人"
+        }else{
+            placholder = (self.dragY <= 0) ? "飲みにく人":"今研究室にいる人"
+        }
+        return placholder
     }
     
     override func didReceiveMemoryWarning() {

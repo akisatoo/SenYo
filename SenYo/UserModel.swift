@@ -100,18 +100,18 @@ class UserModel: MyModel {
         }
     }
     
-    func userSearch(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
-        let params = [
-            "account_id": data.account_id
-        ]
+    func userSearch(data: String, success: (JSON) -> Void, error: (JSON) -> Void) {
         
+        let params : [String : String] = [
+            "account_id": data
+        ]
         Alamofire.request(.GET, "http://127.0.0.1:3000/api/user/search/", parameters: params).responseJSON{ response in
             guard let object = response.result.value else {
                 return
             }
             
             let res = JSON(object)
-            if res["status"] == "success" {
+             if res["status"] == "success" {
                 success(res)
                 return;
             }

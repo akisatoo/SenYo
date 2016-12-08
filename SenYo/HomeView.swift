@@ -24,7 +24,7 @@ class HomeView: UIView, UITextFieldDelegate {
     private var userImg : [UIImageView] = []
     let myScrollView = UIScrollView()
     private var views = UIView()
-    private var message = UITextField()
+    var message = UITextField()
     private var userData: JSON?
     
     
@@ -247,6 +247,10 @@ class HomeView: UIView, UITextFieldDelegate {
     //
     func setMemberData( data : JSON ){
         userData = data
+    }
+    
+    func setMessageData( messageData : String ){
+        message.placeholder = messageData
     }
     
     required init(coder aDecoder: NSCoder) {
