@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class NewsViewController : UIViewController, NewsViewDelegate {
-   
     //
     override func viewDidLoad() {
         let newsView = NewsView()

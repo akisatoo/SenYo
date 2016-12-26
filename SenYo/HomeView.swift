@@ -23,6 +23,7 @@ class HomeView: UIView, UITextFieldDelegate {
     private var userArray : [[UIImageView]]  = [[UIImageView]]()
     private var userImg : [UIImageView] = []
     let myScrollView = UIScrollView()
+    
     private var views = UIView()
     var message = UITextField()
     private var userData: JSON?
@@ -34,6 +35,7 @@ class HomeView: UIView, UITextFieldDelegate {
         let myImage = UIImage(named: "hironaka")
         let balloon = UIImageView(image: UIImage(named: "balloon"))
         let leader = UIImageView()
+        
         views = UIView(frame: CGRectMake( 0, 0, (myBoundSize.width) * aspect.xAspect(), (myBoundSize.height / 2) * aspect.yAspect() ))
         myScrollView.backgroundColor = .whiteColor()
         let leaderSize = 100 * aspect.yAspect()
@@ -49,7 +51,7 @@ class HomeView: UIView, UITextFieldDelegate {
         leader.userInteractionEnabled = true
         leader.tag = 1
         leader.popIn()
-        // leader.image =
+        myScrollView.frame = CGRectMake(0, myBoundSize.height / 2, myBoundSize.width, myBoundSize.height / 2 +  35 )
         self.addSubview(myScrollView)
         
         //addsubview
@@ -57,7 +59,7 @@ class HomeView: UIView, UITextFieldDelegate {
         views.addSubview(leader)
         views.addSubview(balloon)
         views.addSubview(message)
-
+        
         //autolayout
         views.autoPinEdgeToSuperviewEdge(.Top, withInset : 0 )
         leader.autoSetDimensionsToSize( CGSizeMake( leaderSize, leaderSize ))
@@ -72,42 +74,13 @@ class HomeView: UIView, UITextFieldDelegate {
         message.autoPinEdge(.Top, toEdge: .Top, ofView: balloon, withOffset: 18 )
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    
-    //UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
-    func textFieldDidBeginEditing(textField: UITextField){
-        print("textFieldDidBeginEditing:" + textField.text!)
-    }
-    
-    /*
-    UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
-    */
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        print("textFieldShouldEndEditing:" + textField.text!)
-        
-        return true
-    }
-    
-    /*
-    改行ボタンが押された際に呼ばれるデリゲートメソッド.
-    */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
-    // set user
+        // set user
     func setMember( groupData : JSON ){
         let scrollSize : CGFloat!
         userImg.removeAll()
         userArray.removeAll()
-        print("メンバー追加")
         // data storage
-        for i in 0..<groupData["members"].count{
+        for i in 0..<groupData["members"].count + 8{
             //let image = UIImage(groupData["members"][i]["image"]) // image set
             let img = UIImageView(image: UIImage(named: "hironaka.jpg"))
             img.layer.borderColor = UIColor.redColor().CGColor
@@ -193,20 +166,18 @@ class HomeView: UIView, UITextFieldDelegate {
             var width : CGFloat!
             let userCount = userImg.count / 4
             let user = userImg.count % 4
-            print("userCount : ", userCount, "   user : ", user )
             for i in 0..<userCount{
                 userArray.append([])
                 for j in 0..<4{
-                    //if userArray[i].count < userCount {
-                        width = ((j + 1) % 2 == 0) ? 100 : 30
-                        userArray[i].append(userImg[count])
-                        myScrollView.addSubview( userArray[i][j] )
-                        userArray[i][j].autoSetDimensionsToSize(CGSizeMake(80, 80))
-                        userArray[i][j].autoPinEdgeToSuperviewEdge( .Left, withInset: ( width + CGFloat( 150 * i )) * aspect.xAspect())
-                        userArray[i][j].autoPinEdgeToSuperviewEdge( .Top, withInset:  CGFloat(  -45 + 90 * j  ) * aspect.yAspect() )
-                        userArray[i][j].popIn()
-                        count++
-              //      }
+                    width = ((j + 1) % 2 == 0) ? 100 : 30
+                    userArray[i].append(userImg[count])
+                    myScrollView.addSubview( userArray[i][j] )
+                    userArray[i][j].autoSetDimensionsToSize(CGSizeMake(80, 80))
+                    userArray[i][j].autoPinEdgeToSuperviewEdge( .Left, withInset: ( width + CGFloat( 150 * i )) * aspect.xAspect())
+                    userArray[i][j].autoPinEdgeToSuperviewEdge( .Top, withInset:  CGFloat(  -45 + 70 * j  ) * aspect.yAspect() )
+                    userArray[i][j].popIn()
+                    count++
+                    
                 }
             }
             
@@ -225,17 +196,14 @@ class HomeView: UIView, UITextFieldDelegate {
                 }
             }
         }
-       
+        
         let ud = NSUserDefaults.standardUserDefaults()
-        let jsonData = String(groupData)
-        ud.setObject(jsonData, forKey: "groupData")
+        let groupData = String(groupData)
+        ud.setObject(groupData, forKey: "groupData")
         ud.synchronize()
         // scroll width
         let addWidth = (userImg.count % 4 == 0) ? 0 : 1
         scrollSize = ((CGFloat(userImg.count / 4 ) * 160) + CGFloat( addWidth * 160 ))  * aspect.xAspect()
-        myScrollView.autoSetDimensionsToSize( CGSizeMake(myBoundSize.width,  myBoundSize.height / 2 + 35 ))
-        myScrollView.autoPinEdge(.Top, toEdge: .Bottom, ofView: views, withOffset: 0)
-        
         if scrollSize < myBoundSize.width {
             myScrollView.scrollEnabled = false
         }else {
@@ -253,8 +221,33 @@ class HomeView: UIView, UITextFieldDelegate {
         message.placeholder = messageData
     }
     
+    
+    //UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
+    func textFieldDidBeginEditing(textField: UITextField){
+        print("textFieldDidBeginEditing:" + textField.text!)
+    }
+    
+    /*
+    UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
+    */
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        print("textFieldShouldEndEditing:" + textField.text!)
+        
+        return true
+    }
+    
+    /*
+    改行ボタンが押された際に呼ばれるデリゲートメソッド.
+    */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }

@@ -11,7 +11,7 @@ import UIKit
 import PureLayout
 
 protocol ProfileViewDelegate : NSObjectProtocol {
-    func signIn( sender: UIButton )
+    func buttonAction( sender: UIButton )
 }
 
 class ProfileView : UIView, UITextFieldDelegate{
@@ -19,70 +19,82 @@ class ProfileView : UIView, UITextFieldDelegate{
     let userImage = UIImageView()
     required init () {
         super.init(frame: CGRectMake( 0, 0, 0, 0 ))
-        let logoImg = UIImageView(image: UIImage(named: "logo"))
         let userName = UITextField()
-        let comment = UITextField()
+        let groupMake = UIButton()
+        let messageEdit = UIButton()
         let signinButton = UIButton()
-        let passTextField = UITextField()
-        let color = UIColor(red: 0.1, green: 1, blue: 1, alpha: 1).CGColor
+        let passChangeBtn = UIButton()
+        let color = UIColor(red: 0.1, green: 1, blue: 1, alpha: 1)
         self.backgroundColor = .whiteColor()
-        logoImg.autoresizesSubviews = true
-        userImage.layer.cornerRadius = 45
+        userImage.layer.cornerRadius = 50
         userImage.layer.masksToBounds = true
         userImage.backgroundColor = UIColor.whiteColor()
-        userImage.layer.borderColor = color
+        userImage.layer.borderColor = color.CGColor
         userImage.layer.borderWidth = 2.0
-        userName.placeholder = "    ユーザID"
+        userName.placeholder = "ユーザID"
+        userName.textAlignment = .Center
         userName.delegate = self
-        userName.layer.borderWidth = 2.0
-        userName.layer.borderColor = color
-        userName.layer.cornerRadius = 20
-        comment.placeholder = "    メールアドレス"
-        comment.layer.borderWidth = 2.0
-        comment.layer.borderColor = color
-        comment.layer.cornerRadius = 20
-        comment.delegate = self
-        passTextField.layer.borderWidth = 2.0
-        passTextField.layer.borderColor = color
-        passTextField.autocapitalizationType = UITextAutocapitalizationType.None
-        passTextField.placeholder = "     パスワード"
-        passTextField.layer.cornerRadius = 20
-        passTextField.delegate = self
-        
-        signinButton.layer.borderColor = color
-        signinButton.layer.borderWidth = 2.0
+        let border = CALayer()
+        let borderWidth = CGFloat(2.0)
+        border.borderColor = UIColor.blackColor().CGColor
+        border.frame = CGRect(x: 80, y: 40, width: 150, height: 1)
+        border.borderWidth = borderWidth
+        userName.layer.addSublayer(border)
+        groupMake.setTitle("新しいグループの作成 ＋ ", forState: .Normal)
+        groupMake.layer.borderWidth = 2.0
+        groupMake.layer.borderColor = color.CGColor
+        groupMake.backgroundColor = color
+        groupMake.layer.cornerRadius = 20
+        groupMake.tag = 1
+        messageEdit.setTitle("メッセージ編集　✎", forState: .Normal)
+        messageEdit.layer.borderWidth = 2.0
+        messageEdit.backgroundColor = color
+        messageEdit.layer.borderColor = color.CGColor
+        messageEdit.layer.cornerRadius = 20
+        messageEdit.tag = 2
+        passChangeBtn.backgroundColor = .clearColor()
+        passChangeBtn.setTitle("パスワード変更", forState: .Normal)
+        passChangeBtn.setTitleColor(color, forState: .Normal)
+        passChangeBtn.titleLabel?.font = UIFont.systemFontOfSize(14)
+        passChangeBtn.tag = 3
+        signinButton.backgroundColor = UIColor.grayColor()
         signinButton.layer.cornerRadius = 20
-        signinButton.setTitle( "SignIn", forState: UIControlState.Normal)
+        signinButton.tag = 4
+        signinButton.setTitle( "ログアウト", forState: .Normal)
         // event
-        signinButton.addTarget( delegate, action: "signIn:", forControlEvents: .TouchUpInside )
+        groupMake.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpOutside)
+        messageEdit.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpOutside)
+        passChangeBtn.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
+        signinButton.addTarget( delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
         
         //add subview
-        self.addSubview(logoImg)
         self.addSubview(userImage)
         self.addSubview(userName)
-        self.addSubview(comment)
-        self.addSubview(passTextField)
+        self.addSubview(groupMake)
+        self.addSubview(messageEdit)
+        self.addSubview(passChangeBtn)
         self.addSubview(signinButton)
         
         // autolayout
-        logoImg.autoSetDimensionsToSize( CGSizeMake( 220, 60 ) )
-        logoImg.autoPinEdgeToSuperviewEdge(.Left, withInset : myBoundSize.width / 2 - 110  )
-        logoImg.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 100)
-        userImage.autoSetDimensionsToSize(CGSizeMake(90, 90))
-        userImage.autoPinEdge(.Top, toEdge: .Bottom, ofView: logoImg, withOffset: 30)
+        userImage.autoSetDimensionsToSize(CGSizeMake(100, 100))
+        userImage.autoPinEdgeToSuperviewEdge(.Top, withInset: 100 )
         userImage.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 50)
         userName.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 70, 44))
-        userName.autoPinEdge(.Top, toEdge: .Bottom, ofView: userImage, withOffset: 50 )
+        userName.autoPinEdge(.Top, toEdge: .Bottom, ofView: userImage, withOffset: 30 )
         userName.autoPinEdgeToSuperviewEdge(.Left, withInset: 35 )
-        comment.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 70, 44))
-        comment.autoPinEdge(.Top, toEdge: .Bottom, ofView: userName, withOffset: 20 )
-        comment.autoPinEdgeToSuperviewEdge(.Left, withInset: 35 )
-        passTextField.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 70, 44))
-        passTextField.autoPinEdge(.Top, toEdge: .Bottom, ofView: comment, withOffset: 20 )
-        passTextField.autoPinEdgeToSuperviewEdge(.Left, withInset: 35 )
+        groupMake.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 100, 44))
+        groupMake.autoPinEdge(.Top, toEdge: .Bottom, ofView: userName, withOffset: 50 )
+        groupMake.autoPinEdgeToSuperviewEdge(.Left, withInset: 50 )
+        messageEdit.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 100, 44))
+        messageEdit.autoPinEdge(.Top, toEdge: .Bottom, ofView: groupMake, withOffset: 30 )
+        messageEdit.autoPinEdgeToSuperviewEdge(.Left, withInset: 50 )
+        passChangeBtn.autoSetDimensionsToSize(CGSizeMake(100, 44))
+        passChangeBtn.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 50 )
+        passChangeBtn.autoPinEdge(.Bottom, toEdge: .Top, ofView: signinButton, withOffset: -10 )
+
         signinButton.autoSetDimensionsToSize(CGSizeMake(160, 44))
         signinButton.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 80 )
-        signinButton.autoPinEdge(.Top, toEdge: .Bottom, ofView: passTextField, withOffset: 20 )
+        signinButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 30 )
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

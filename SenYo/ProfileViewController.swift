@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 class ProfileViewController: UIViewController, ProfileViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let GROUP_MAKE = 1
+    let MESSAGE_EDIT = 2
+    let PASS_CHANGE = 3
+    let SIGN_OUT = 4
     let profileView = ProfileView()
+    var trantionView : UIViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Edit Profile"
@@ -24,8 +31,28 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, UIImagePicke
         super.didReceiveMemoryWarning()
     }
     
-    internal func signIn( sender: UIButton ){
-        print( "debug ") // debug 
+    // Button Action
+    internal func buttonAction( sender: UIButton ){
+        switch sender.tag {
+        case GROUP_MAKE:
+            trantionView = MakeGroupViewController()
+            self.navigationController?.pushViewController(trantionView, animated: true)
+            break
+        case MESSAGE_EDIT:
+            break
+        case PASS_CHANGE:
+            break
+        case SIGN_OUT:
+            // logout
+            let ud = NSUserDefaults.standardUserDefaults()
+            ud.removeObjectForKey("id")
+            ud.removeObjectForKey("user_id")
+            self.appDelegate.beforeLogin()
+            break
+        default:
+            print( "debug ") // debug
+            break
+        }
     }
     
     // Image Clicked Action

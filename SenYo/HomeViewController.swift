@@ -71,9 +71,10 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         groupView.setAutoLayout()
         // set user
         let ud = NSUserDefaults.standardUserDefaults()
-        let groupData = ud.objectForKey("groupData")
+        let groupData = ud.objectForKey("groupData") as? Int
+        print("groupData : ",groupData)
         if groupData != nil {
-            //homeView.setMember(JSON(groupData!))
+            self.homeView.setMember(self.groupView.getGroupData()[groupData!] )
         }
     }
     
@@ -166,7 +167,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                     messageArray[i].autoPinEdgeToSuperviewEdge(.Left, withInset: ( 80 + 160 * CGFloat( i / 2 ) ) * aspect.xAspect())
                     messageArray[i].autoSetDimensionsToSize( CGSizeMake(50 * aspect.xAspect(), 50 * aspect.yAspect()))
                     messageArray[i].popIn(0.1, duration: 0.5, delay: 0.2, completion: nil )
-                    //messageArray[i].tag = i + 1
                 }
                 dragFlag = true
                 break
@@ -226,6 +226,10 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     
     // ----    choose group     ----
     func chooseGroupCell( sender : Int ){
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setInteger(sender, forKey: "groupData")
+        let groupData = ud.objectForKey("groupData") as? Int
+        print("send data", groupData! )
         groupView.bounceOut(to:.Left, completion : {(Bool) -> Void in (
             self.groupView.hidden = true,
             self.hideView.hidden = true,
@@ -257,7 +261,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                 let alert = groupModel.errorAlert(res)
                 self.presentViewController(alert, animated: true, completion: nil)
         })
-
     }
     
     //
