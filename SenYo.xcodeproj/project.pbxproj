@@ -12,6 +12,7 @@
 		A723212C1D8F8BD60006E24C /* ImgeController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723212B1D8F8BD60006E24C /* ImgeController.xcassets */; };
 		A733B0211D8E6A8300CDCB0F /* AccountMakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */; };
 		A733B0231D8E6C8200CDCB0F /* AccountMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */; };
+		A74B176F1E110903000F89EC /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74B176E1E110903000F89EC /* NoticeModel.swift */; };
 		A768FAA31D76B08A004802A5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA21D76B08A004802A5 /* ProfileViewController.swift */; };
 		A768FAA51D76B131004802A5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA41D76B131004802A5 /* ProfileView.swift */; };
 		A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768FAA61D7963DD004802A5 /* NewsView.swift */; };
@@ -26,6 +27,7 @@
 		A7E05A521D9116C2007CD4B6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */; };
 		A7E05A541D9116CA007CD4B6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A531D9116CA007CD4B6 /* Alamofire.framework */; };
 		A7E05A561D9116D6007CD4B6 /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E05A551D9116D6007CD4B6 /* PureLayout.framework */; };
+		A7F06E321E24CA7100874BE2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F06E311E24CA7100874BE2 /* MessageView.swift */; };
 		CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */; };
 		CD0F77E01D4DD06A001BC4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77DF1D4DD06A001BC4C9 /* ViewController.swift */; };
 		CD0F77E61D4DD06A001BC4C9 /* SenYo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD0F77E41D4DD06A001BC4C9 /* SenYo.xcdatamodeld */; };
@@ -49,6 +51,7 @@
 		A72ACD341D957B1700CDEB96 /* SimpleAnimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleAnimation.framework; path = "Pods/../build/Debug-iphoneos/SimpleAnimation.framework"; sourceTree = "<group>"; };
 		A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeView.swift; sourceTree = "<group>"; };
 		A733B0221D8E6C8200CDCB0F /* AccountMakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMakeViewController.swift; sourceTree = "<group>"; };
+		A74B176E1E110903000F89EC /* NoticeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
 		A768FAA21D76B08A004802A5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A768FAA41D76B131004802A5 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A768FAA61D7963DD004802A5 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		A7E05A511D9116C2007CD4B6 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		A7E05A531D9116CA007CD4B6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		A7E05A551D9116D6007CD4B6 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "Pods/../build/Debug-iphoneos/PureLayout.framework"; sourceTree = "<group>"; };
+		A7F06E311E24CA7100874BE2 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		B8ED5DC22D289B8714C1C76F /* Pods_SenYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DA1D4DD069001BC4C9 /* SenYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +118,7 @@
 				A733B0201D8E6A8300CDCB0F /* AccountMakeView.swift */,
 				A7854DFF1D970536001B8AED /* HomeViewScreenViews */,
 				CDA1F34C1D75DE1B001C4336 /* GroupEditingView.swift */,
-				A768FAA41D76B131004802A5 /* ProfileView.swift */,
+				A7F06E301E24CA3900874BE2 /* Profile */,
 				A768FAA61D7963DD004802A5 /* NewsView.swift */,
 				A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */,
 			);
@@ -142,6 +146,7 @@
 				CDFA3E611D96EEE1007C5173 /* MyModel.swift */,
 				CDFA3E651D96EF38007C5173 /* UserModel.swift */,
 				A7C5161C1DD6F91100EB20FA /* GroupModel.swift */,
+				A74B176E1E110903000F89EC /* NoticeModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -163,6 +168,15 @@
 				A7854E001D970593001B8AED /* GroupView.swift */,
 			);
 			name = HomeViewScreenViews;
+			sourceTree = "<group>";
+		};
+		A7F06E301E24CA3900874BE2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A768FAA41D76B131004802A5 /* ProfileView.swift */,
+				A7F06E311E24CA7100874BE2 /* MessageView.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		CD0F77D11D4DD069001BC4C9 = {
@@ -368,8 +382,10 @@
 				CD0F77DE1D4DD06A001BC4C9 /* AppDelegate.swift in Sources */,
 				CDA1F34B1D75DDD9001C4336 /* GroupEditingViewController.swift in Sources */,
 				A768FAA71D7963DD004802A5 /* NewsView.swift in Sources */,
+				A74B176F1E110903000F89EC /* NoticeModel.swift in Sources */,
 				CDFA3E621D96EEE1007C5173 /* MyModel.swift in Sources */,
 				A768FAA51D76B131004802A5 /* ProfileView.swift in Sources */,
+				A7F06E321E24CA7100874BE2 /* MessageView.swift in Sources */,
 				A768FAAD1D7B0F91004802A5 /* MakeGroupViewController.swift in Sources */,
 				A768FAAB1D7B0DD8004802A5 /* MakeGroupView.swift in Sources */,
 				A7A4F8021D8BEDC4006EB1BE /* Aspect.swift in Sources */,

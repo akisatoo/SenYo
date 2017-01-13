@@ -41,8 +41,26 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
                 // success
                 //ローカルにログイン情報を保持
                 let id : String = String(res["res"]["_id"])
+                let password : String = String(res["res"]["password"])
+                let account_id : String = String(res["res"]["account_id"])
+                let name : String = String(res["res"]["name"])
+                let image_url = NSURL(string: String(res["res"]["image"]))
+                let error : NSError?
+                var imageData : NSData!
+                var img : UIImage!
+                do{
+                    imageData = try NSData(contentsOfURL: image_url!, options: .DataReadingMappedIfSafe )
+                        img = UIImage(data:imageData);
+                    
+                }catch{
+                    print("Error: can't create image.")
+                }
                 let ud = NSUserDefaults.standardUserDefaults()
                 ud.setObject(id, forKey: "id")
+                ud.setObject(password, forKey: "password")
+                ud.setObject(name, forKey: "img")
+                ud.setObject(account_id, forKey: "account_id")
+                
                 ud.setObject(self.loginView?.userTextFiled.text, forKey: "user_id")
                 self.appDelegate.afterLogin()
             },

@@ -244,10 +244,9 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         let groupModel = GroupModel.sharedManager
         let ud = NSUserDefaults.standardUserDefaults()
         let id = ud.objectForKey("id") as! String
-        let userData = id
-        print("UserData : " , userData ) // Debug
+        print("UserData : " , id ) // Debug
         // get gropdata
-        groupModel.getGroup(userData, success: { (res: JSON) -> Void in
+        groupModel.getGroup(id, success: { (res: JSON) -> Void in
             // success
             var dic : [JSON] = []
             for i in 0..<res["res"].count {

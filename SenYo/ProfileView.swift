@@ -1,14 +1,8 @@
-//
-//  File.swift
-//  SenYo
-//
-//  Created by 松江飛雄馬 on 2016/08/31.
-//  Copyright © 2016年 takahashi akisato. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import PureLayout
+import SwiftyJSON
+import Alamofire
 
 protocol ProfileViewDelegate : NSObjectProtocol {
     func buttonAction( sender: UIButton )
@@ -17,6 +11,7 @@ protocol ProfileViewDelegate : NSObjectProtocol {
 class ProfileView : UIView, UITextFieldDelegate{
     var delegate : ProfileViewDelegate?
     let userImage = UIImageView()
+
     required init () {
         super.init(frame: CGRectMake( 0, 0, 0, 0 ))
         let userName = UITextField()
@@ -62,8 +57,8 @@ class ProfileView : UIView, UITextFieldDelegate{
         signinButton.tag = 4
         signinButton.setTitle( "ログアウト", forState: .Normal)
         // event
-        groupMake.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpOutside)
-        messageEdit.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpOutside)
+        groupMake.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside)
+        messageEdit.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside)
         passChangeBtn.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
         signinButton.addTarget( delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
         
@@ -91,11 +86,11 @@ class ProfileView : UIView, UITextFieldDelegate{
         passChangeBtn.autoSetDimensionsToSize(CGSizeMake(100, 44))
         passChangeBtn.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 50 )
         passChangeBtn.autoPinEdge(.Bottom, toEdge: .Top, ofView: signinButton, withOffset: -10 )
-
         signinButton.autoSetDimensionsToSize(CGSizeMake(160, 44))
         signinButton.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 80 )
         signinButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 30 )
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -111,6 +106,7 @@ class ProfileView : UIView, UITextFieldDelegate{
     */
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         print("textFieldShouldEndEditing:" + textField.text!)
+        
         return true
     }
     
@@ -121,5 +117,4 @@ class ProfileView : UIView, UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
-
 }

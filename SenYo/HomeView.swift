@@ -23,7 +23,7 @@ class HomeView: UIView, UITextFieldDelegate {
     private var userArray : [[UIImageView]]  = [[UIImageView]]()
     private var userImg : [UIImageView] = []
     let myScrollView = UIScrollView()
-    
+    var leader = UIImageView()
     private var views = UIView()
     var message = UITextField()
     private var userData: JSON?
@@ -34,7 +34,7 @@ class HomeView: UIView, UITextFieldDelegate {
         self.backgroundColor = UIColor.blueColor()
         let myImage = UIImage(named: "hironaka")
         let balloon = UIImageView(image: UIImage(named: "balloon"))
-        let leader = UIImageView()
+        
         
         views = UIView(frame: CGRectMake( 0, 0, (myBoundSize.width) * aspect.xAspect(), (myBoundSize.height / 2) * aspect.yAspect() ))
         myScrollView.backgroundColor = .whiteColor()
@@ -79,8 +79,9 @@ class HomeView: UIView, UITextFieldDelegate {
         let scrollSize : CGFloat!
         userImg.removeAll()
         userArray.removeAll()
+        removeAllSubviews(self.myScrollView)  // scrollViewからメンバーを削除
         // data storage
-        for i in 0..<groupData["members"].count + 8{
+        for i in 0..<groupData["members"].count{
             //let image = UIImage(groupData["members"][i]["image"]) // image set
             let img = UIImageView(image: UIImage(named: "hironaka.jpg"))
             img.layer.borderColor = UIColor.redColor().CGColor
@@ -221,6 +222,13 @@ class HomeView: UIView, UITextFieldDelegate {
         message.placeholder = messageData
     }
     
+    // view内のUIパーツの削除
+    func removeAllSubviews(parentView: UIView){
+        let subviews = parentView.subviews
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+    }
     
     //UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
     func textFieldDidBeginEditing(textField: UITextField){

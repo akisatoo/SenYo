@@ -18,6 +18,7 @@ struct Group {
     var message : String = ""
     var calling_flag : Bool = false
     var reactions : NSArray = []
+    var self_id : String = ""
 }
 
 class GroupModel: MyModel {
@@ -28,7 +29,7 @@ class GroupModel: MyModel {
     
     private override init() {}
     
-    
+    // 新規グループの作成
     func createGroup(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params = [
             "name": data.name,
@@ -53,6 +54,7 @@ class GroupModel: MyModel {
         }
     }
     
+    // グループ情報を取得
     func getGroup(data: String, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params : [String : String] = [
             "user_id" : data
@@ -74,6 +76,7 @@ class GroupModel: MyModel {
         }
     }
     
+    // グループを削除
     func deleteGroup(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params = [
             "group_id": data.id,
@@ -96,8 +99,8 @@ class GroupModel: MyModel {
         }
     }
     
+    // グループ情報を編集
     func editGroup(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
-        
         let params = [
             "name": data.name,
             "add_members" : data.members,
@@ -105,6 +108,76 @@ class GroupModel: MyModel {
         ]
         
         Alamofire.request(.POST, "http://127.0.0.1:3000/api/group/edit/", parameters: params ).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let res = JSON(object)
+            print("res : " , res )
+            if res["status"] == "success" {
+                success(res)
+                return;
+            }
+            //Error時のコールバック
+            error(res)
+        }
+    }
+    
+    // 通知
+    func calling(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params = [
+            "group_id": data.id,
+            "user_id" : data.self_id
+        ]
+        
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/group/reaction/", parameters: params ).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let res = JSON(object)
+            print("res : " , res )
+            if res["status"] == "success" {
+                success(res)
+                return;
+            }
+            
+            //Error時のコールバック
+            error(res)
+        }
+    }
+    
+    // 返信
+    func reaction(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params = [
+            "group_id": data.id,
+        ]
+        
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/group/delete", parameters: params ).responseJSON{ response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let res = JSON(object)
+            print("res : " , res )
+            if res["status"] == "success" {
+                success(res)
+                return;
+            }
+            
+            //Error時のコールバック
+            error(res)
+        }
+    }
+    
+    // グループ参加を承認
+    func approval(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
+        let params = [
+            "group_id": data.id,
+            "user_id": data.self_id
+        ]
+        
+        Alamofire.request(.POST, "http://127.0.0.1:3000/api/group/delete", parameters: params ).responseJSON{ response in
             guard let object = response.result.value else {
                 return
             }
