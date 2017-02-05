@@ -38,5 +38,4 @@ class MyModel: NSObject {
         alert.addAction(cancelAction)
         return alert
     }
-    
 }

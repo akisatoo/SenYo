@@ -11,6 +11,7 @@ import PureLayout
 import SimpleAnimation
 import SwiftyJSON
 import Alamofire
+import SocketIO
 
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, GroupViewDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -32,6 +33,9 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
+        let connect = ConnentModel.sharedManager
+        connect.hoge()
+
         homeView.delegate = self
         menuView.delegate = self
         groupView.delegate = self
@@ -196,7 +200,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    // TapEnd Event
+    // DragEnd Event
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         // icon deleate

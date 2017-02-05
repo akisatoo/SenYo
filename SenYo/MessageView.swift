@@ -29,13 +29,11 @@ class MessageView : UIView, UITextFieldDelegate{
         label.textAlignment = .Center
         //add subview
         self.addSubview(label)
-        
-        // autolayout
-        
     }
     
     func makeUITextField( DataNum: Int ) -> [UITextField] {
         var textFields:[UITextField] = []
+        let img = [UIImageView] = []
         for var i = 0; i < DataNum; i++ {
             let textField : UITextField = UITextField()
             textField.borderStyle = UITextBorderStyle.RoundedRect

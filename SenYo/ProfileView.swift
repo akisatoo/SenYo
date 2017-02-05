@@ -17,9 +17,9 @@ class ProfileView : UIView, UITextFieldDelegate{
         let userName = UITextField()
         let groupMake = UIButton()
         let messageEdit = UIButton()
-        let signinButton = UIButton()
+        let signoutBtn = UIButton()
         let passChangeBtn = UIButton()
-        let color = UIColor(red: 0.1, green: 1, blue: 1, alpha: 1)
+        let color = UIColor(red: 0, green: 0.9, blue: 1, alpha: 1)
         self.backgroundColor = .whiteColor()
         userImage.layer.cornerRadius = 50
         userImage.layer.masksToBounds = true
@@ -36,12 +36,14 @@ class ProfileView : UIView, UITextFieldDelegate{
         border.borderWidth = borderWidth
         userName.layer.addSublayer(border)
         groupMake.setTitle("新しいグループの作成 ＋ ", forState: .Normal)
+        groupMake.titleLabel?.font = UIFont.systemFontOfSize(14)
         groupMake.layer.borderWidth = 2.0
         groupMake.layer.borderColor = color.CGColor
         groupMake.backgroundColor = color
         groupMake.layer.cornerRadius = 20
         groupMake.tag = 1
         messageEdit.setTitle("メッセージ編集　✎", forState: .Normal)
+        messageEdit.titleLabel?.font = UIFont.systemFontOfSize(14)
         messageEdit.layer.borderWidth = 2.0
         messageEdit.backgroundColor = color
         messageEdit.layer.borderColor = color.CGColor
@@ -52,15 +54,16 @@ class ProfileView : UIView, UITextFieldDelegate{
         passChangeBtn.setTitleColor(color, forState: .Normal)
         passChangeBtn.titleLabel?.font = UIFont.systemFontOfSize(14)
         passChangeBtn.tag = 3
-        signinButton.backgroundColor = UIColor.grayColor()
-        signinButton.layer.cornerRadius = 20
-        signinButton.tag = 4
-        signinButton.setTitle( "ログアウト", forState: .Normal)
+        signoutBtn.backgroundColor = UIColor.grayColor()
+        signoutBtn.layer.cornerRadius = 20
+        signoutBtn.titleLabel?.font = UIFont.systemFontOfSize(14)
+        signoutBtn.tag = 4
+        signoutBtn.setTitle( "ログアウト", forState: .Normal)
         // event
         groupMake.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside)
         messageEdit.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside)
         passChangeBtn.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
-        signinButton.addTarget( delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
+        signoutBtn.addTarget( delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
         
         //add subview
         self.addSubview(userImage)
@@ -68,27 +71,27 @@ class ProfileView : UIView, UITextFieldDelegate{
         self.addSubview(groupMake)
         self.addSubview(messageEdit)
         self.addSubview(passChangeBtn)
-        self.addSubview(signinButton)
+        self.addSubview(signoutBtn)
         
         // autolayout
         userImage.autoSetDimensionsToSize(CGSizeMake(100, 100))
         userImage.autoPinEdgeToSuperviewEdge(.Top, withInset: 100 )
         userImage.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 50)
         userName.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 70, 44))
-        userName.autoPinEdge(.Top, toEdge: .Bottom, ofView: userImage, withOffset: 30 )
+        userName.autoPinEdge(.Top, toEdge: .Bottom, ofView: userImage, withOffset: 10 )
         userName.autoPinEdgeToSuperviewEdge(.Left, withInset: 35 )
-        groupMake.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 100, 44))
-        groupMake.autoPinEdge(.Top, toEdge: .Bottom, ofView: userName, withOffset: 50 )
-        groupMake.autoPinEdgeToSuperviewEdge(.Left, withInset: 50 )
-        messageEdit.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 100, 44))
-        messageEdit.autoPinEdge(.Top, toEdge: .Bottom, ofView: groupMake, withOffset: 30 )
-        messageEdit.autoPinEdgeToSuperviewEdge(.Left, withInset: 50 )
+        groupMake.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 140, 40))
+        groupMake.autoPinEdge(.Top, toEdge: .Bottom, ofView: userName, withOffset: 40 )
+        groupMake.autoPinEdgeToSuperviewEdge(.Left, withInset: 70 )
+        messageEdit.autoSetDimensionsToSize(CGSizeMake(myBoundSize.width - 140, 40))
+        messageEdit.autoPinEdge(.Top, toEdge: .Bottom, ofView: groupMake, withOffset: 15 )
+        messageEdit.autoPinEdgeToSuperviewEdge(.Left, withInset: 70 )
         passChangeBtn.autoSetDimensionsToSize(CGSizeMake(100, 44))
         passChangeBtn.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 50 )
-        passChangeBtn.autoPinEdge(.Bottom, toEdge: .Top, ofView: signinButton, withOffset: -10 )
-        signinButton.autoSetDimensionsToSize(CGSizeMake(160, 44))
-        signinButton.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 80 )
-        signinButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 30 )
+        passChangeBtn.autoPinEdge(.Bottom, toEdge: .Top, ofView: signoutBtn, withOffset: -10 )
+        signoutBtn.autoSetDimensionsToSize(CGSizeMake(180, 40))
+        signoutBtn.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 90 )
+        signoutBtn.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 50 )
     }
     
     required init?(coder aDecoder: NSCoder) {
