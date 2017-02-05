@@ -69,13 +69,19 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         // autolayout
         menuView.setAutoLayout()
         groupView.setAutoLayout()
-        // set user
+        // set groupData
         let ud = NSUserDefaults.standardUserDefaults()
         let groupData = ud.objectForKey("groupData") as? Int
         print("groupData : ",groupData)
         if groupData != nil {
             self.homeView.setMember(self.groupView.getGroupData()[groupData!] )
         }
+        //  
+        if ud.objectForKey( "choose_group" ) != nil {
+          let chooseGroup = ud.objectForKey( "choose_group" ) as! Int
+          chooseGroupCell(chooseGroup)
+        }
+        
     }
     
     // NavigationBar Button Action
@@ -97,6 +103,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             break
         default:
             print("error")
+            break
         }
     }
     
@@ -175,7 +182,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             }
         }
     }
-    // drag action
+    // Drag action
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if dragFlag {
             let aTouch = touches.first! as UITouch
@@ -236,6 +243,8 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             self.homeView.setMember(self.groupView.getGroupData()[sender])
             )}
         )
+        // choose group save
+        ud.setObject(sender, forKey: "choose_group")
     }
     // ----                     ----
     

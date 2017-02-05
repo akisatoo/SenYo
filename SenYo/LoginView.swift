@@ -90,7 +90,7 @@ class LoginView: UIView, UITextFieldDelegate {
         logoImage.autoSetDimensionsToSize( CGSizeMake( 220, 60 ) )
         logoImage.autoPinEdgeToSuperviewEdge(.Left, withInset : myBoundSize.width / 2 - 110  )
         logoImage.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: 100)
-    userTextFiled.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 30 )
+        userTextFiled.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: 30 )
         userTextFiled.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: logoImage, withOffset: 100)
         userTextFiled.autoSetDimension(.Width, toSize: myBoundSize.width - 60 )
         userTextFiled.autoSetDimension(.Height, toSize: 50)

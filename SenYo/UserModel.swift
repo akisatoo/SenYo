@@ -38,7 +38,8 @@ class UserModel: MyModel {
             }
             
             let res = JSON(object)
-            print("login : " , res )
+            print("--- login ---")
+            print("res : " , res )
             if res["status"] == "success" {
                 success(res)
                 return;
@@ -64,6 +65,8 @@ class UserModel: MyModel {
             }
             
             let res = JSON(object)
+            print("--- createUser ---")
+            print("res : ", res )
             if res["status"] == "success" {
                 success(res)
                 return;
@@ -89,6 +92,8 @@ class UserModel: MyModel {
             }
             
             let res = JSON(object)
+            print("--- userEdit ---")
+            print("res : ", res )
             if res["status"] == "success" {
                 success(res)
                 return;
@@ -111,6 +116,8 @@ class UserModel: MyModel {
             }
             
             let res = JSON(object)
+            print("--- userSearch ---")
+            print("res : ", res )
              if res["status"] == "success" {
                 success(res)
                 return;

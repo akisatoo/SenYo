@@ -32,6 +32,7 @@ class NoticeModel : MyModel {
             }
             
             let res = JSON(object)
+            print("--- createGroup ---")
             print("res : " , res )
             if res["status"] == "success" {
                 success(res)
