@@ -152,9 +152,16 @@
 				CDFA3E651D96EF38007C5173 /* UserModel.swift */,
 				A7C5161C1DD6F91100EB20FA /* GroupModel.swift */,
 				A74B176E1E110903000F89EC /* NoticeModel.swift */,
-				A77DDAC01E46EF8E00FC178D /* ConnectModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		A74953421E47399300653676 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				A77DDAC01E46EF8E00FC178D /* ConnectModel.swift */,
+			);
+			name = Connect;
 			sourceTree = "<group>";
 		};
 		A7854DFC1D96C5E0001B8AED /* NewGroupMakeScreenView  */ = {
@@ -208,6 +215,7 @@
 			children = (
 				CD0F77DD1D4DD06A001BC4C9 /* AppDelegate.swift */,
 				A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */,
+				A74953421E47399300653676 /* Connect */,
 				A70BE6F01D6AF66D003E3341 /* Model */,
 				A70BE6EF1D6AF616003E3341 /* Controller */,
 				A70BE6EE1D6AF60C003E3341 /* View */,

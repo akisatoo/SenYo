@@ -20,6 +20,7 @@ class ProfileView : UIView, UITextFieldDelegate{
         let signoutBtn = UIButton()
         let passChangeBtn = UIButton()
         let color = UIColor(red: 0, green: 0.9, blue: 1, alpha: 1)
+        let ud = NSUserDefaults.standardUserDefaults()
         self.backgroundColor = .whiteColor()
         userImage.layer.cornerRadius = 50
         userImage.layer.masksToBounds = true
@@ -27,6 +28,7 @@ class ProfileView : UIView, UITextFieldDelegate{
         userImage.layer.borderColor = color.CGColor
         userImage.layer.borderWidth = 2.0
         userName.placeholder = "ユーザID"
+        userName.text = ud.objectForKey("account_id") as? String
         userName.textAlignment = .Center
         userName.delegate = self
         let border = CALayer()

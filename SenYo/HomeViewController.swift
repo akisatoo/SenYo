@@ -11,7 +11,6 @@ import PureLayout
 import SimpleAnimation
 import SwiftyJSON
 import Alamofire
-import SocketIO
 
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, GroupViewDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -33,9 +32,10 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
+        // connect sample
         let connect = ConnentModel.sharedManager
         connect.hoge()
-
+        //
         homeView.delegate = self
         menuView.delegate = self
         groupView.delegate = self
@@ -99,7 +99,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             self.hideView.hidden = false
             self.hideView.fadeIn(0.4, delay: 0.3, completion: nil)
             self.groupView.hidden = false
-            self.groupView.bounceIn(from : .Left)
+            self.groupView.bounceIn(from: .Left, x: myBoundSize.width / 2 * -1, y: 0, duration: 0.3, delay: 0, completion: nil)
             break
         case 3:
             sender.tag = 1
@@ -252,7 +252,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     }
     // ----                     ----
     
-    // list reload
+    // grouplist reload
     func reloadList(){
         let groupModel = GroupModel.sharedManager
         let ud = NSUserDefaults.standardUserDefaults()

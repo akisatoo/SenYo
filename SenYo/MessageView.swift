@@ -33,17 +33,27 @@ class MessageView : UIView, UITextFieldDelegate{
     
     func makeUITextField( DataNum: Int ) -> [UITextField] {
         var textFields:[UITextField] = []
-        let img = [UIImageView] = []
+       // let icon = [UIImageView] = []
         for var i = 0; i < DataNum; i++ {
             let textField : UITextField = UITextField()
+            let img = UIImage( named: "sen"+String(i + 1))
+            let imgViews = UIImageView(image: img)
             textField.borderStyle = UITextBorderStyle.RoundedRect
             textField.keyboardType = UIKeyboardType.Default
             textField.returnKeyType = UIReturnKeyType.Done
             textField.delegate = self
+            textField.placeholder = "  メッセージ" + String(i + 1) + "を設定する"
+            textField.layer.cornerRadius = 22
+            textField.font = UIFont.boldSystemFontOfSize(14)
+            textField.addSubview(imgViews)
             textFields.append(textField)
             self.addSubview(textField)
-            textField.autoSetDimensionsToSize(CGSizeMake(300, 50))
+            imgViews.autoSetDimensionsToSize(CGSizeMake(30, 30))
+            imgViews.autoPinEdgeToSuperviewEdge(.Right, withInset: 12 )
+            imgViews.autoPinEdgeToSuperviewEdge(.Top, withInset: 6 )
+            textField.autoSetDimensionsToSize(CGSizeMake(300, 44))
             textField.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 160 )
+            
         }
         return textFields
     }
@@ -56,9 +66,9 @@ class MessageView : UIView, UITextFieldDelegate{
         label.autoPinEdgeToSuperviewEdge(.Top, withInset: 10 )
         label.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 160)
         tf[0].autoPinEdge(.Top, toEdge: .Bottom, ofView: label, withOffset: 5)
-        tf[1].autoPinEdge(.Top, toEdge: .Bottom, ofView: tf[0], withOffset: 30)
-        tf[2].autoPinEdge(.Top, toEdge: .Bottom, ofView: tf[1], withOffset: 30)
-        tf[3].autoPinEdge(.Top, toEdge: .Bottom, ofView: tf[2], withOffset: 30)
+        tf[1].autoPinEdge(.Top, toEdge: .Bottom, ofView: tf[0], withOffset: 10)
+        tf[2].autoPinEdge(.Top, toEdge: .Bottom, ofView: tf[1], withOffset: 10)
+        tf[3].autoPinEdge(.Top, toEdge: .Bottom, ofView: tf[2], withOffset: 10)
     }
     
     /*
