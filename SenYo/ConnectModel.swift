@@ -14,6 +14,7 @@ import Alamofire
 
 
 class ConnentModel : MyModel{
+    private let socket_url = NSURL(string: "http://localhost:3000")
     static var sharedManager: ConnentModel = {
         return ConnentModel()
     }()
@@ -23,7 +24,7 @@ class ConnentModel : MyModel{
     
     func hoge(){
         
-        let socket = SocketIOClient(socketURL: NSURL(string: "http://localhost:3000")!, config: [.Log(true), .ForcePolling(true)])
+        let socket = SocketIOClient(socketURL: socket_url!, config: [.Log(true), .ForcePolling(true)])
         
         // 受信
         socket.on("connect") {data, ack in
@@ -35,7 +36,6 @@ class ConnentModel : MyModel{
                 socket.emitWithAck("canUpdate", cur)(timeoutAfter: 0) {data in
                     socket.emit("update", ["amount": cur + 2.50])
                 }
-                
                 ack.with("Got your currentAmount", "dude")
             }
         }
@@ -43,6 +43,7 @@ class ConnentModel : MyModel{
         socket.connect()
 
     }
+    
     /*
     // receives message
     self.socket.on("event1", callback: {
