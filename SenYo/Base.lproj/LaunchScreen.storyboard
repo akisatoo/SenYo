@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,18 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-0O-WQk">
-                                <rect key="frame" x="180" y="268" width="240" height="64"/>
+                                <rect key="frame" x="166" y="257" width="268" height="86"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="3u0-h4-hjs"/>
-                                    <constraint firstAttribute="width" constant="240" id="E7k-zS-TZe"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="GcG-aR-7bv"/>
+                                    <constraint firstAttribute="width" constant="268" id="ur5-G1-bWl"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="248" id="q9j-JG-isa"/>
-                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sDU-ON-Sru"/>
+                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="237" id="MJp-ew-Eur"/>
+                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UPz-nS-h2C"/>
+                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xi2-2F-mNJ"/>
                         </constraints>
                     </view>
                 </viewController>
