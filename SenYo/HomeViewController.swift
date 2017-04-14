@@ -11,6 +11,7 @@ import PureLayout
 import SimpleAnimation
 import SwiftyJSON
 import Alamofire
+import SocketIO
 
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, GroupViewDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -28,14 +29,16 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
     private var firstPoint : CGPoint?
     private let menuItem = UIBarButtonItem()
     private let groupItem = UIBarButtonItem()
+    private let connect = ConnentModel.sharedManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
-        // connect sample
-        let connect = ConnentModel.sharedManager
-        connect.hoge()
-        //
+        
+        // connect
+        
+        connect.send_mes()
+        
         homeView.delegate = self
         menuView.delegate = self
         groupView.delegate = self
@@ -70,9 +73,11 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         self.appDelegate.window?.addSubview(self.hideView)
         self.appDelegate.window?.addSubview(groupView)
         self.view.addSubview(menuView)
+        
         // autolayout
         menuView.setAutoLayout()
         groupView.setAutoLayout()
+        
         // set groupData
         let ud = NSUserDefaults.standardUserDefaults()
         let groupData = ud.objectForKey("groupData") as? Int
@@ -164,7 +169,9 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             case 1:
                 let firstTouch = touches.first!
                 firstPoint = firstTouch.locationInView(self.view)
-                for i in 0 ... 3{
+                
+                let BUTTON_LENGTH = 3
+                for i in 0 ... BUTTON_LENGTH{
                     let button = UIImageView(image: UIImage(named: "sen\(i + 1)"))
                     button.tag = i + 1
                     messageArray.append(button)
@@ -214,6 +221,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
                 if self.dragY >= 0 {
                     //右下
                     print("right_bottom")
+                    
                 }else{
                     //右上
                     print("right_top")

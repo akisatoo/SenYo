@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+        self.window!.rootViewController = ViewController()
+        /*
         // ログイン状況をみて表示するViewを決定する
         let ud = NSUserDefaults.standardUserDefaults()
         let isLogin = ud.objectForKey("id")
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.beforeLogin()
         } else {
             self.afterLogin()
-        }
+        }*/
         self.window?.makeKeyAndVisible()
         return true
     }

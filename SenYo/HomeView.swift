@@ -17,22 +17,23 @@ protocol HomeViewDelegate: NSObjectProtocol {
 }
 
 class HomeView: UIView, UITextFieldDelegate {
-    let appdelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    var delegate: HomeViewDelegate?
-    var aspect = Aspect()
+    private let appdelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    internal var delegate: HomeViewDelegate?
+    private var aspect = Aspect()
+    private let myImage = UIImage(named: "hironaka")
     private var userArray : [[UIImageView]]  = [[UIImageView]]()
     private var userImg : [UIImageView] = []
-    let myScrollView = UIScrollView()
-    var leader = UIImageView()
+    private let myScrollView = UIScrollView()
+    private var leader = UIImageView()
     private var views = UIView()
-    var message = UITextField()
+    private var message = UITextField()
     private var userData: JSON?
     
     
     required init() {
         super.init(frame: CGRectMake(0, 0, 0, 0));
         self.backgroundColor = UIColor.blueColor()
-        let myImage = UIImage(named: "hironaka")
+        
         let balloon = UIImageView(image: UIImage(named: "balloon"))
         
         
@@ -74,7 +75,7 @@ class HomeView: UIView, UITextFieldDelegate {
         message.autoPinEdge(.Top, toEdge: .Top, ofView: balloon, withOffset: 18 )
     }
     
-        // set user
+    // set user
     func setMember( groupData : JSON ){
         let scrollSize : CGFloat!
         userImg.removeAll()
@@ -140,7 +141,7 @@ class HomeView: UIView, UITextFieldDelegate {
                     userArray[i][j].autoPinEdgeToSuperviewEdge(.Top, withInset: 30 + CGFloat( i * 100) )
                     userArray[i][j].autoPinEdgeToSuperviewEdge(.Left, withInset: ((myBoundSize.width / 2 - 40) + width ))
                     userArray[i][j].popIn()
-                    count++
+                    count += 1
                 }
             }
         }else if userImg.count == 5{
@@ -157,7 +158,7 @@ class HomeView: UIView, UITextFieldDelegate {
                         userArray[i][j].autoPinEdgeToSuperviewEdge(.Left, withInset: 50 + CGFloat( j * 100 ))
                         userArray[i][j].autoPinEdgeToSuperviewEdge(.Top, withInset: 30 + CGFloat( i * 80 ) )
                         userArray[i][j].popIn()
-                        count++
+                        count += 1
                     }
                 }
             }
@@ -177,7 +178,7 @@ class HomeView: UIView, UITextFieldDelegate {
                     userArray[i][j].autoPinEdgeToSuperviewEdge( .Left, withInset: ( width + CGFloat( 150 * i )) * aspect.xAspect())
                     userArray[i][j].autoPinEdgeToSuperviewEdge( .Top, withInset:  CGFloat(  -45 + 70 * j  ) * aspect.yAspect() )
                     userArray[i][j].popIn()
-                    count++
+                    count += 1
                     
                 }
             }
@@ -192,8 +193,8 @@ class HomeView: UIView, UITextFieldDelegate {
                     userArray[userCount][i].autoPinEdge(.Left, toEdge: .Left, ofView: userArray[userCount - 1][i], withOffset: 150 )
                     userArray[userCount][i].autoPinEdge(.Top, toEdge: .Top, ofView: userArray[userCount - 1][i], withOffset: 0 )
                     userArray[userCount][i].popIn()
-                    count++
-                    addUser++
+                    count += 1
+                    addUser += 1
                 }
             }
         }

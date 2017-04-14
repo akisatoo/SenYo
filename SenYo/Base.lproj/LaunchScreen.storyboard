@@ -18,23 +18,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-0O-WQk">
-                                <rect key="frame" x="166" y="257" width="268" height="86"/>
+                                <rect key="frame" x="198" y="271" width="204" height="77"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="268" id="ur5-G1-bWl"/>
+                                    <constraint firstAttribute="width" constant="204" id="9Dv-NR-cYm"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="237" id="MJp-ew-Eur"/>
-                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UPz-nS-h2C"/>
-                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xi2-2F-mNJ"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Eqq-0O-WQk" secondAttribute="bottom" constant="252" id="FHM-ni-IJm"/>
+                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Rh1-Xz-azU"/>
+                            <constraint firstItem="Eqq-0O-WQk" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="251" id="amF-Rl-we0"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="55" y="387"/>
         </scene>
     </scenes>
     <resources>
