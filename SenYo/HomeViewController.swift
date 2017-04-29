@@ -13,6 +13,10 @@ import SwiftyJSON
 import Alamofire
 import SocketIO
 
+enum HomeViewError : ErrorType{
+    case OutOfRange
+}
+
 class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, GroupViewDelegate{
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     private let hideView = UIView( frame : CGRectMake(0, 0, myBoundSize.width, myBoundSize.height ))
@@ -36,7 +40,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         self.title = "Home"
         
         // connect
-        
         connect.send_mes()
         
         homeView.delegate = self
@@ -50,14 +53,14 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         groupView.groupMakeButton.addTarget(self, action: "groupMakeButton:", forControlEvents: .TouchUpInside)
         menuItem.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         menuItem.style = UIBarButtonItemStyle.Plain
-        menuItem.action = "barButtonClick:"
+        menuItem.action = "click_bar_button:"
         menuItem.target = self
         menuItem.tintColor = UIColor.clearColor()
         menuItem.tag = 1
         self.navigationItem.rightBarButtonItem = menuItem
         groupItem.image = UIImage(named: "group")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         groupItem.style = UIBarButtonItemStyle.Plain
-        groupItem.action = "barButtonClick:"
+        groupItem.action = "click_bar_button:"
         groupItem.target = self
         groupItem.tintColor = UIColor.clearColor()
         groupItem.tag = 2
@@ -80,33 +83,32 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         
         // set groupData
         let ud = NSUserDefaults.standardUserDefaults()
-        let groupData = ud.objectForKey("groupData") as? Int
-        print("groupData : ",groupData)
-        if groupData != nil {
-            self.homeView.setMember(self.groupView.getGroupData()[groupData!] )
+        let group_cel_no = ud.objectForKey("groupData") as? Int
+        if group_cel_no != nil {
+            self.homeView.setMember(self.groupView.getGroupData()[group_cel_no!]) //error
         }
         //  
         if ud.objectForKey( "choose_group" ) != nil {
           let chooseGroup = ud.objectForKey( "choose_group" ) as! Int
           chooseGroupCell(chooseGroup)
         }
-        
     }
     
-    // NavigationBar Button Action
-    internal func barButtonClick( sender : UIBarButtonItem ){
+    // ナビゲーションバーボタンのアクション
+    private var menuView_show = 1, groupView_show = 2, menuView_hidden = 3
+    internal func click_bar_button( sender : UIBarButtonItem ){
         switch(sender.tag){
-        case 1:
+        case menuView_show:
             sender.tag = 3
             menuView.hidden = false
             break
-        case 2:
+        case groupView_show:
             self.hideView.hidden = false
             self.hideView.fadeIn(0.4, delay: 0.3, completion: nil)
             self.groupView.hidden = false
             self.groupView.bounceIn(from: .Left, x: myBoundSize.width / 2 * -1, y: 0, duration: 0.3, delay: 0, completion: nil)
             break
-        case 3:
+        case menuView_hidden:
             sender.tag = 1
             menuView.hidden = true
             break
@@ -116,7 +118,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    // Slide Menu Delete
+    // グループビューを隠す
     func deleteSideMenu(sender: UITapGestureRecognizer){
         groupView.bounceOut(to:.Left, completion : {(Bool) -> Void in (
            self.groupView.hidden = true,
@@ -125,21 +127,20 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         )
     }
     
-    // Menu Button Action
+    //
+    private var newsView_trans = 0, progileView_trans = 1, logout = 2
     func chooseCell( sender : Int ){
         var myView : UIViewController!
-        // Screen Transition
         switch (sender){
-        case 0:
+        case newsView_trans:
             myView = NewsViewController()
             self.navigationController?.pushViewController(myView, animated: true)
             break;
-        case 1:
+        case progileView_trans:
             myView = ProfileViewController()
             self.navigationController?.pushViewController(myView, animated: true)
             break;
-        case 2:
-            // logout
+        case logout:
             let ud = NSUserDefaults.standardUserDefaults()
             ud.removeObjectForKey("id")
             ud.removeObjectForKey("user_id")
@@ -152,7 +153,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         menuView.hidden = true
     }
     
-    // MakeGroupView Transition
+    //
     internal func groupMakeButton(sender: UIButton){
         let myView : UIViewController = MakeGroupViewController()
         self.navigationController?.pushViewController(myView, animated: true )
@@ -160,7 +161,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         self.hideView.hidden = true
     }
     
-    // ------- Send Message ----------
+    //
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         for touch: UITouch in touches {
@@ -193,7 +194,8 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             }
         }
     }
-    // Drag action
+    
+    // ドラッグイベント処理
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if dragFlag {
             let aTouch = touches.first! as UITouch
@@ -207,9 +209,12 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
     }
     
-    // DragEnd Event
+    //
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
+        //メッセージを送る
+        let connect = ConnentModel.sharedManager
+        let mes : String?
         // icon deleate
         if dragFlag {
             for i in 0 ... 3{
@@ -220,19 +225,23 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             if self.dragX > 0 {
                 if self.dragY >= 0 {
                     //右下
-                    print("right_bottom")
+                    mes = "right_bottom"
+                    connect.socket.emit("post_message", mes!)
                     
                 }else{
+                    mes = "right_up"
+                    connect.socket.emit("post_message", mes!)
                     //右上
-                    print("right_top")
                 }
             }else{
                 if self.dragY <= 0 {
-                    //左下
-                    print("left_top")
-                }else{
                     //左上
-                    print("left_bottom")
+                    mes = "left_top"
+                    connect.socket.emit("post_message", mes!)
+                }else{
+                    //左下
+                    mes = "left_bottom"
+                    connect.socket.emit("post_message", mes!)
                 }
             }
             dragFlag = false
@@ -240,10 +249,8 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         }
         firstPoint = nil
     }
-    // ----------       ------------
     
-    
-    // ----    choose group     ----
+    // 選択したグループに対する処理
     func chooseGroupCell( sender : Int ){
         let ud = NSUserDefaults.standardUserDefaults()
         ud.setInteger(sender, forKey: "groupData")
@@ -255,12 +262,10 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             self.homeView.setMember(self.groupView.getGroupData()[sender])
             )}
         )
-        // choose group save
         ud.setObject(sender, forKey: "choose_group")
     }
-    // ----                     ----
     
-    // grouplist reload
+    // グループリストの再読込
     func reloadList(){
         let groupModel = GroupModel.sharedManager
         let ud = NSUserDefaults.standardUserDefaults()

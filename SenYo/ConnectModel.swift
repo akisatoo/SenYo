@@ -11,16 +11,21 @@ import SocketIO
 import SwiftyJSON
 import Alamofire
 
-
-
 class ConnentModel : MyModel{
-    
+    private var parent_socket : SocketIOClient?
+    public var socket : SocketIOClient{
+        get{
+            return parent_socket!
+        }set{
+            parent_socket = newValue
+        }
+    }
     static var sharedManager: ConnentModel = {
         return ConnentModel()
     }()
     
     private override init() {
-        
+       
     }
     
     public func hoge(){
@@ -50,6 +55,7 @@ class ConnentModel : MyModel{
     public func send_mes(){
         let socket_url = NSURL(string: "http://localhost:3000")
         let socket = SocketIOClient(socketURL: socket_url!, config: [.Log(true), .ForcePolling(true)])
+        self.socket = socket
         // 接続時
         socket.on("connect") {data, ack in
             print("socket connected")
@@ -60,8 +66,8 @@ class ConnentModel : MyModel{
             print("socket disconnected!!")
         }
         //投稿された時
-        socket.on("send_mes") {(data, emitter) in
-            if let message = data as? [String] {
+        socket.on("post_mes") {(data, emitter) in
+           /* if let message = data as? [String] {
                 print(message[0])
                 let jsonData : NSData = message[0].dataUsingEncoding(NSUTF8StringEncoding)!
                 var err : NSError?
@@ -72,12 +78,11 @@ class ConnentModel : MyModel{
                     err = error
                     //self.postArray = nil
                 }
-            }
+            }*/
+            print("get : ", data)
         }
         socket.connect()
     }
-    
-    
     
     /*
     // receives message

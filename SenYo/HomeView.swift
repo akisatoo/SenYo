@@ -12,6 +12,7 @@ import PureLayout
 import SimpleAnimation
 import SwiftyJSON
 import Alamofire
+import SocketIO
 
 protocol HomeViewDelegate: NSObjectProtocol {
 }
@@ -75,7 +76,7 @@ class HomeView: UIView, UITextFieldDelegate {
         message.autoPinEdge(.Top, toEdge: .Top, ofView: balloon, withOffset: 18 )
     }
     
-    // set user
+    // ユーザの配置
     func setMember( groupData : JSON ){
         let scrollSize : CGFloat!
         userImg.removeAll()
@@ -203,7 +204,7 @@ class HomeView: UIView, UITextFieldDelegate {
         let groupData = String(groupData)
         ud.setObject(groupData, forKey: "groupData")
         ud.synchronize()
-        // scroll width
+        // 横スクロールの幅を設定　
         let addWidth = (userImg.count % 4 == 0) ? 0 : 1
         scrollSize = ((CGFloat(userImg.count / 4 ) * 160) + CGFloat( addWidth * 160 ))  * aspect.xAspect()
         if scrollSize < myBoundSize.width {
@@ -214,7 +215,6 @@ class HomeView: UIView, UITextFieldDelegate {
         }
     }
     
-    //
     func setMemberData( data : JSON ){
         userData = data
     }
@@ -236,18 +236,13 @@ class HomeView: UIView, UITextFieldDelegate {
         print("textFieldDidBeginEditing:" + textField.text!)
     }
     
-    /*
-    UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
-    */
+    //UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         print("textFieldShouldEndEditing:" + textField.text!)
-        
         return true
     }
     
-    /*
-    改行ボタンが押された際に呼ばれるデリゲートメソッド.
-    */
+    //改行ボタンが押された際に呼ばれるデリゲートメソッド.
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
