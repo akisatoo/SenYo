@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import PureLayout
 import SimpleAnimation
+import SwiftyJSON
+import Alamofire
 
 protocol MakeGroupViewDelegate : NSObjectProtocol {
     func pushButton(sender : UIButton)
@@ -17,14 +19,14 @@ protocol MakeGroupViewDelegate : NSObjectProtocol {
 }
 
 class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate{
-    var delegate : MakeGroupViewDelegate?
-    let aspect = Aspect()
-    var groupNumLabel = UILabel()
+    internal var delegate : MakeGroupViewDelegate?
+    private let aspect = Aspect()
+    private var groupNumLabel = UILabel()
     private var mySearchBar : UISearchBar!
-    var member : [String] = []
-    var myTableView: UITableView!
-    var groupImage = UIImageView()
-    let groupName = UITextField()
+    internal var member = [JSON]()
+    private var myTableView: UITableView!
+    internal var groupImage = UIImageView()
+    internal let groupName = UITextField()
     
     required init(){
         super.init(frame : CGRectMake(0, 0, 0, 0))
@@ -63,14 +65,12 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         groupImage.layer.masksToBounds = true
         groupImage.userInteractionEnabled = true
         groupImage.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: "imageTapped:"))
-        
         //addsubview
         self.addSubview(groupButton)
         self.addSubview(groupName)
         self.addSubview(myTableView)
         self.addSubview(groupImage)
         self.addSubview(groupNumLabel)
-        
         //autolayout
         myTableView.autoSetDimensionsToSize(CGSizeMake( myBoundSize.width, myBoundSize.height / 2 ))
         myTableView.autoPinEdgeToSuperviewEdge( .Bottom, withInset: 0 )
@@ -110,7 +110,7 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         let userImageView = UIImageView(image: UIImage(named: "hironaka"))
         let userName = UILabel()
-        let commentTextField = UITextField()
+        let account_id = UILabel()
         userImageView.frame = CGRectMake( 0, 0 , 66, 66 )
         userImageView.layer.masksToBounds = true
         userImageView.layer.borderColor = UIColor(red: 0.1, green: 1, blue: 1, alpha: 1).CGColor
@@ -120,16 +120,15 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         userName.frame = CGRectMake(0, 0, 100, 20)
         userName.layer.position = CGPointMake(162, 26)
         userName.font = UIFont.systemFontOfSize(15)
-        userName.text =  "\(self.member[indexPath.row])"
-        commentTextField.frame = CGRectMake(0, 0, 180, 20)
-        commentTextField.layer.position = CGPointMake(200, 50)
-        commentTextField.textAlignment = .Left
-        commentTextField.font = UIFont.systemFontOfSize(12)
-        commentTextField.delegate = self
-        commentTextField.placeholder = "ここにメッセージを入れる？"
+        userName.text =  String(self.member[indexPath.row]["name"])
+        account_id.frame = CGRectMake(0, 0, 180, 20)
+        account_id.layer.position = CGPointMake(200, 50)
+        account_id.textAlignment = .Left
+        account_id.font = UIFont.systemFontOfSize(12)
+        account_id.text = String(self.member[indexPath.row]["account_id"])
         cell.addSubview(userName)
         cell.addSubview(userImageView)
-        cell.addSubview(commentTextField)
+        cell.addSubview(account_id)
         return cell
     }
     
@@ -145,7 +144,7 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
         return true
     }
     
-    // action cells
+    // メンバーの削除
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleate = UITableViewRowAction(style: .Normal, title: "X\n削除") { action, index in
             self.member.removeAtIndex(indexPath.row)
@@ -164,18 +163,19 @@ class MakeGroupView : UIView, UITextFieldDelegate, UITableViewDataSource, UITabl
     }
     
     // setMember 
-    func setList( member : NSArray ){
-        if member != [] {
-            self.member += member as! [String]
-        }
+    func setList( members : [JSON] ){
+        print("members" , members)
+        //if member != [] {
+            self.member = members
+        //}
         self.myTableView.reloadData()
     }
     
     // getMember
-    func getMember() -> NSArray{
+    func getMember() -> [JSON]{
         return self.member
     }
-    // ----                 -----
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

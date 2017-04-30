@@ -29,7 +29,7 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImag
         super.didReceiveMemoryWarning()
     }
     
-    // Account Make
+    // 
     func buttonTouched(sender : UIButton ){
         let userModel = UserModel.sharedManager
         var userData = User()
@@ -37,7 +37,7 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImag
         userData.account_id = accountMakeView!.accountIDTextField.text!
         userData.name = accountMakeView!.nameTextField.text!
         
-       // print("userdate : ", userData)
+        // ユーザを作成
         userModel.createUser( userData, success: { (res: JSON) -> Void in
                 // success
                 let myView = LoginViewController()

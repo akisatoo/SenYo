@@ -16,26 +16,24 @@ protocol MemberViewDelegate : NSObjectProtocol{
 }
 
 class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    var delegate : MemberViewDelegate?
-    var myItems : [String] = []
-    var userData : [JSON] = []
-    var selectUser : [String] = []
-    var searchUsers : NSArray = []
-    var searchResult = [String]()
+    private var delegate : MemberViewDelegate?
+    private var myItems : [String] = []
+    private var userData : JSON?    // 全ユーザ情報
+    internal var selectUser : [JSON] = [] // 選択したユーザ
+    private var searchUsers  = [JSON]()
+    private var searchResult = [JSON]()   // 全ユーザ名
     private var myTableView: UITableView!
     private var mySearchBar: UISearchBar!
-    let textLabel = UILabel()
-    let addUserIconImg = UIImage(named: "addUser")
-    let userTag = 11
+    private let textLabel = UILabel()
+    private let addUserIconImg = UIImage(named: "addUser")
+    private let userTag = 11
     
     required init () {
         super.init(frame: CGRectMake(0,0,0,0))
-        
         self.backgroundColor = UIColor.whiteColor()
         self.layer.borderWidth = 2.0
         self.layer.cornerRadius = 10.0
         self.layer.borderColor = UIColor(white: 1.0, alpha: 0.4).CGColor
-    
         mySearchBar = UISearchBar()
         mySearchBar.delegate = self
         mySearchBar.searchBarStyle = UISearchBarStyle.Prominent
@@ -54,7 +52,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         textLabel.textColor = .blackColor()
         textLabel.font = UIFont.systemFontOfSize(15)
         textLabel.textAlignment = .Center
-        searchResult = searchUsers as! [String]
+        searchResult = searchUsers //as! [String]
         
         myTableView = UITableView()
         myTableView.registerClass( UITableViewCell.self, forCellReuseIdentifier: "MyCell" )
@@ -93,6 +91,14 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         let checkString = ( addUserIcon.image != UIImage(named: "addUser") ) ? "addUser" : "addUser_on"
         let checkImg = UIImage( named: checkString )
         addUserIcon.image! = checkImg!
+        print( "selectUser", selectUser )
+        for i in 0 ..< selectUser.count {
+            print("userName : ", selectUser)
+            if String(selectUser[i]["name"]) == String(self.searchResult[indexPath.row]["name"]) {
+                selectUser.removeAtIndex(i)
+                return
+            }
+        }
         self.selectUser.append(self.searchResult[indexPath.row])
     }
     
@@ -117,7 +123,7 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         userName.frame = CGRectMake(0, 0, 100, 20)
         userName.layer.position = CGPointMake(162, 35)
         userName.font = UIFont.systemFontOfSize(15)
-        userName.text =  "\(self.searchResult[indexPath.row])"
+        userName.text =  "\(self.searchResult[indexPath.row]["name"])"
         addUserIcon.contentMode = .ScaleAspectFit
         addUserIcon.tag = userTag
         cellSelectedBgView.backgroundColor = UIColor.clearColor()
@@ -131,18 +137,23 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         return cell
     }
     
-    // SearchBar
+    // 検索結果を表示
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         mySearchBar.endEditing(true)
         searchResult.removeAll()
         if(mySearchBar.text == "") {
-            searchResult = searchUsers as! [String]
+            searchResult = searchUsers
         } else {
-            for data in myItems {
+            // 名前の一致したユーザを表示
+            //for data in myItems{
+            for i in 0 ..< userData!.count {
+                let data = String(userData!["res"][i]["name"])
                 if data.containsString(mySearchBar.text!) {
-                    searchResult.append(data)
+                   // searchResult.append(data)
+                    searchResult.append(userData!["res"][i])
                 }
-            }
+             }
+        
         }
         //テーブルを再読み込みする。
         myTableView.reloadData()
@@ -156,18 +167,19 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
         myTableView.reloadData()
     }
     
-    // get members
-    func getList() -> [String] {
+    //
+    func getList() -> [JSON] {
         return self.selectUser
     }
-    //set members
+    //参加可能なメンバーを取得
     func setList( data : JSON ){
-        print("count : ", data.count)
-        for i in 0..<data.count - 1{
-            userData.append(data[i])
-            searchResult.append(String(data["res"][i]["name"]))
+        print("data : ", data )
+        for _ in 0..<data.count - 1{
+            userData = data
+            //searchResult.append(String(data["res"][i]["name"]))
         }
-        myItems = searchResult
+        print("userData:" ,userData!["res"])
+       // myItems = searchResult
         myTableView.reloadData()
     }
     
@@ -178,7 +190,6 @@ class MemberView : UIView, UITableViewDataSource, UITableViewDelegate, UISearchB
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        self.endEditing(true)
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

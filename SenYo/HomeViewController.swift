@@ -85,7 +85,7 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
         let ud = NSUserDefaults.standardUserDefaults()
         let group_cel_no = ud.objectForKey("groupData") as? Int
         if group_cel_no != nil {
-            self.homeView.setMember(self.groupView.getGroupData()[group_cel_no!]) //error
+            //self.homeView.setMember(self.groupView.getGroupData()[group_cel_no!]) //error
         }
         //  
         if ud.objectForKey( "choose_group" ) != nil {
@@ -113,7 +113,6 @@ class HomeViewController: UIViewController, HomeViewDelegate, MenuViewDelegate, 
             menuView.hidden = true
             break
         default:
-            print("error")
             break
         }
     }

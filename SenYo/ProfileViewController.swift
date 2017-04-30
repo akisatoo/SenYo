@@ -65,7 +65,6 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
             self.appDelegate.beforeLogin()
             break
         default:
-            print( "debug ") // debug
             break
         }
     }

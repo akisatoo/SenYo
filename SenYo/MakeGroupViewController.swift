@@ -19,7 +19,7 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
     private let makeGroupView = MakeGroupView()
     private let placeView = UIView(frame: CGRectMake(0, 0, myBoundSize.width, myBoundSize.height ) )
     private let createGroupButton = UIBarButtonItem()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
@@ -33,7 +33,6 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         createGroupButton.tintColor = UIColor.clearColor()
         createGroupButton.tag = 1
         self.navigationItem.rightBarButtonItem = createGroupButton
-        
         //
         placeView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
         placeView.userInteractionEnabled = true
@@ -50,52 +49,56 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         super.didReceiveMemoryWarning()
     }
     
-    // メンバーViewを作成
+    // メンバーView表示
     func pushButton(sender : UIButton ){
         placeView.hidden = false
         memberView.hidden = false
         memberView.popIn(0.1, duration: 0.6, delay: 0.1, completion: nil )
     }
-   
-    // memberView deleate
+    
+    // グループ検索画面の削除
     func viewTapped( sender : UITapGestureRecognizer ){
         makeGroupView.setList(memberView.getList())
-        memberView.selectUser.removeAll()
         self.memberView.popOut(1, duration: 0.6, delay: 0.1, completion : { (Bool) -> Void in
             self.placeView.hidden = true
             self.memberView.hidden = true
-         })
+        })
     }
     
     //
     func createButtonClick( sender : UIBarButtonItem ){
         switch( sender.tag ){
-        case TRANSITION:
-            let groupModel = GroupModel.sharedManager
-            var groupData = Group()
-            let ud = NSUserDefaults.standardUserDefaults()
-            let id = ud.objectForKey("id") as! String
-            groupData.leader_id = id
-            groupData.members = makeGroupView.member
-            groupData.name = makeGroupView.groupName.text!
-            if makeGroupView.member != [] {
-                memberView.selectUser = makeGroupView.getMember() as! [String]
-            }
+            // 新しいグループを作成
+            case TRANSITION:
+                let groupModel = GroupModel.sharedManager
+                var groupData = Group()
+                var memberNam = [String]()
+                let ud = NSUserDefaults.standardUserDefaults()
+                let id = ud.objectForKey("id") as! String
+                groupData.leader_id = id
+                for data in makeGroupView.member {
+                    memberNam.append(String(data["name"]))
+                }
+                groupData.members = memberNam
+                groupData.name = makeGroupView.groupName.text!
+                if makeGroupView.member != [] {
+                    memberView.selectUser = makeGroupView.getMember()
+                }
             
-            groupModel.createGroup(groupData, success: { (res: JSON) -> Void in
-                // success
-                print("Create Group!")
-                let myView : UIViewController = HomeViewController()
-                self.navigationController?.pushViewController(myView, animated: true )
-                },
-                error: { (res: JSON) -> Void in
-                    // error
-                    let alert = groupModel.errorAlert(res)
-                    self.presentViewController(alert, animated: true, completion: nil)
-            })
-            break
-        default:
-            break
+                groupModel.createGroup(groupData, success: { (res: JSON) -> Void in
+                    // success
+                    print("Create Group!")
+                    let myView : UIViewController = HomeViewController()
+                    self.navigationController?.pushViewController(myView, animated: true )
+                    },
+                    error: { (res: JSON) -> Void in
+                        // error
+                        let alert = groupModel.errorAlert(res)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                })
+                break
+            default:
+                break
         }
     }
     
@@ -107,7 +110,7 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         self.presentViewController(ipc, animated:true, completion:nil)
     }
     
-    // album image select
+    // アルバムから画像を取得
     func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         // close album
         picker.dismissViewControllerAnimated(true, completion: nil);
@@ -137,16 +140,15 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         let userModel = UserModel.sharedManager
         let ud = NSUserDefaults.standardUserDefaults()
         let account_id : String = ud.objectForKey("user_id") as! String
-        // set gropdata
+        // グループデータを設置
         userModel.userSearch(account_id, success: { (res: JSON) -> Void in
-                // success
-                self.memberView.setList(res)
+            // success
+            self.memberView.setList(res)
             },
-            error: { (res: JSON) -> Void in
-                // error
-                let alert = userModel.errorAlert(res)
-                self.presentViewController(alert, animated: true, completion: nil)
+                             error: { (res: JSON) -> Void in
+                                // error
+                                let alert = userModel.errorAlert(res)
+                                self.presentViewController(alert, animated: true, completion: nil)
         })
-        
     }
 }
