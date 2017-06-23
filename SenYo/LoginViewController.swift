@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print( "DeviceWidth : ", myBoundSize.width, " DeviceHeigh : ", myBoundSize.height )
         loginView = LoginView()
         loginView!.delegate = self
@@ -28,18 +29,21 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
     }
     
     
-    // Button Action
+    /*
+     *
+     */
     func buttonTouched( sender : UIButton ) {
         switch ( sender.tag ){
         case 1:
+            // ログインボタン
             print("Login!")
             let userModel = UserModel.sharedManager
             var userData = User()
             userData.account_id = (loginView?.userTextFiled.text)!
             userData.password = (loginView?.passTextFiled.text)!
             userModel.login(userData, success: { (res: JSON) -> Void in
+               
                 // success
-                //ローカルにログイン情報を保持
                 let id : String = String(res["res"]["_id"])
                 let password : String = String(res["res"]["password"])
                 let account_id : String = String(res["res"]["account_id"])
@@ -48,6 +52,7 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
                 let error : NSError?
                 var imageData : NSData!
                 var img : UIImage!
+                // ローカルにログイン情報を保持
                 do{
                     imageData = try NSData(contentsOfURL: image_url!, options: .DataReadingMappedIfSafe )
                         img = UIImage(data:imageData);
@@ -70,7 +75,9 @@ class LoginViewController: UIViewController, LoginViewDelegate, UITextFieldDeleg
                 self.presentViewController(alert, animated: true, completion: nil)
             })
         break;
+            
         case 2:
+            // アカウント作成ボタン
             let mySecondViewController: UIViewController = AccountMakeViewContoller()
             self.presentViewController(mySecondViewController, animated: true, completion: nil)
             break;

@@ -62,10 +62,10 @@ class ProfileView : UIView, UITextFieldDelegate{
         signoutBtn.tag = 4
         signoutBtn.setTitle( "ログアウト", forState: .Normal)
         // event
-        groupMake.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside)
-        messageEdit.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside)
-        passChangeBtn.addTarget(delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
-        signoutBtn.addTarget( delegate, action: "buttonAction:", forControlEvents: .TouchUpInside )
+        groupMake.addTarget(delegate, action: Selector("buttonAction:"), forControlEvents: .TouchUpInside)
+        messageEdit.addTarget(delegate, action: Selector("buttonAction:"), forControlEvents: .TouchUpInside)
+        passChangeBtn.addTarget(delegate, action: Selector("buttonAction:"), forControlEvents: .TouchUpInside )
+        signoutBtn.addTarget( delegate, action: Selector("buttonAction:"), forControlEvents: .TouchUpInside )
         
         //add subview
         self.addSubview(userImage)

@@ -28,11 +28,11 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         messageView.delegate = self
         hideView.backgroundColor = UIColor( white : 0, alpha : 0.5 )
         profileView.userImage.userInteractionEnabled = true
-        profileView.userImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imageTapped:"))
+        profileView.userImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.imageTapped(_:))))
         messageView.hidden = true
         hideView.hidden = true
         self.hideView.userInteractionEnabled = true
-        self.hideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "deleteView:"))
+        self.hideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.deleteView(_:))))
         self.appDelegate.window?.addSubview(hideView)
         self.appDelegate.window?.addSubview(messageView)
         messageView.autoLayout()
@@ -42,14 +42,20 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         super.didReceiveMemoryWarning()
     }
     
-    // Button Action
+    /*
+     * 各ボタンの処理
+     */
     func buttonAction( sender: UIButton ){
         switch sender.tag {
         case GROUP_MAKE:
+           
+            // 新規グループ作成
             trantionView = MakeGroupViewController()
             self.navigationController?.pushViewController(trantionView, animated: true)
             break
         case MESSAGE_EDIT:
+            
+            // 定形メッセージを編集
             self.messageView.popIn(0.3, delay: 0.2, completion: nil)
             messageView.hidden = false
             self.hideView.fadeIn(0.3, delay: 0.2, completion: nil)
@@ -58,7 +64,8 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         case PASS_CHANGE:
             break
         case SIGN_OUT:
-            // logout
+            
+            // ログアウト
             let ud = NSUserDefaults.standardUserDefaults()
             ud.removeObjectForKey("id")
             ud.removeObjectForKey("user_id")
@@ -69,7 +76,10 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         }
     }
     
-    // Image Clicked Action
+    
+    /*
+     *  ユーザアイコンをタップ
+     */
     func imageTapped(sender: UITapGestureRecognizer ) {
         let ipc: UIImagePickerController = UIImagePickerController();
         ipc.delegate = self
@@ -77,7 +87,10 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         self.presentViewController(ipc, animated:true, completion:nil)
     }
     
-    // MessageView Deleate
+    
+    /*
+     * メッセージ画面を削除
+     */
     func deleteView(sender: UITapGestureRecognizer){
         self.messageView.popOut(0.3, delay: 0.2, completion: {(Bool) -> Void in (
             self.messageView.hidden = true,
@@ -86,7 +99,10 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         )
     }
     
-    // 画像が選択されたときによばれます
+    
+    /*
+     * 画像が選択されたときによばれます
+     */
     func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismissViewControllerAnimated(true, completion: nil);
         let resizeImage = resize(image, width: 480, height: 320)
@@ -94,7 +110,10 @@ class ProfileViewController: UIViewController, ProfileViewDelegate, MessageViewD
         profileView.userImage.image = resizeImage
     }
     
-    //
+    
+    /*
+     * 画像のサイズ変更
+     */
     func resize(image: UIImage, width: Int, height: Int) -> UIImage {
         //let imageRef: CGImageRef = image.CGImage!
         // var sourceWidth: Int = CGImageGetWidth(imageRef)

@@ -38,6 +38,9 @@ class ConnentModel : MyModel{
         
     }
     
+    /*
+     * サンプル　メッセージ
+     */
     public func hoge(){
         let socket_url = NSURL(string: "http://localhost:3000")
         let socket = SocketIOClient(socketURL: socket_url!, config: [.Log(true), .ForcePolling(true)])
@@ -62,7 +65,10 @@ class ConnentModel : MyModel{
         socket.connect()
     }
     
-    func send_mes(){
+    /*
+     * メッセージを送信
+     */
+    func sendMessage(){
         let socket_url = NSURL(string: "http://localhost:3000")
         let socket = SocketIOClient(socketURL: socket_url!, config: [.Log(true), .ForcePolling(true)])
         self.socket = socket
@@ -76,6 +82,7 @@ class ConnentModel : MyModel{
         socket.on("disconnect") { data in
             print("socket disconnected!!")
         }
+        
         //投稿された時
         socket.on("post_mes") {(data, emitter) in
             /* if let message = data as? [String] {
@@ -95,10 +102,15 @@ class ConnentModel : MyModel{
         socket.connect()
     }
     
-    func reaction(){
+    
+    /*
+     * メッセージを返信
+     */
+    func reactionMessage() -> JSON{
         let socket_url = NSURL(string: "http://localhost:3000/group/reaction")
         let socket = SocketIOClient(socketURL: socket_url!, config: [.Log(true), .ForcePolling(true)])
         self.socket = socket
+        var res : JSON?
         
         // 接続時
         socket.on("connect") {data, ack in
@@ -114,17 +126,21 @@ class ConnentModel : MyModel{
             if let jsonData = data as? JSON {
                 print(jsonData)
                // let jsonData : NSData = jsonData[0].dataUsingEncoding(NSUTF8StringEncoding)!
-                var err : NSError?
                 do{
+                    res = jsonData
                     //self.postArray = try NSJSONSerialization.JSONObjectWithData(
                     //jsonData, options: []) as? NSMutableArray
                 }catch let error as NSError {
-                    err = error
-                    //self.postArray = nil
+                    self.showErrorAlert(error)
+                    res = []
                 }
             }
         }
+        return res!
     }
+    
+    
+    
     
         /*
          // receives message

@@ -29,7 +29,9 @@ class GroupModel: MyModel {
     
     private override init() {}
     
-    // 新規グループの作成
+    /*
+     * 新規グループの作成
+     */
     func createGroup(data: Group, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params = [
             "name": data.name,
@@ -43,8 +45,6 @@ class GroupModel: MyModel {
             }
             
             let res = JSON(object)
-            print("--- createGroup ---")
-            print("res : " , res )
             if res["status"] == "success" {
                 success(res)
                 return;

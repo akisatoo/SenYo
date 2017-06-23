@@ -31,10 +31,13 @@ class MessageView : UIView, UITextFieldDelegate{
         self.addSubview(label)
     }
     
+    /*
+     * 
+     */
     func makeUITextField( DataNum: Int ) -> [UITextField] {
         var textFields:[UITextField] = []
        // let icon = [UIImageView] = []
-        for var i = 0; i < DataNum; i++ {
+        for i in 0 ..< DataNum {
             let textField : UITextField = UITextField()
             let img = UIImage( named: "sen"+String(i + 1))
             let imgViews = UIImageView(image: img)
@@ -58,6 +61,10 @@ class MessageView : UIView, UITextFieldDelegate{
         return textFields
     }
     
+    
+    /*
+     * アウトレイアウト
+     */
     func autoLayout(){
         self.autoSetDimensionsToSize(CGSizeMake(350, 400))
         self.autoPinEdgeToSuperviewEdge(.Left, withInset: myBoundSize.width / 2 - 175 )
@@ -72,23 +79,23 @@ class MessageView : UIView, UITextFieldDelegate{
     }
     
     /*
-    UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
-    */
+     * UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
+     */
     func textFieldDidBeginEditing(textField: UITextField){
         print("textFieldDidBeginEditing:" + textField.text!)
     }
     
     /*
-    UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
-    */
+     * UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
+     */
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         print("textFieldShouldEndEditing:" + textField.text!)
         return true
     }
     
     /*
-    改行ボタンが押された際に呼ばれるデリゲートメソッド.
-    */
+     * 改行ボタンが押された際に呼ばれるデリゲートメソッド.
+     */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

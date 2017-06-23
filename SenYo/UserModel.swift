@@ -27,7 +27,9 @@ class UserModel: MyModel {
     private override init() {
     }
     
-    // ログイン
+    /*
+     * ログイン
+     */
     func login(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params = [
             "password": data.password,
@@ -53,7 +55,9 @@ class UserModel: MyModel {
         }
     }
     
-    // ユーザ作成
+    /*
+     * ユーザ作成
+     */
     func createUser(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params = [
             "name": data.name,
@@ -81,7 +85,9 @@ class UserModel: MyModel {
         }
     }
     
-    //ユーザ情報を書き換え
+    /*
+     * ユーザ情報を書き換え
+     */
     func userEdit(data: User, success: (JSON) -> Void, error: (JSON) -> Void) {
         let params = [
             "id": data.id,
@@ -109,7 +115,9 @@ class UserModel: MyModel {
         }
     }
     
-    // ユーザを探す
+    /*
+     * ユーザを探す
+     */
     func userSearch(data: String, success: (JSON) -> Void, error: (JSON) -> Void) {
         
         let params : [String : String] = [

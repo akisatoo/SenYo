@@ -16,10 +16,10 @@ protocol LoginViewDelegate: NSObjectProtocol {
 }
 
 class LoginView: UIView, UITextFieldDelegate {
-    var delegate: LoginViewDelegate?
-    let aspect = Aspect()
-    var userTextFiled = UITextField()
-    var passTextFiled = UITextField()
+    private var delegate: LoginViewDelegate?
+    private let aspect = Aspect()
+    private var userTextFiled = UITextField()
+    private var passTextFiled = UITextField()
     private let loginButton = UIButton()
     
     required init(coder aDecoder: NSCoder) {
@@ -37,6 +37,8 @@ class LoginView: UIView, UITextFieldDelegate {
         
         logoImage.image = UIImage(named: "logo")
         logoImage.autoresizesSubviews = true
+        
+        // ログインボタン
         loginButton.backgroundColor = UIColor.whiteColor()
         loginButton.layer.masksToBounds = true
         loginButton.layer.borderColor = UIColor(red: 0.1, green: 1, blue: 1, alpha: 1).CGColor
@@ -46,8 +48,9 @@ class LoginView: UIView, UITextFieldDelegate {
         loginButton.layer.cornerRadius = 20.0
         loginButton.titleLabel?.font = UIFont.systemFontOfSize(18)
         loginButton.tag = 1
-        loginButton.addTarget( delegate, action: "buttonTouched:", forControlEvents: .TouchUpInside)
+        loginButton.addTarget( delegate, action: Selector("buttonTouched:"), forControlEvents: .TouchUpInside)
         
+        // ユーザーID
         userTextFiled.delegate = self
         userTextFiled.borderStyle = UITextBorderStyle.RoundedRect
         userTextFiled.textAlignment = NSTextAlignment.Center
@@ -56,9 +59,10 @@ class LoginView: UIView, UITextFieldDelegate {
         userTextFiled.layer.cornerRadius = 20.0
         userTextFiled.tag = 1
         userTextFiled.autocapitalizationType = UITextAutocapitalizationType.None
-        userTextFiled.addTarget( delegate, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        userTextFiled.addTarget( delegate, action: Selector("textFieldDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
         userTextFiled.placeholder = "name"
         
+        // パスワード
         passTextFiled.delegate = self
         passTextFiled.textAlignment = NSTextAlignment.Center
         passTextFiled.borderStyle = UITextBorderStyle.RoundedRect
@@ -67,7 +71,7 @@ class LoginView: UIView, UITextFieldDelegate {
         passTextFiled.layer.cornerRadius = 20.0
         passTextFiled.layer.borderWidth = 2.0
         passTextFiled.tag = 2
-        passTextFiled.addTarget( delegate, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        passTextFiled.addTarget( delegate, action: Selector("textFieldDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
         passTextFiled.placeholder = "password"
         
         userLabel.text = "USER ID: "
@@ -77,7 +81,7 @@ class LoginView: UIView, UITextFieldDelegate {
         newAcountButton.setTitle("アカウントを作成する", forState: .Normal)
         newAcountButton.setTitleColor(UIColor(red: 0, green: 1, blue: 1, alpha: 1), forState: .Normal)
         newAcountButton.tag = 2
-        newAcountButton.addTarget( delegate, action: "buttonTouched:", forControlEvents: .TouchUpInside)
+        newAcountButton.addTarget( delegate, action: Selector("buttonTouched:"), forControlEvents: .TouchUpInside)
         
         //
         self.addSubview(loginButton)
@@ -108,11 +112,16 @@ class LoginView: UIView, UITextFieldDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    // retrunを押すとキーボードを閉じる
+    
+    
+    /*
+     * retrunを押すとキーボードを閉じる
+     */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // ユーザがキーボード以外の場所をタップすると、キーボードを閉じる
         self.endEditing(true)

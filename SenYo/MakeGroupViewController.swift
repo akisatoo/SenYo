@@ -17,7 +17,7 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
     private let TRANSITION = 1
     private let memberView  = MemberView()
     private let makeGroupView = MakeGroupView()
-    private let placeView = UIView(frame: CGRectMake(0, 0, myBoundSize.width, myBoundSize.height ) )
+    private let placeView = UIView(frame: CGRectMake( 0, 0, myBoundSize.width, myBoundSize.height ) )
     private let createGroupButton = UIBarButtonItem()
     
     override func viewDidLoad() {
@@ -26,18 +26,20 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         self.title = "新規グループ作成"
         makeGroupView.delegate = self
         self.view = makeGroupView
+        //
         createGroupButton.image = UIImage(named: "menu")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         createGroupButton.style = UIBarButtonItemStyle.Plain
-        createGroupButton.action = "createButtonClick:"
+        createGroupButton.action = #selector(MakeGroupViewController.createButtonClick(_:))
         createGroupButton.target = self
         createGroupButton.tintColor = UIColor.clearColor()
         createGroupButton.tag = 1
         self.navigationItem.rightBarButtonItem = createGroupButton
+        
         //
         placeView.backgroundColor = UIColor(white: 0.3, alpha: 0.5)
         placeView.userInteractionEnabled = true
         placeView.hidden = true
-        placeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped:"))
+        placeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MakeGroupViewController.viewTapped(_:))))
         memberView.hidden = true
         setSearchList()
         self.view.addSubview( placeView )
@@ -49,14 +51,18 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         super.didReceiveMemoryWarning()
     }
     
-    // メンバーView表示
+    /*
+     * メンバーView表示
+     */
     func pushButton(sender : UIButton ){
         placeView.hidden = false
         memberView.hidden = false
         memberView.popIn(0.1, duration: 0.6, delay: 0.1, completion: nil )
     }
     
-    // グループ検索画面の削除
+    /*
+     * グループ検索画面の削除
+     */
     func viewTapped( sender : UITapGestureRecognizer ){
         makeGroupView.setList(memberView.getList())
         self.memberView.popOut(1, duration: 0.6, delay: 0.1, completion : { (Bool) -> Void in
@@ -65,11 +71,15 @@ class MakeGroupViewController : UIViewController, MakeGroupViewDelegate, UIImage
         })
     }
     
-    //
+    /*
+     *
+     */
     func createButtonClick( sender : UIBarButtonItem ){
         switch( sender.tag ){
-            // 新しいグループを作成
+            
             case TRANSITION:
+                
+                // 新しいグループを作成
                 let groupModel = GroupModel.sharedManager
                 var groupData = Group()
                 var memberNam = [String]()

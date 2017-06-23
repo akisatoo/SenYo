@@ -21,7 +21,7 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImag
         accountMakeView = AccountMakeView()
         self.view = accountMakeView
         accountMakeView?.accountImage.userInteractionEnabled = true
-        accountMakeView?.accountImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "imageTapped:"))
+        accountMakeView?.accountImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(AccountMakeViewContoller.imageTapped(_:))))
         accountMakeView!.delegate = self
     }
     
@@ -29,7 +29,10 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImag
         super.didReceiveMemoryWarning()
     }
     
-    // 
+    
+    /*
+     * ユーザ画像をタップした時
+     */
     func buttonTouched(sender : UIButton ){
         let userModel = UserModel.sharedManager
         var userData = User()
@@ -51,13 +54,32 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImag
         })
     }
     
-    // Debug
+    /*
+     * Debug ボタン
+     */
     func debugButton(sender: UIButton) {
         let myView : UIViewController = LoginViewController()
         self.presentViewController(myView, animated: true, completion: nil)
     }
     
-    // Image Clicked Action
+    /*
+     * アルバム
+     */
+    func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        // アルバムを閉じる
+        picker.dismissViewControllerAnimated(true, completion: nil);
+        
+        // 画像をリサイズ
+        let resizeImage = resize(image, width: 480, height: 320)
+        image = resizeImage
+        accountMakeView?.accountImage.image = resizeImage
+    }
+    
+    
+    /*
+     * アルバムの写真を選択時
+     */
     func imageTapped( sender: UITapGestureRecognizer ) {
         let ipc: UIImagePickerController = UIImagePickerController();
         ipc.delegate = self
@@ -65,18 +87,9 @@ class AccountMakeViewContoller : ViewController, AccountMakeViewDelegate, UIImag
         self.presentViewController(ipc, animated:true, completion:nil)
     }
     
-    // album image select
-    func imagePickerController(picker: UIImagePickerController, var didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        // close album
-        picker.dismissViewControllerAnimated(true, completion: nil);
-        
-        // resize to image
-        let resizeImage = resize(image, width: 480, height: 320)
-        image = resizeImage
-        accountMakeView?.accountImage.image = resizeImage
-    }
-    
-    // image make
+    /*
+     * 画像をリサイズ
+     */
     func resize(image: UIImage, width: Int, height: Int) -> UIImage {
         //let imageRef: CGImageRef = image.CGImage!
         //var sourceWidth: Int = CGImageGetWidth(imageRef)

@@ -217,8 +217,8 @@
 				A7A4F8011D8BEDC4006EB1BE /* Aspect.swift */,
 				A74953421E47399300653676 /* Connect */,
 				A70BE6F01D6AF66D003E3341 /* Model */,
-				A70BE6EF1D6AF616003E3341 /* Controller */,
 				A70BE6EE1D6AF60C003E3341 /* View */,
+				A70BE6EF1D6AF616003E3341 /* Controller */,
 				CD0F77E71D4DD06A001BC4C9 /* Assets.xcassets */,
 				A723212B1D8F8BD60006E24C /* ImgeController.xcassets */,
 				CD0F77E91D4DD06A001BC4C9 /* LaunchScreen.storyboard */,
@@ -504,7 +504,6 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Socket.IO-Client-Swift",
 				);
 				INFOPLIST_FILE = SenYo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.SenYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -525,7 +524,6 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Socket.IO-Client-Swift",
 				);
 				INFOPLIST_FILE = SenYo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.SenYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
